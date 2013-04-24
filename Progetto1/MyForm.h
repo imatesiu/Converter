@@ -2,6 +2,7 @@
 #include "pacchettoMissionPlan.h"
 #include "utility.h"
 #include "struttureDatiMessaggi.h"
+#include "Messaggi.h"
 
 namespace Progetto1 {
 
@@ -133,30 +134,43 @@ namespace Progetto1 {
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 				 //;
 
-				 pacchettoMissionPlan pkt1;
+				 Messaggi ^pkt1 = gcnew Messaggi();
+
+				
+
+				 //array<Byte>^bytes = System::Text::Encoding::ASCII->GetBytes("0x"+textBox1->Text);
+
+				 String ^text=textBox1->Text;
+				 int len =  text->Length / 2;
+				  array<Byte>^bytez = gcnew array<Byte>(len);
+				  for (int i = 0; i < bytez->Length; i++)
+				  {
+					bytez[i] = Byte::Parse(text->Substring(i *2, 2),System::Globalization::NumberStyles::HexNumber);
+				  }
+
+
+				 byte *buffer2 = new byte[bytez->Length];
+				 for(int i = 0; i < bytez->Length; ++i)
+					 buffer2[i] = 0;
 
 				 
 
-				 array<Byte>^bytes = System::Text::Encoding::ASCII->GetBytes(textBox1->Text);
 
-				 byte *buffer2 = new byte[bytes->Length];
-				 for(int i = 0; i < bytes->Length; ++i)
-					 buffer2[i] = 0;
-
-
-				 copiaArrayInByte(bytes, buffer2, bytes->Length);
+				 copiaArrayInByte(bytez, buffer2, bytez->Length);
 
 				 //stampaBuffer(buffer2, pkt1.getSize()*8);
 
-				 pkt1.deserializeMissionPlanPkt(buffer2);
-				 String ^out = "NID_MESSAGE "+pkt1.getNID_MESSAGE()+";\n";
-	 out = out+"L_MESSAGE "+pkt1.getL_MESSAGE()+";";
-	out = out+"T_TRAIN "+pkt1.getT_TRAIN()+";";
-	out = out+"NID_PACKET "+pkt1.getNID_PACKET()+";";
-	out = out+"L_PACKET "+pkt1.getL_PACKET()+";";
+				 pkt1->deserialize(buffer2);
+				String ^out = "NID_MESSAGE "+pkt1->getNID_MESSAGE()+";\n";
+	 out = out+"L_MESSAGE "+pkt1->getL_MESSAGE()+";";
+	out = out+"T_TRAIN "+pkt1->getT_TRAIN()+";";
+	out = out+"NID_PACKET "+pkt1->get_pacchettoMissionPlan()->getNID_PACKET()+";";
+	out = out+"L_PACKET "+pkt1->get_pacchettoMissionPlan()->getL_PACKET()+";";
 				 
 				 textBox2->Text=out;
 			 }
 	};
+
+	
 
 	};

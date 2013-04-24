@@ -6,9 +6,7 @@ using namespace std;
 
 pacchettoMissionPlan::pacchettoMissionPlan()
 {
-	data.head.NID_MESSAGE = 0;
-	data.head.L_MESSAGE = 0;
-	data.head.T_TRAIN = 0;
+	
 	data.missionHead.NID_PACKET = 0;
 	data.missionHead.L_PACKET = 0;
 	data.missionHead.Q_SCALE = 0;
@@ -153,9 +151,7 @@ int pacchettoMissionPlan::getT_DOORS_TIME(int index)
 
 void pacchettoMissionPlan::serializeMissionPlanPkt(byte *buffer)
 {
-	push(buffer, data.head.NID_MESSAGE, 8, 0);
-	push(buffer, data.head.L_MESSAGE, 11, 8);
-	push(buffer, data.head.T_TRAIN, 32, 19);
+	
 	push(buffer, data.missionHead.NID_PACKET, 8, 51);
 	push(buffer, data.missionHead.L_PACKET, 13, 59);
 	push(buffer, data.missionHead.Q_SCALE, 2, 72);
@@ -201,9 +197,7 @@ void pacchettoMissionPlan::serializeMissionPlanPkt(byte *buffer)
 
 void pacchettoMissionPlan::deserializeMissionPlanPkt(byte *buffer)
 {
-	data.head.NID_MESSAGE=pop(buffer, 8, 0);
-	data.head.L_MESSAGE=pop(buffer, 11, 8);
-	data.head.T_TRAIN=pop(buffer, 32, 19);
+	
 	data.missionHead.NID_PACKET=pop(buffer,  8, 51);
 	data.missionHead.L_PACKET=pop(buffer, 13, 59);
 	data.missionHead.Q_SCALE=pop(buffer, 2, 72);

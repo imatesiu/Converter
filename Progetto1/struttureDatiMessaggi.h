@@ -21,7 +21,6 @@ struct structuredHeader
 // oppure in maniera flat (per esempio quando si vuole fare una trasmissione)
 struct commandData1
 {
-	structuredHeader head;
 	unsigned int NID_PACKET : 8;
 	unsigned int L_PACKET : 13;
 	unsigned int Q_COMMAND_TYPE : 3;
@@ -93,7 +92,7 @@ struct missionHeader
 // oppure in maniera flat (per esempio quando si vuole fare una trasmissione)
 struct missionData
 {
-	structuredHeader head;
+	
 	missionHeader missionHead;
 	missionStruct1 mS1;
 	unsigned int N_ITER1 : 5;
@@ -140,19 +139,15 @@ unsigned int NID_CDB : 32;
 
 //struttura dati per gestire il network data
 // 53 bit
-struct networkdata 
-{
-	unsigned int NID_PACKET : 8;
-	unsigned int L_PACKET : 13;
-	unsigned int M_PORT : 32;
-	
-};
+
 
 struct presentation
 {
-	struct structuredHeader head;
+	
+	unsigned int NID_PACKET : 8;
+	unsigned int L_PACKET : 13;
 	unsigned int NID_ENGINE : 24;
-	struct networkdata net;
+	unsigned int M_PORT : 32;
 	//unsigned int padding : 8;
 };
 
@@ -166,7 +161,3 @@ struct pkgstatolinea{
 	struct pstatolineastruct *pstato1;
 };
 
-struct messtatolinea{
-	struct structuredHeader head;
-	struct pkgstatolinea pkg;
-};

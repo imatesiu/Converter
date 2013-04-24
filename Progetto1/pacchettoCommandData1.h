@@ -11,12 +11,7 @@ public:
 	// questa funzione sarà chiamata da chi vorrà serializzare il messaggio, per poter allocare il buffer
 	int getSize(){return 10;};
 	// funzioni di interfaccia per l'accesso in scrittura e lettura dei campi dati della struttura commandData
-	void setNID_MESSAGE(int N){data.head.NID_MESSAGE = N;};
-	int getNID_MESSAGE(){return data.head.NID_MESSAGE;};
-	void setL_MESSAGE(int N){data.head.L_MESSAGE = N;};
-	int getL_MESSAGE(){return data.head.L_MESSAGE;};
-	void setT_TRAIN(int N){data.head.T_TRAIN = N;};
-	int getT_TRAIN(){return data.head.T_TRAIN;};
+	
 	void setNID_PACKET(int NID){data.NID_PACKET = NID;};
 	int getNID_PACKET(){return data.NID_PACKET;};
 	void setL_PACKET(int L){data.L_PACKET = L;};
