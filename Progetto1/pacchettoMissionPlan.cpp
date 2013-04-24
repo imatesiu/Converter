@@ -247,7 +247,7 @@ pacchettoMissionPlan::~pacchettoMissionPlan(void)
 }
 
 // funzione che restituisce la dimensione (ideale, non quella dovuta agli allineamenti 
-// fatti dal compilatore) in byte del messaggio tenendo anche in conto l'eventuale padding
+// fatti dal compilatore) in Byte del messaggio tenendo anche in conto l'eventuale padding
 // questa funzione sarà chiamata da chi vorrà serializzare il messaggio, per poter allocare il buffer
 int pacchettoMissionPlan::getSize()
 {
@@ -259,6 +259,6 @@ int pacchettoMissionPlan::getSize()
 	size += 122;
 	// 89 bit per ogni N_ITER
 	size += 89 * data.N_ITER1;
-	// ritorno il numero di byte occupato dalla struttura dati
+	// ritorno il numero di Byte occupato dalla struttura dati
 	return (size / 8) + 1;
 }

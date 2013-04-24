@@ -149,24 +149,23 @@ namespace Progetto1 {
 				  }
 
 
-				 byte *buffer2 = new byte[bytez->Length];
-				 for(int i = 0; i < bytez->Length; ++i)
-					 buffer2[i] = 0;
+				
 
 				 
 
 
-				 copiaArrayInByte(bytez, buffer2, bytez->Length);
+				 
 
-				 //stampaBuffer(buffer2, pkt1.getSize()*8);
+				
 
-				 pkt1->deserialize(buffer2);
+				 pkt1->deserialize(bytez);
 				String ^out = "NID_MESSAGE "+pkt1->getNID_MESSAGE()+";\n";
 	 out = out+"L_MESSAGE "+pkt1->getL_MESSAGE()+";";
 	out = out+"T_TRAIN "+pkt1->getT_TRAIN()+";";
+	if(pkt1->get_pacchettoMissionPlan()){
 	out = out+"NID_PACKET "+pkt1->get_pacchettoMissionPlan()->getNID_PACKET()+";";
 	out = out+"L_PACKET "+pkt1->get_pacchettoMissionPlan()->getL_PACKET()+";";
-				 
+	}
 				 textBox2->Text=out;
 			 }
 	};

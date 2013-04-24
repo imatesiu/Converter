@@ -6,6 +6,7 @@
 using namespace System;
 using namespace std;
 
+
 //
 // dato un valore data, copia gli len bit meno significativi nel
 // vettore buf alle posizioni di bit assolute off..off+len-1

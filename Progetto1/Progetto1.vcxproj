@@ -80,9 +80,7 @@
     <ClCompile Include="Messaggi.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="pacchettoAcknowledgement.cpp" />
-    <ClCompile Include="pacchettoCommandData1.cpp" />
-    <ClCompile Include="pacchettoCommandData2.cpp" />
-    <ClCompile Include="pacchettoCommandData3.cpp" />
+    <ClCompile Include="pacchettoCommandData.cpp" />
     <ClCompile Include="pacchettoMissionPlan.cpp" />
     <ClCompile Include="pacchettopresentazione.cpp" />
     <ClCompile Include="pacchettostatolineaatc.cpp" />
@@ -96,9 +94,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="pacchettoAcknowledgement.h" />
-    <ClInclude Include="pacchettoCommandData1.h" />
-    <ClInclude Include="pacchettoCommandData2.h" />
-    <ClInclude Include="pacchettoCommandData3.h" />
+    <ClInclude Include="pacchettoCommandData.h" />
     <ClInclude Include="pacchettoMissionPlan.h" />
     <ClInclude Include="pacchettopresentazione.h" />
     <ClInclude Include="pacchettostatolineaatc.h" />

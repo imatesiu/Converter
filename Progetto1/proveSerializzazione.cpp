@@ -82,7 +82,7 @@ void  proveSerializzazione::provaSerializePacchettoPresentazione(pacchettopresen
 
 void  proveSerializzazione::provaSerializePacchettoack(pacchettoAcknowledgement &pkt)
 {
-	int NID_MESSAGE, L_MESSAGE, T_TRAIN, NID_PACKET, L_PACKET, Q_MISSION;
+	/*int NID_MESSAGE, L_MESSAGE, T_TRAIN, NID_PACKET, L_PACKET, Q_MISSION;
 	cout << "Insert NID_MESSAGE" << endl;
 	cin >> NID_MESSAGE;
 	pkt.setNID_MESSAGE(NID_MESSAGE);
@@ -100,10 +100,10 @@ void  proveSerializzazione::provaSerializePacchettoack(pacchettoAcknowledgement 
 	pkt.setL_PACKET(L_PACKET);
 	cout << "InsertQMission" << endl;
 	cin >> Q_MISSION;
-	pkt.setQ_MISSION_RESPONSE(Q_MISSION);
+	pkt.setQ_MISSION_RESPONSE(Q_MISSION);*/
 	
 }
-void  proveSerializzazione::provaSerializePacchettoCommandData1(pacchettoCommandData1 &pkt)
+void  proveSerializzazione::provaSerializePacchettoCommandData1(pacchettoCommandData &pkt)
 {
 	/*int NID_MESSAGE, L_MESSAGE, T_TRAIN, NID_PACKET, L_PACKET, Q_COMMAND_TYPE;
 	cout << "Insert NID_MESSAGE" << endl;

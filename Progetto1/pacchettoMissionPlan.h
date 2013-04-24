@@ -10,7 +10,7 @@ class pacchettoMissionPlan
 	missionData data;
 public:
 	// funzione che restituisce la dimensione (ideale, non quella dovuta agli allineamenti 
-	// fatti dal compilatore) in byte del messaggio tenendo anche in conto l'eventuale padding
+	// fatti dal compilatore) in Byte del messaggio tenendo anche in conto l'eventuale padding
 	// questa funzione sarà chiamata da chi vorrà serializzare il messaggio, per poter allocare il buffer
 	int getSize();
 	void serializeMissionPlanPkt(byte *buff);

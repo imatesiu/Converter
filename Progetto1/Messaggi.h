@@ -1,6 +1,6 @@
 #pragma once
 #include "struttureDatiMessaggi.h"
-#include "pacchettoCommandData1.h"
+#include "pacchettoCommandData.h"
 #include "pacchettoMissionPlan.h"
 #include "pacchettopresentazione.h"
 #include "pacchettostatolineaatc.h"
@@ -10,7 +10,7 @@
 ref class Messaggi
 {
 	structuredHeader *head;
-	pacchettoCommandData1 *pkgcd1;
+	pacchettoCommandData *pkgcd1;
 	pacchettoMissionPlan *pkgMP;
 	pacchettopresentazione *pgkPres;
 	pacchettostatolineaatc *pkgStatoATC;
@@ -29,8 +29,8 @@ public:
 	void setNID_ENGINE(int N){head->NID_ENGINE = N;};
 	int getNID_ENGINE(){return head->NID_ENGINE;};
 
-	void set_pacchettoCommandData1(){ pkgcd1 = new pacchettoCommandData1;};
-	pacchettoCommandData1* get_pacchettoCommandData1(){ return pkgcd1;};
+	void set_pacchettoCommandData1(){ pkgcd1 = new pacchettoCommandData;};
+	pacchettoCommandData* get_pacchettoCommandData1(){ return pkgcd1;};
 
 	void set_pacchettoMissionPlan(){ pkgMP = new pacchettoMissionPlan;};
 	pacchettoMissionPlan* get_pacchettoMissionPlan(){ return pkgMP;};
@@ -46,5 +46,8 @@ public:
 
 	void serialize(byte *buffer);
 	void deserialize(byte *buff);
+
+	void serialize(array<System::Byte>^bytez);
+	void deserialize(array<System::Byte>^bytez);
 };
 

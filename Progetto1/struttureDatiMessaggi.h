@@ -17,42 +17,31 @@ struct structuredHeader
 	unsigned int NID_ENGINE : 24;
 };
 
-// Messaggio command data quando Q_COMMAND_TYPE != "Chane GOA Level" e Q_COMMAND_TYPE != "Train Running Number"
-// L'uso della union permette di accedere ai campi dati in maniera strutturata (per esempio quando si vuole fare una ricezione)
-// oppure in maniera flat (per esempio quando si vuole fare una trasmissione)
-struct commandData1
+struct commandData
 {
-	unsigned int NID_PACKET : 8;
-	unsigned int L_PACKET : 13;
-	unsigned int Q_COMMAND_TYPE : 3;
-	unsigned int PADDING : 5;
-};
-
-// Messaggio command data quando Q_COMMAND_TYPE == "Chane GOA Level"
-// L'uso della union permette di accedere ai campi dati in maniera strutturata (per esempio quando si vuole fare una ricezione)
-// oppure in maniera flat (per esempio quando si vuole fare una trasmissione)
-struct commandData2
-{
-	structuredHeader head;
 	unsigned int NID_PACKET : 8;
 	unsigned int L_PACKET : 13;
 	unsigned int Q_COMMAND_TYPE : 3;
 	unsigned int M_GOA_LEVEL : 2;
-	unsigned int PADDING : 3;
+	unsigned int NID_OPERATIONAL : 32;
+	unsigned int PADDING : 5;
 };
+
+// Messaggio command data quando Q_COMMAND_TYPE != "Chane GOA Level" e Q_COMMAND_TYPE != "Train Running Number"
+// L'uso della union permette di accedere ai campi dati in maniera strutturata (per esempio quando si vuole fare una ricezione)
+// oppure in maniera flat (per esempio quando si vuole fare una trasmissione)
+
+
+
+// Messaggio command data quando Q_COMMAND_TYPE == "Chane GOA Level"
+// L'uso della union permette di accedere ai campi dati in maniera strutturata (per esempio quando si vuole fare una ricezione)
+// oppure in maniera flat (per esempio quando si vuole fare una trasmissione)
+
 
 // Messaggio command data quando Q_COMMAND_TYPE == "Train Running Number"
 // L'uso della union permette di accedere ai campi dati in maniera strutturata (per esempio quando si vuole fare una ricezione)
 // oppure in maniera flat (per esempio quando si vuole fare una trasmissione)
-struct commandData3
-{
-	structuredHeader head;
-	unsigned int NID_PACKET : 8;
-	unsigned int L_PACKET : 13;
-	unsigned int Q_COMMAND_TYPE : 3;
-	unsigned int NID_OPERATIONAL : 32;
-	unsigned int PADDING : 5;
-};
+
 
 // Struttura dati contente la coppia di valori D_MISSION, V_MISSION
 // 22 bit => 3 byte; dell'ultimo byte 2 bit non saranno significativi
