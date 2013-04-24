@@ -14,6 +14,7 @@ struct structuredHeader
 	unsigned int NID_MESSAGE : 8;
 	unsigned int L_MESSAGE : 11;
 	unsigned int T_TRAIN : 32;
+	unsigned int NID_ENGINE : 24;
 };
 
 // Messaggio command data quando Q_COMMAND_TYPE != "Chane GOA Level" e Q_COMMAND_TYPE != "Train Running Number"
@@ -115,19 +116,14 @@ struct missionAck
 	unsigned int L_PACKET : 13;
 	unsigned int T_TRAIN : 32;
 	unsigned int Q_MISSION_RESPONSE : 1;
+	unsigned int padding : 7;
 };
 
 // Struttura dati per la gestione dell'acknowledgement
 // 129 bit => 17 byte (7 bit di padding)
 // L'uso della union permette di accedere ai campi dati in maniera strutturata (per esempio quando si vuole fare una ricezione)
 // oppure in maniera flat (per esempio quando si vuole fare una trasmissione)
-struct acknowledgement
-{
-	struct structuredHeader head;
-	unsigned int NID_ENGINE : 24;
-	struct missionAck ack;
-	unsigned int padding : 7;
-};
+
 
 struct pstatolineastruct{
 
@@ -146,7 +142,6 @@ struct presentation
 	
 	unsigned int NID_PACKET : 8;
 	unsigned int L_PACKET : 13;
-	unsigned int NID_ENGINE : 24;
 	unsigned int M_PORT : 32;
 	//unsigned int padding : 8;
 };

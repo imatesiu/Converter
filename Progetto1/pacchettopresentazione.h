@@ -16,8 +16,7 @@ public:
 	int getSize(){return 16;};
 	// funzioni di interfaccia set e get per ogni campo dati del pacchetto
 	
-	void setNID_ENGINE(int N){data.NID_ENGINE = N;};
-	int getNID_ENGINE(){return data.NID_ENGINE;};
+	
 	void setNID_PACKET(int N){data.NID_PACKET = N;};
 	int getNID_PACKET(){return data.NID_PACKET;};
 	void setL_PACKET(int L){data.L_PACKET = L;};
