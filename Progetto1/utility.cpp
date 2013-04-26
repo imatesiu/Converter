@@ -56,7 +56,7 @@ unsigned int toint(char C) {
   return res;
 };
 
-// funzione che copia gli N elementi di un Byte[] in un array<Byte>
+/*// funzione che copia gli N elementi di un Byte[] in un array<Byte>
 void copiaByteInArray(Byte *source, array<Byte> ^dest, int N)
 {
 	for(int i = 0; i < N; ++i)
@@ -69,7 +69,7 @@ void copiaArrayInByte(array<System::Byte> ^source, Byte *dest, int N)
 	for(int i = 0; i < N; ++i)
 		dest[i] = source[i];
 }
-
+*/
 //
 // dato un offset >=0 (0..*) che rappresenta la posizione di un bit all'interno
 // del vettore di caratteri buf, restituisce il valore numerico del bit.
