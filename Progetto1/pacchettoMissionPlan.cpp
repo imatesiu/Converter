@@ -262,3 +262,5 @@ int pacchettoMissionPlan::getSize()
 	// ritorno il numero di Byte occupato dalla struttura dati
 	return (size / 8) + 1;
 }
+
+

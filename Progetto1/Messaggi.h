@@ -19,7 +19,19 @@ public:
 	Messaggi(void);
 
 
-	void setNID_MESSAGE(int N){head->NID_MESSAGE = N;};
+	void setNID_MESSAGE(int N){head->NID_MESSAGE = N;
+	switch (N)
+	{
+	case 200 : {set_pacchettoMissionPlan();break;}
+	case 201 : { set_pacchettoCommandData();break;}
+	case 215 : { set_pacchettoPresentazione();break;}
+	case 1 : {set_pacchettoStatoLineaATC();break;}
+	case 210 :{set_pacchettoAcknowledgement();break;}
+
+
+	default:
+		break;
+	}};
 	int getNID_MESSAGE(){return head->NID_MESSAGE;};
 	void setL_MESSAGE(int N){head->L_MESSAGE = N;};
 	int getL_MESSAGE(){return head->L_MESSAGE;};
@@ -29,8 +41,8 @@ public:
 	void setNID_ENGINE(int N){head->NID_ENGINE = N;};
 	int getNID_ENGINE(){return head->NID_ENGINE;};
 
-	void set_pacchettoCommandData1(){ pkgcd1 = new pacchettoCommandData;};
-	pacchettoCommandData* get_pacchettoCommandData1(){ return pkgcd1;};
+	void set_pacchettoCommandData(){ pkgcd1 = new pacchettoCommandData;};
+	pacchettoCommandData* get_pacchettoCommandData(){ return pkgcd1;};
 
 	void set_pacchettoMissionPlan(){ pkgMP = new pacchettoMissionPlan;};
 	pacchettoMissionPlan* get_pacchettoMissionPlan(){ return pkgMP;};
@@ -49,5 +61,7 @@ public:
 
 	void serialize(array<System::Byte>^bytez);
 	void deserialize(array<System::Byte>^bytez);
+
+	virtual System::String ^ToString() override;
 };
 

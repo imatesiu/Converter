@@ -19,10 +19,10 @@ void pacchettoCommandData::serializepacchettoCommandData(byte *buffer)
 	push(buffer, data.NID_PACKET, 8, 51);
 	push(buffer, data.L_PACKET, 13, 59);
 	push(buffer, data.Q_COMMAND_TYPE, 3, 72);
-	if(data.NID_PACKET==2){
+	if(data.Q_COMMAND_TYPE==4){
 		push(buffer, data.M_GOA_LEVEL, 2, 75);
 	}
-	if(data.NID_PACKET==3){
+	if(data.Q_COMMAND_TYPE==5){
 		push(buffer, data.NID_OPERATIONAL, 32, 75);
 
 	}
@@ -35,10 +35,10 @@ void pacchettoCommandData::deserializepacchettoCommandData(byte *buffer)
 	data.NID_PACKET=pop(buffer,  8, 51);
 	data.L_PACKET=pop(buffer, 13, 59);
 	data.Q_COMMAND_TYPE=pop(buffer,3, 72);
-	if(data.NID_PACKET==2){
+	if(data.Q_COMMAND_TYPE==4){
 		data.M_GOA_LEVEL=pop(buffer, 2, 75);
 	}
-	if(data.NID_PACKET==3){
+	if(data.Q_COMMAND_TYPE==5){
 		data.NID_OPERATIONAL=pop(buffer, 32, 75);
 
 	}

@@ -22,8 +22,8 @@
     <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
         <value>[base64 mime encoded serialized .NET Framework object]</value>
     </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.Bytearray.base64">
-        <value>[base64 mime encoded string representing a Byte array form of the .NET Framework object]</value>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
                 
@@ -54,8 +54,8 @@
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
-    mimetype: application/x-microsoft.net.object.Bytearray.base64
-    value   : The object must be serialized into a Byte array 
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -117,4 +117,63 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label1.Text" xml:space="preserve">
+    <value>structuredHeader
+NID_MESSAGE : 8;
+L_MESSAGE : 11;
+T_TRAIN : 32;
+NID_ENGINE : 24;
+	
+commandData
+NID_PACKET : 8;
+L_PACKET : 13;
+Q_COMMAND_TYPE : 3;
+M_GOA_LEVEL : 2;
+NID_OPERATIONAL : 32;
+PADDING : 5;
+	
+pkgstatolinea
+NID_PACKET : 8;
+L_PACKET : 13;
+NID_OPERATIONAL : 32;
+NID_CDB : 32;
+Q_STATOCDB : 2;
+Q_DEVIATIOIO : 2;
+N_ITER : 5;	
+	
+missionAck 
+NID_PACKET : 8;
+L_PACKET : 13;
+T_TRAIN : 32;
+Q_MISSION_RESPONSE : 1;
+padding : 7;
+</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value> presentation
+NID_PACKET : 8;
+L_PACKET : 13;
+M_PORT : 32;
+	
+missionData
+NID_PACKET : 8;
+L_PACKET : 13;
+Q_SCALE : 2;
+D_MISSION : 15;
+V_MISSION : 7;
+N_ITER1 : 5;
+D_MISSION : 15;
+V_MISSION : 7;
+T_START_TIME : 12;
+NID_LRGB : 24;
+D_STOP : 15;
+Q_DOORS : 4;
+T_DOORS_TIME : 12;
+N_ITER2 : 5;
+T_START_TIME : 12;
+NID_LRGB : 24;
+D_STOP : 15;
+Q_DOORS : 4;
+T_DOORS_TIME : 12;</value>
+  </data>
 </root>
