@@ -9,6 +9,7 @@ namespace Progetto1 {
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
+		using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
@@ -208,6 +209,10 @@ namespace Progetto1 {
 	private: System::Void textBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 			 }
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+
+				 List<String^>^ dinosaurs = gcnew List<String^>();
+				 dinosaurs->Add("ciao");
+				 String ^h = dinosaurs[0];
 				 //;
 				 if(checkBox1->Checked){
 
@@ -218,12 +223,17 @@ namespace Progetto1 {
 					 String ^text=textBox1->Text;
 					 if(text->Contains("-"))
 						 text= text->Replace("-","");
-					 int len =  text->Length / 2;
+					 if(text->Contains(" "))
+						 text= text->Replace(" ","");
+					 int len = ( text->Length / 2)+(text->Length%2);
 					 array<Byte>^bytez = gcnew array<Byte>(len);
 					 for (int i = 0; i < bytez->Length; i++)
 					 {
 						 String ^str = text->Substring(i *2, 2);
+						 int h =str->Length;
+						 if(h>1){
 						 bytez[i] = Byte::Parse(str,System::Globalization::NumberStyles::HexNumber);
+						 }
 					 }
 					 pkt1->deserialize(bytez);
 
@@ -247,7 +257,7 @@ namespace Progetto1 {
 							 if( pkt1->get_pacchettoCommandData()->getQ_COMMAND_TYPE()==4)
 								 pkt1->get_pacchettoCommandData()->setM_GOA_LEVEL(Int32::Parse(arraystr[6]));
 
-							 array<Byte>^bytez = gcnew array<Byte>(pkt1->get_pacchettoCommandData()->getSize());
+							 array<Byte>^bytez = gcnew array<Byte>(pkt1->getSize());
 							 pkt1->serialize(bytez);
 
 							 String ^hex = BitConverter::ToString(bytez);

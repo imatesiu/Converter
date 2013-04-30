@@ -15,45 +15,37 @@ Messaggi::Messaggi(void)
 void Messaggi::serialize(byte *buffer)
 {
 	push(buffer, head->NID_MESSAGE, 8, 0);
+	setL_MESSAGE(getSize());
 	push(buffer, head->L_MESSAGE, 11, 8);
 	push(buffer, head->T_TRAIN, 32, 19);
 	int N = head->NID_MESSAGE;
 	switch (N)
 	{
 	case 200 : {get_pacchettoMissionPlan()->serializeMissionPlanPkt(buffer);
-			   break;}
+		break;}
 	case 201 : {get_pacchettoCommandData()->serializepacchettoCommandData(buffer);
-			   break;}
+		
+		break;}
 	case 215 : {push(buffer, head->NID_ENGINE, 24, 51);
 		get_pacchettoPresentazione()->serialize(buffer);
-			   break;}
+		break;}
 	case 1 : {get_pacchettoStatoLineaATC()->serialize(buffer);
-			 break;}
+		break;}
 	case 210 :{push(buffer, head->NID_ENGINE, 24, 51);
 		get_pacchettoAcknowledgement()->serialize(buffer);
-			  break;}
+		break;}
 
 
 	default:
 		break;
 	}
+	
 
 }
 
 void Messaggi::serialize(array<System::Byte>^bytez){
-	int len=0;
-	switch (head->NID_MESSAGE)
-	{
-	case 200 : {len=pkgMP->getSize();break;}
-	case 201 : {len=pkgcd1->getSize();break;}
-	case 215 : {len=pgkPres->getSize();break;}
-	case 1 : {len=pkgStatoATC->getSize();break;}
-	case 210 :{len=pkgAck->getSize();break;}
-
-
-	default:
-		break;
-	}
+	int len=getSize();
+	
 	byte *buffer = new byte[len];
 	for(int i = 0; i < len; ++i)
 		buffer[i] = 0;
@@ -61,7 +53,7 @@ void Messaggi::serialize(array<System::Byte>^bytez){
 
 	for(int i = 0; i < len; ++i)
 		bytez[i] = buffer[i];
-	
+
 }
 
 void Messaggi::deserialize(byte *buffer)
@@ -105,13 +97,13 @@ void Messaggi::deserialize(byte *buffer)
 
 }
 void Messaggi::deserialize(array<System::Byte>^bytez){
-	
+
 	byte *buffer = new byte[bytez->Length];
 	for(int i = 0; i < bytez->Length; ++i)
 		buffer[i] = bytez[i];
-	
+
 	deserialize(buffer);
-	
+
 	//
 }
 
@@ -130,8 +122,8 @@ String ^Messaggi::ToString(){
 		out= out+get_pacchettoMissionPlan()->ToString();
 	if(pgkPres)
 		out= out+get_pacchettoPresentazione()->ToString();
-	 if(pkgStatoATC)
-		 out= out+get_pacchettoStatoLineaATC()->toPrint();
+	if(pkgStatoATC)
+		out= out+get_pacchettoStatoLineaATC()->toPrint();
 	if(pkgAck)
 		out= out+get_pacchettoAcknowledgement()->ToString();
 

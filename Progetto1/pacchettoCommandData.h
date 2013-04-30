@@ -12,11 +12,14 @@ public:
 	// fatti dal compilatore) in byte del messaggio tenendo anche in conto l'eventuale padding
 	// questa funzione sarà chiamata da chi vorrà serializzare il messaggio, per poter allocare il buffer
 	int getSize(){
-		//header 51 mess +24 fissi=75/8=10
+		//header 51 mess +24 fissi o+2 o +32
 		if(getQ_COMMAND_TYPE()==5){
-			return 14;
+			return 56;
 		}
-		return 10;};
+		if(getQ_COMMAND_TYPE()==4){
+			return 26;
+		}
+		return 24;};
 	// funzioni di interfaccia per l'accesso in scrittura e lettura dei campi dati della struttura commandData
 	
 	void setNID_PACKET(int NID){data.NID_PACKET = NID;};
@@ -37,9 +40,9 @@ public:
 	~pacchettoCommandData(void);
 
 	System::String ^ToString(){
-		System::String ^out = "NID_MESSAGE "+getNID_PACKET()+";\n";
-	out = out+"L_MESSAGE "+getL_PACKET()+";";
-	out = out+"T_TRAIN "+getQ_COMMAND_TYPE()+";";
+		System::String ^out = "NID_PACKET "+getNID_PACKET()+";\n";
+	out = out+"L_PACKET "+getL_PACKET()+";";
+	out = out+"Q_COMMAND_TYPE "+getQ_COMMAND_TYPE()+";";
 
 	if(getM_GOA_LEVEL()!=0 && getQ_COMMAND_TYPE() ==4)
 	out = out+"M_GOA_LEVEL "+getM_GOA_LEVEL()+";";

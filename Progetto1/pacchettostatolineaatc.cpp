@@ -19,8 +19,7 @@ int pacchettostatolineaatc::getSize()
 {
 	// intero che rappresenta la dimensione in bit
 	int size = 0;
-	// 51 bit per l'header
-	size += 51;
+	
 	// 94 per la parte fissa del pacchetto 
 	size += 94;
 	// 36 bit per ogni N_ITER
@@ -31,7 +30,7 @@ int pacchettostatolineaatc::getSize()
 		size += 36 *128;
 	}
 	// ritorno il numero di byte occupato dalla struttura dati
-	return (size / 8) + 1;
+	return size;
 }
 
 System::String^ pacchettostatolineaatc::toPrint(){
@@ -119,6 +118,7 @@ void pacchettostatolineaatc::serialize(byte *buffer)
 {
 
 	push(buffer, data.NID_PACKET, 8, 51);
+	setL_PACKET(getSize());
 	push(buffer, data.L_PACKET, 13, 59);
 	push(buffer, data.NID_OPERATIONAL, 32, 72);
 	push(buffer, data.pstato.NID_CDB, 32, 104);

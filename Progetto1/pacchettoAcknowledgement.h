@@ -13,7 +13,7 @@ public:
 	// funzione che restituisce la dimensione (ideale, non quella dovuta agli allineamenti 
 	// fatti dal compilatore) in byte del messaggio tenendo anche in conto l'eventuale padding
 	// questa funzione sarà chiamata da chi vorrà serializzare il messaggio, per poter allocare il buffer
-	int getSize(){return 17;};
+	int getSize(){return 54;};
 	// funzioni di interfaccia set e get per ogni campo dati del pacchetto
 
 	
