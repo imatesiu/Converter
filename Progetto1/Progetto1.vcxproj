@@ -86,6 +86,7 @@
     <ClCompile Include="pacchettostatolineaatc.cpp" />
     <ClCompile Include="proveSerializzazione.cpp" />
     <ClCompile Include="String2string.cpp" />
+    <ClCompile Include="tomWriterTraceListener.cpp" />
     <ClCompile Include="utility.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -99,14 +100,19 @@
     <ClInclude Include="pacchettopresentazione.h" />
     <ClInclude Include="pacchettostatolineaatc.h" />
     <ClInclude Include="proveSerializzazione.h" />
+    <ClInclude Include="resource1.h" />
     <ClInclude Include="String2string.h" />
     <ClInclude Include="struttureDatiMessaggi.h" />
+    <ClInclude Include="tomWriterTraceListener.h" />
     <ClInclude Include="utility.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

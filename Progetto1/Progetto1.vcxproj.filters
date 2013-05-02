@@ -45,6 +45,9 @@
     <ClCompile Include="pacchettoCommandData.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="tomWriterTraceListener.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -80,10 +83,19 @@
     <ClInclude Include="pacchettoCommandData.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="tomWriterTraceListener.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
       <Filter>File di risorse</Filter>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
 </Project>
