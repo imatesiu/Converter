@@ -29,7 +29,7 @@ int pacchettostatolineaatc::getSize()
 	}else{
 		size += 36 *128;
 	}
-	// ritorno il numero di byte occupato dalla struttura dati
+	// ritorno il numero di unsigned int occupato dalla struttura dati
 	return size;
 }
 
@@ -114,50 +114,50 @@ int pacchettostatolineaatc::getQ_DEVIATIOIO(int index)
 }
 
 
-void pacchettostatolineaatc::serialize(byte *buffer)
+void pacchettostatolineaatc::serialize(unsigned int *buffer)
 {
 
-	push(buffer, data.NID_PACKET, 8, 51);
+	Utility::push(buffer, data.NID_PACKET, 8, 51);
 	setL_PACKET(getSize());
-	push(buffer, data.L_PACKET, 13, 59);
-	push(buffer, data.NID_OPERATIONAL, 32, 72);
-	push(buffer, data.pstato.NID_CDB, 32, 104);
-	push(buffer, data.pstato.Q_STATOCDB, 2, 136);
-	push(buffer, data.pstato.Q_DEVIATIOIO, 2, 138);
-	push(buffer, data.N_ITER, 5, 140);
+	Utility::push(buffer, data.L_PACKET, 13, 59);
+	Utility::push(buffer, data.NID_OPERATIONAL, 32, 72);
+	Utility::push(buffer, data.pstato.NID_CDB, 32, 104);
+	Utility::push(buffer, data.pstato.Q_STATOCDB, 2, 136);
+	Utility::push(buffer, data.pstato.Q_DEVIATIOIO, 2, 138);
+	Utility::push(buffer, data.N_ITER, 5, 140);
 	//data.pstato1 = new pstatolineastruct[data.N_ITER];
 	int offset = 145;
 	for(unsigned int i = 0; i < data.N_ITER; ++i)
 	{
-		push(buffer, data.pstato1[i].NID_CDB, 32, offset);
+		Utility::push(buffer, data.pstato1[i].NID_CDB, 32, offset);
 		offset += 32;
-		push(buffer, data.pstato1[i].Q_STATOCDB, 2, offset);
+		Utility::push(buffer, data.pstato1[i].Q_STATOCDB, 2, offset);
 		offset += 2;
-		push(buffer, data.pstato1[i].Q_DEVIATIOIO, 2, offset);
+		Utility::push(buffer, data.pstato1[i].Q_DEVIATIOIO, 2, offset);
 		offset += 2;
 	}
 
 }
 
-void pacchettostatolineaatc::deserialize(byte *buffer)
+void pacchettostatolineaatc::deserialize(unsigned int *buffer)
 {
 
-	data.NID_PACKET=pop(buffer,  8, 51);
-	data.L_PACKET=pop(buffer, 13, 59);
-	data.NID_OPERATIONAL=pop(buffer, 32, 72);
-	data.pstato.NID_CDB=pop(buffer, 32, 104);
-	data.pstato.Q_STATOCDB=pop(buffer, 2, 136);
-	data.pstato.Q_DEVIATIOIO=pop(buffer, 2, 138);
-	setN_ITER(pop(buffer, 5, 140));
+	data.NID_PACKET=Utility::pop(buffer,  8, 51);
+	data.L_PACKET=Utility::pop(buffer, 13, 59);
+	data.NID_OPERATIONAL=Utility::pop(buffer, 32, 72);
+	data.pstato.NID_CDB=Utility::pop(buffer, 32, 104);
+	data.pstato.Q_STATOCDB=Utility::pop(buffer, 2, 136);
+	data.pstato.Q_DEVIATIOIO=Utility::pop(buffer, 2, 138);
+	setN_ITER(Utility::pop(buffer, 5, 140));
 	int offset = 145;
 	if(data.pstato1){
 		for(unsigned int i = 0; i < data.N_ITER; ++i)
 		{
-			data.pstato1[i].NID_CDB=pop(buffer, 15, offset);
+			data.pstato1[i].NID_CDB=Utility::pop(buffer, 15, offset);
 			offset += 32;
-			data.pstato1[i].Q_STATOCDB=pop(buffer, 2, offset);
+			data.pstato1[i].Q_STATOCDB=Utility::pop(buffer, 2, offset);
 			offset += 2;
-			data.pstato1[i].Q_STATOCDB=pop(buffer, 2, offset);
+			data.pstato1[i].Q_STATOCDB=Utility::pop(buffer, 2, offset);
 			offset += 2;
 		}
 

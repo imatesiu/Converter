@@ -11,36 +11,36 @@ pacchettoCommandData::pacchettoCommandData(void)
 	data.NID_OPERATIONAL = 0;
 }
 
-// questa funzione prende in ingresso un buffer di byte (la cui dimensione deve essere almeno 10, ma il controllo sulla 
+// questa funzione prende in ingresso un buffer di unsigned int (la cui dimensione deve essere almeno 10, ma il controllo sulla 
 // dimensione deve essere fatto all'esterno della funzione) e copia in buffer il contenuto del pacchettoCommandData
-void pacchettoCommandData::serializepacchettoCommandData(byte *buffer)
+void pacchettoCommandData::serializepacchettoCommandData(unsigned int *buffer)
 {
 
-	push(buffer, data.NID_PACKET, 8, 51);
+	Utility::push(buffer, data.NID_PACKET, 8, 51);
 	setL_PACKET(getSize());
-	push(buffer, data.L_PACKET, 13, 59);
-	push(buffer, data.Q_COMMAND_TYPE, 3, 72);
+	Utility::push(buffer, data.L_PACKET, 13, 59);
+	Utility::push(buffer, data.Q_COMMAND_TYPE, 3, 72);
 	if(data.Q_COMMAND_TYPE==4){
-		push(buffer, data.M_GOA_LEVEL, 2, 75);
+		Utility::push(buffer, data.M_GOA_LEVEL, 2, 75);
 	}
 	if(data.Q_COMMAND_TYPE==5){
-		push(buffer, data.NID_OPERATIONAL, 32, 75);
+		Utility::push(buffer, data.NID_OPERATIONAL, 32, 75);
 
 	}
 
 }
 
-void pacchettoCommandData::deserializepacchettoCommandData(byte *buffer)
+void pacchettoCommandData::deserializepacchettoCommandData(unsigned int *buffer)
 {
 
-	data.NID_PACKET=pop(buffer,  8, 51);
-	data.L_PACKET=pop(buffer, 13, 59);
-	data.Q_COMMAND_TYPE=pop(buffer,3, 72);
+	data.NID_PACKET=Utility::pop(buffer,  8, 51);
+	data.L_PACKET=Utility::pop(buffer, 13, 59);
+	data.Q_COMMAND_TYPE=Utility::pop(buffer,3, 72);
 	if(data.Q_COMMAND_TYPE==4){
-		data.M_GOA_LEVEL=pop(buffer, 2, 75);
+		data.M_GOA_LEVEL=Utility::pop(buffer, 2, 75);
 	}
 	if(data.Q_COMMAND_TYPE==5){
-		data.NID_OPERATIONAL=pop(buffer, 32, 75);
+		data.NID_OPERATIONAL=Utility::pop(buffer, 32, 75);
 
 	}
 }

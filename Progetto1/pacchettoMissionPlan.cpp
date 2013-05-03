@@ -149,93 +149,93 @@ int pacchettoMissionPlan::getT_DOORS_TIME(int index)
 		return data.mS2_vect[index - 1].T_DOORS_TIME;
 }
 
-void pacchettoMissionPlan::serializeMissionPlanPkt(byte *buffer)
+void pacchettoMissionPlan::serializeMissionPlanPkt(unsigned int *buffer)
 {
 	
-	push(buffer, data.missionHead.NID_PACKET, 8, 51);
+	Utility::push(buffer, data.missionHead.NID_PACKET, 8, 51);
 	setL_PACKET(getSize());
-	push(buffer, data.missionHead.L_PACKET, 13, 59);
-	push(buffer, data.missionHead.Q_SCALE, 2, 72);
-	push(buffer, data.mS1.D_MISSION, 15, 74);
-	push(buffer, data.mS1.V_MISSION, 7, 89);
-	push(buffer, data.N_ITER1, 5, 96);
+	Utility::push(buffer, data.missionHead.L_PACKET, 13, 59);
+	Utility::push(buffer, data.missionHead.Q_SCALE, 2, 72);
+	Utility::push(buffer, data.mS1.D_MISSION, 15, 74);
+	Utility::push(buffer, data.mS1.V_MISSION, 7, 89);
+	Utility::push(buffer, data.N_ITER1, 5, 96);
 	//data.mS1_vect = new missionStruct1[data.N_ITER1];
 	int offset = 101;
 	for(unsigned int i = 0; i < data.N_ITER1; ++i)
 	{
-		push(buffer, data.mS1_vect[i].D_MISSION, 15, offset);
+		Utility::push(buffer, data.mS1_vect[i].D_MISSION, 15, offset);
 		offset += 15;
-		push(buffer, data.mS1_vect[i].V_MISSION, 7, offset);
+		Utility::push(buffer, data.mS1_vect[i].V_MISSION, 7, offset);
 		offset += 7;
 	}
-	push(buffer, data.mS2.T_START_TIME, 12, offset);
+	Utility::push(buffer, data.mS2.T_START_TIME, 12, offset);
 	offset += 12;
-	push(buffer, data.mS2.NID_LRGB, 24, offset);
+	Utility::push(buffer, data.mS2.NID_LRGB, 24, offset);
 	offset += 24;
-	push(buffer, data.mS2.D_STOP, 15, offset);
+	Utility::push(buffer, data.mS2.D_STOP, 15, offset);
 	offset += 15;
-	push(buffer, data.mS2.Q_DOORS, 4, offset);
+	Utility::push(buffer, data.mS2.Q_DOORS, 4, offset);
 	offset += 4;
-	push(buffer, data.mS2.T_DOORS_TIME, 12, offset);
+	Utility::push(buffer, data.mS2.T_DOORS_TIME, 12, offset);
 	offset += 12;
-	push(buffer, data.N_ITER2, 5, offset);
+	Utility::push(buffer, data.N_ITER2, 5, offset);
 	offset += 5;
 	//data.mS2_vect = new missionStruct2[data.N_ITER2];
 	for(unsigned int i = 0; i < data.N_ITER2; ++i)
 	{
-		push(buffer, data.mS2_vect[i].T_START_TIME, 12, offset);
+		Utility::push(buffer, data.mS2_vect[i].T_START_TIME, 12, offset);
 		offset += 12;
-		push(buffer, data.mS2_vect[i].NID_LRGB, 24, offset);
+		Utility::push(buffer, data.mS2_vect[i].NID_LRGB, 24, offset);
 		offset += 24;
-		push(buffer, data.mS2_vect[i].D_STOP, 15, offset);
+		Utility::push(buffer, data.mS2_vect[i].D_STOP, 15, offset);
 		offset += 15;
-		push(buffer, data.mS2_vect[i].Q_DOORS, 4, offset);
+		Utility::push(buffer, data.mS2_vect[i].Q_DOORS, 4, offset);
 		offset += 4;
-		push(buffer, data.mS2_vect[i].T_DOORS_TIME, 12, offset);
+		Utility::push(buffer, data.mS2_vect[i].T_DOORS_TIME, 12, offset);
 		offset += 12;
 	}
 }
 
-void pacchettoMissionPlan::deserializeMissionPlanPkt(byte *buffer)
+void pacchettoMissionPlan::deserializeMissionPlanPkt(unsigned int *buffer)
 {
 	
-	data.missionHead.NID_PACKET=pop(buffer,  8, 51);
-	data.missionHead.L_PACKET=pop(buffer, 13, 59);
-	data.missionHead.Q_SCALE=pop(buffer, 2, 72);
-	data.mS1.D_MISSION=pop(buffer, 15, 74);
-	data.mS1.V_MISSION=pop(buffer, 7, 89);
-	setN_ITER1(pop(buffer, 5, 96));
+	data.missionHead.NID_PACKET=Utility::pop(buffer,  8, 51);
+	data.missionHead.L_PACKET=Utility::pop(buffer, 13, 59);
+	data.missionHead.Q_SCALE=Utility::pop(buffer, 2, 72);
+	data.mS1.D_MISSION=Utility::pop(buffer, 15, 74);
+	data.mS1.V_MISSION=Utility::pop(buffer, 7, 89);
+	setN_ITER1(Utility::pop(buffer, 5, 96));
 	int offset = 101;
 	for(unsigned int i = 0; i < data.N_ITER1; ++i)
 	{
-		data.mS1_vect[i].D_MISSION=pop(buffer, 15, offset);
+		data.mS1_vect[i].D_MISSION=Utility::pop(buffer, 15, offset);
 		offset += 15;
-		data.mS1_vect[i].V_MISSION=pop(buffer, 7, offset);
+		data.mS1_vect[i].V_MISSION=Utility::pop(buffer, 7, offset);
 		offset += 7;
 	}
-	data.mS2.T_START_TIME=pop(buffer, 12, offset);
+	data.mS2.T_START_TIME=Utility::pop(buffer, 12, offset);
 	offset += 12;
-	data.mS2.NID_LRGB=pop(buffer, 24, offset);
+	data.mS2.NID_LRGB=Utility::pop(buffer, 24, offset);
 	offset += 24;
-	data.mS2.D_STOP=pop(buffer, 15, offset);
+	data.mS2.D_STOP=Utility::pop(buffer, 15, offset);
 	offset += 15;
-	data.mS2.Q_DOORS=pop(buffer, 4, offset);
+	data.mS2.Q_DOORS=Utility::pop(buffer, 4, offset);
 	offset += 4;
-	data.mS2.T_DOORS_TIME=pop(buffer, 12, offset);
+	data.mS2.T_DOORS_TIME=Utility::pop(buffer, 12, offset);
 	offset += 12;
-	setN_ITER2(pop(buffer, 5, offset));
+	setN_ITER2(Utility::pop(buffer, 5, offset));
 	offset += 5;
 	for(unsigned int i = 0; i < data.N_ITER2; ++i)
 	{
-		 data.mS2_vect[i].T_START_TIME=pop(buffer, 12, offset);
+		 data.mS2_vect[i].T_START_TIME=Utility::pop(buffer, 12, offset);
 		offset += 12;
-		data.mS2_vect[i].NID_LRGB=pop(buffer, 24, offset);
+		data.mS2_vect[i].NID_LRGB=Utility::pop(buffer, 24, offset);
 		offset += 24;
-		data.mS2_vect[i].D_STOP=pop(buffer, 15, offset);
+		data.mS2_vect[i].D_STOP=Utility::pop(buffer, 15, offset);
 		offset += 15;
-		data.mS2_vect[i].Q_DOORS=pop(buffer, 4, offset);
+		data.mS2_vect[i].Q_DOORS=Utility::pop(buffer, 4, offset);
 		offset += 4;
-		data.mS2_vect[i].T_DOORS_TIME=pop(buffer, 12, offset);
+		data.mS2_vect[i].T_DOORS_TIME=Utility::pop(buffer, 12, offset);
 		offset += 12;
 	}
 }

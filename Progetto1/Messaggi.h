@@ -56,8 +56,8 @@ public:
 	void set_pacchettoAcknowledgement(){ pkgAck = new pacchettoAcknowledgement;};
 	pacchettoAcknowledgement* get_pacchettoAcknowledgement(){ return pkgAck;};
 
-	void serialize(byte *buffer);
-	void deserialize(byte *buff);
+	void serialize(unsigned int *buffer);
+	void deserialize(unsigned int *buff);
 
 	void serialize(array<System::Byte>^bytez);
 	void deserialize(array<System::Byte>^bytez);

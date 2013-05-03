@@ -124,7 +124,7 @@ void  proveSerializzazione::provaSerializePacchettoCommandData1(pacchettoCommand
 	cout << "Insert Q_COMMAND_TYPE" << endl;
 	cin >> Q_COMMAND_TYPE;
 	pkt.setQ_COMMAND_TYPE(Q_COMMAND_TYPE);*/
-	//byte buff[100];
+	//unsigned int buff[100];
 	//for(int i = 0; i < 100; ++i)
 	//	buff[i] = 0;
 	//int len = 0;

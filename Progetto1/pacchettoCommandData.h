@@ -9,7 +9,7 @@ class pacchettoCommandData
 public:
 	pacchettoCommandData(void);
 	// funzione che restituisce la dimensione (ideale, non quella dovuta agli allineamenti 
-	// fatti dal compilatore) in byte del messaggio tenendo anche in conto l'eventuale padding
+	// fatti dal compilatore) in unsigned int del messaggio tenendo anche in conto l'eventuale padding
 	// questa funzione sarà chiamata da chi vorrà serializzare il messaggio, per poter allocare il buffer
 	int getSize(){
 		//header 51 mess +24 fissi o+2 o +32
@@ -32,11 +32,11 @@ public:
 	int getM_GOA_LEVEL(){return data.M_GOA_LEVEL;};
 	void setNID_OPERATIONAL(int NID){data.NID_OPERATIONAL = NID;};
 	int getNID_OPERATIONAL(){return data.NID_OPERATIONAL;};
-	// questa funzione prende in ingresso un buffer di byte (la cui dimensione deve essere almeno 20, ma il controllo sulla 
-	// dimensione deve essere fatto all'esterno della funzione) e copia nei primi 12 byte del buffer il contenuto dell'header
-	// e nei successivi 8 byte il contenuto del pacchettoCommandData
-	void serializepacchettoCommandData(byte *buffer);
-	void deserializepacchettoCommandData(byte *buff);
+	// questa funzione prende in ingresso un buffer di unsigned int (la cui dimensione deve essere almeno 20, ma il controllo sulla 
+	// dimensione deve essere fatto all'esterno della funzione) e copia nei primi 12 unsigned int del buffer il contenuto dell'header
+	// e nei successivi 8 unsigned int il contenuto del pacchettoCommandData
+	void serializepacchettoCommandData(unsigned int *buffer);
+	void deserializepacchettoCommandData(unsigned int *buff);
 	~pacchettoCommandData(void);
 
 	System::String ^ToString(){

@@ -11,11 +11,11 @@ public:
 	
 public:
 	// funzione che restituisce la dimensione (ideale, non quella dovuta agli allineamenti 
-	// fatti dal compilatore) in byte del messaggio tenendo anche in conto l'eventuale padding
+	// fatti dal compilatore) in unsigned int del messaggio tenendo anche in conto l'eventuale padding
 	// questa funzione sarà chiamata da chi vorrà serializzare il messaggio, per poter allocare il buffer
 	int getSize();
-	void serialize(byte *buff);
-	void deserialize(byte *buff);
+	void serialize(unsigned int *buff);
+	void deserialize(unsigned int *buff);
 	
 	// funzioni di interfaccia set e get per ogni campo dati del pacchetto
 	

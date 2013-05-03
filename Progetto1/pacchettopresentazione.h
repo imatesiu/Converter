@@ -22,9 +22,9 @@ public:
 	void setM_PORT(int Q){data.M_PORT = Q;};
 	int getM_PORT(){return data.M_PORT;};
 	// metodi per la serializzazione e deserializzazione del messaggio
-	// il buffer di byte deve essere stato precedentemente correttamente allocato.
-	void serialize(byte *buff);
-	void deserialize(byte *buff);
+	// il buffer di unsigned int deve essere stato precedentemente correttamente allocato.
+	void serialize(unsigned int *buff);
+	void deserialize(unsigned int *buff);
 	~pacchettopresentazione(void);
 
 	System::String ^ ToString(){

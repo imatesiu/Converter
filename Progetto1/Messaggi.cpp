@@ -12,12 +12,12 @@ Messaggi::Messaggi(void)
 }
 
 
-void Messaggi::serialize(byte *buffer)
+void Messaggi::serialize(unsigned int *buffer)
 {
-	push(buffer, head->NID_MESSAGE, 8, 0);
+	Utility::push(buffer, head->NID_MESSAGE, 8, 0);
 	setL_MESSAGE(getSize());
-	push(buffer, head->L_MESSAGE, 11, 8);
-	push(buffer, head->T_TRAIN, 32, 19);
+	Utility::push(buffer, head->L_MESSAGE, 11, 8);
+	Utility::push(buffer, head->T_TRAIN, 32, 19);
 	int N = head->NID_MESSAGE;
 	switch (N)
 	{
@@ -26,12 +26,12 @@ void Messaggi::serialize(byte *buffer)
 	case 201 : {get_pacchettoCommandData()->serializepacchettoCommandData(buffer);
 		
 		break;}
-	case 215 : {push(buffer, head->NID_ENGINE, 24, 51);
+	case 215 : {Utility::push(buffer, head->NID_ENGINE, 24, 51);
 		get_pacchettoPresentazione()->serialize(buffer);
 		break;}
 	case 1 : {get_pacchettoStatoLineaATC()->serialize(buffer);
 		break;}
-	case 210 :{push(buffer, head->NID_ENGINE, 24, 51);
+	case 210 :{Utility::push(buffer, head->NID_ENGINE, 24, 51);
 		get_pacchettoAcknowledgement()->serialize(buffer);
 		break;}
 
@@ -46,7 +46,7 @@ void Messaggi::serialize(byte *buffer)
 void Messaggi::serialize(array<System::Byte>^bytez){
 	int len=getSize();
 	
-	byte *buffer = new byte[len];
+	unsigned int *buffer = new unsigned int[len];
 	for(int i = 0; i < len; ++i)
 		buffer[i] = 0;
 	serialize(buffer);
@@ -56,12 +56,12 @@ void Messaggi::serialize(array<System::Byte>^bytez){
 
 }
 
-void Messaggi::deserialize(byte *buffer)
+void Messaggi::deserialize(unsigned int *buffer)
 {
-	head->NID_MESSAGE= pop(buffer, 8, 0);
-	head->L_MESSAGE=pop(buffer,11, 8);
-	head->T_TRAIN=pop(buffer, 32, 19);
-	switch (head->NID_MESSAGE)
+	head->NID_MESSAGE= Utility::pop(buffer, 8, 0);
+	head->L_MESSAGE=Utility::pop(buffer,11, 8);
+	head->T_TRAIN=Utility::pop(buffer, 32, 19);
+    switch (head->NID_MESSAGE)
 	{
 	case 200 : {set_pacchettoMissionPlan();
 		pkgMP->deserializeMissionPlanPkt(buffer);
@@ -74,7 +74,7 @@ void Messaggi::deserialize(byte *buffer)
 
 			   }
 
-	case 215 : {head->NID_ENGINE = pop(buffer, 24, 51);
+	case 215 : {head->NID_ENGINE = Utility::pop(buffer, 24, 51);
 		set_pacchettoPresentazione();
 		pgkPres->deserialize(buffer);
 		break;
@@ -86,7 +86,7 @@ void Messaggi::deserialize(byte *buffer)
 		break;
 			 }
 
-	case 210 : {head->NID_ENGINE = pop(buffer, 24, 51);
+	case 210 : {head->NID_ENGINE = Utility::pop(buffer, 24, 51);
 		set_pacchettoAcknowledgement();
 		pkgAck->deserialize(buffer);
 		break;
@@ -98,7 +98,7 @@ void Messaggi::deserialize(byte *buffer)
 }
 void Messaggi::deserialize(array<System::Byte>^bytez){
 
-	byte *buffer = new byte[bytez->Length];
+	unsigned int *buffer = new unsigned int[bytez->Length];
 	for(int i = 0; i < bytez->Length; ++i)
 		buffer[i] = bytez[i];
 
