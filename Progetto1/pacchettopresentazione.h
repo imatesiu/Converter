@@ -32,7 +32,7 @@ public:
 
 	out = out+"NID_PACKET: "+data.NID_PACKET+";";
 	out = out+"L_PACKET: "+data.L_PACKET+";";
-	out = out+"NID_OPERATIONAL: "+data.M_PORT+";";
+	out = out+"M_PORT: "+data.M_PORT+";";
 	 return out;
 	};
 };

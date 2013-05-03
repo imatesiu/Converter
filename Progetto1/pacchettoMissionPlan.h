@@ -58,7 +58,7 @@ public:
 		out = out+"NID_PACKET: "+data.missionHead.NID_PACKET+";";
 		out = out+"L_PACKET: "+data.missionHead.L_PACKET+";";
 		out = out+"Q_SCALE: "+data.missionHead.Q_SCALE+";";
-		out = out+"Q_SCALE: "+data.mS1.D_MISSION+";";
+		out = out+"D_MISSION: "+data.mS1.D_MISSION+";";
 		out = out+"V_MISSION: "+data.mS1.V_MISSION+";";
 		out = out+"N_ITER1: "+data.N_ITER1+";";
 		if(data.mS1_vect){
@@ -81,7 +81,7 @@ public:
 				out = out+"NID_LRGB: "+data.mS2_vect[i].NID_LRGB+";";
 				out = out+"D_STOP: "+data.mS2_vect[i].D_STOP+";";
 				out = out+"Q_DOORS: "+data.mS2_vect[i].Q_DOORS+";";
-
+				out = out+"T_DOORS_TIME: "+data.mS2_vect[i].T_DOORS_TIME+";";
 			}
 		}
 

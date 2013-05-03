@@ -3,17 +3,19 @@
 #include "utility.h"
 #include "struttureDatiMessaggi.h"
 #include "Messaggi.h"
+#include "tomWriterTraceListener.h"
 
 namespace Progetto1 {
 
 	using namespace System;
+	using namespace System::Threading;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
-		using namespace System::Collections::Generic;
+	using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
+	using namespace	ApplicationFramework;
 
 	/// <summary>
 	/// Riepilogo per MyForm
@@ -53,6 +55,9 @@ namespace Progetto1 {
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::Label^  label5;
 	private: System::Windows::Forms::Label^  label6;
+
+	private: System::Windows::Forms::ProgressBar^  progressBar1;
+
 	protected: 
 
 	private:
@@ -80,6 +85,7 @@ namespace Progetto1 {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
 			this->SuspendLayout();
 			// 
 			// textBox1
@@ -183,11 +189,22 @@ namespace Progetto1 {
 			this->label6->TabIndex = 12;
 			this->label6->Text = L"Per la serializzazione scegli il tipo di messaggio";
 			// 
+			// progressBar1
+			// 
+			this->progressBar1->Location = System::Drawing::Point(405, 463);
+			this->progressBar1->Maximum = 130;
+			this->progressBar1->Name = L"progressBar1";
+			this->progressBar1->Size = System::Drawing::Size(217, 23);
+			this->progressBar1->Step = 130;
+			this->progressBar1->Style = System::Windows::Forms::ProgressBarStyle::Continuous;
+			this->progressBar1->TabIndex = 130;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(730, 715);
+			this->Controls->Add(this->progressBar1);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
@@ -209,11 +226,14 @@ namespace Progetto1 {
 	private: System::Void textBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 			 }
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+				 progressBar1->Step = 1;
+				 for(int i=0;i<130;i++){
+				 progressBar1->PerformStep();
+				 Thread::Sleep(5);
+				 }
 
-				 List<String^>^ dinosaurs = gcnew List<String^>();
-				 dinosaurs->Add("ciao");
-				 String ^h = dinosaurs[0];
-				 //;
+				 progressBar1->Value = 0;
+				 //Trace::WriteLine( "Entering Main" );
 				 if(checkBox1->Checked){
 
 					 Messaggi ^pkt1 = gcnew Messaggi();
@@ -232,7 +252,7 @@ namespace Progetto1 {
 						 String ^str = text->Substring(i *2, 2);
 						 int h =str->Length;
 						 if(h>1){
-						 bytez[i] = Byte::Parse(str,System::Globalization::NumberStyles::HexNumber);
+							 bytez[i] = Byte::Parse(str,System::Globalization::NumberStyles::HexNumber);
 						 }
 					 }
 					 pkt1->deserialize(bytez);
@@ -285,7 +305,7 @@ namespace Progetto1 {
 							 pkt1->get_pacchettoPresentazione()->setL_PACKET(Int32::Parse(arraystr[5]));
 
 							 pkt1->get_pacchettoPresentazione()->setM_PORT(Int32::Parse(arraystr[6]));
-							 array<Byte>^bytez = gcnew array<Byte>(pkt1->get_pacchettoPresentazione()->getSize());
+							 array<Byte>^bytez = gcnew array<Byte>(pkt1->getSize());
 							 pkt1->serialize(bytez);
 
 
@@ -314,7 +334,7 @@ namespace Progetto1 {
 							 pkt1->get_pacchettoAcknowledgement()->setL_PACKET(Int32::Parse(arraystr[5]));
 							 pkt1->get_pacchettoAcknowledgement()->setT_TRAIN(Int32::Parse(arraystr[6]));
 							 pkt1->get_pacchettoAcknowledgement()->setQ_MISSION_RESPONSE(Int32::Parse(arraystr[7]));
-							 array<Byte>^bytez = gcnew array<Byte>(pkt1->get_pacchettoAcknowledgement()->getSize());
+							 array<Byte>^bytez = gcnew array<Byte>(pkt1->getSize());
 							 pkt1->serialize(bytez);
 
 

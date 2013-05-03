@@ -67,15 +67,15 @@ public:
 	int getSize(){
 		int size = 0;
 		// 51 bit per l'header /8 =7
-		
+		//24 di engine dove serve
 		int len =51;
 		switch (head->NID_MESSAGE)
 		{
 		case 200 : {len+=pkgMP->getSize();break;}
 		case 201 : {len+=pkgcd1->getSize();break;}
-		case 215 : {len+=pgkPres->getSize();break;}
+		case 215 : {len+=24+pgkPres->getSize();break;}
 		case 1 : {len+=pkgStatoATC->getSize();break;}
-		case 210 :{len+=pkgAck->getSize();break;}
+		case 210 :{len+=24+pkgAck->getSize();break;}
 
 
 		default:

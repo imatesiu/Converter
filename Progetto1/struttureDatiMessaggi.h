@@ -105,7 +105,7 @@ struct missionAck
 	unsigned int L_PACKET : 13;
 	unsigned int T_TRAIN : 32;
 	unsigned int Q_MISSION_RESPONSE : 1;
-	unsigned int padding : 7;
+	
 };
 
 // Struttura dati per la gestione dell'acknowledgement
