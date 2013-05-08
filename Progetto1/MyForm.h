@@ -229,7 +229,7 @@ namespace Progetto1 {
 				 progressBar1->Step = 1;
 				 for(int i=0;i<130;i++){
 				 progressBar1->PerformStep();
-				 Thread::Sleep(5);
+				 //Thread::Sleep(5);
 				 }
 
 				 progressBar1->Value = 0;
@@ -287,6 +287,11 @@ namespace Progetto1 {
 							 {
 
 								 String ^bits =Convert::ToString(bytez[i], 2); 
+								 if(bits->Length<8){
+									 for(int z=bits->Length;z<8;z++){
+										bits="0"+bits;
+									 }
+								 }
 								 bin += bits;
 							 }
 
@@ -316,6 +321,11 @@ namespace Progetto1 {
 							 {
 
 								 String ^bits =Convert::ToString(bytez[i], 2); 
+								 if(bits->Length<8){
+									 for(int z=bits->Length;z<8;z++){
+										bits="0"+bits;
+									 }
+								 }
 								 bin += bits;
 							 }
 
@@ -344,7 +354,12 @@ namespace Progetto1 {
 							 for (int i = 0; i < bytez->Length; i++)
 							 {
 
-								 String ^bits =Convert::ToString(bytez[i], 2); 
+								 String ^bits =Convert::ToString(bytez[i], 2);
+								 if(bits->Length<8){
+									 for(int z=bits->Length;z<8;z++){
+										bits="0"+bits;
+									 }
+								 }
 								 bin += bits;
 							 }
 

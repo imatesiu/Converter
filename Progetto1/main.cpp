@@ -3,7 +3,7 @@
 
 using namespace System::Diagnostics;
 using namespace ApplicationFramework;
-#define TRACE
+//#define TRACE
 int main()
 {
 	

@@ -58,6 +58,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies />
     </Link>
+    <PostBuildEvent>
+      <Command>copy app.config "$(TargetPath).config"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -101,7 +104,6 @@
     <ClInclude Include="pacchettopresentazione.h" />
     <ClInclude Include="pacchettostatolineaatc.h" />
     <ClInclude Include="proveSerializzazione.h" />
-    <ClInclude Include="resource1.h" />
     <ClInclude Include="String2string.h" />
     <ClInclude Include="struttureDatiMessaggi.h" />
     <ClInclude Include="tomWriterTraceListener.h" />
@@ -114,6 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Converter2.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

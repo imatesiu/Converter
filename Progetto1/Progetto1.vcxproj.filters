@@ -86,9 +86,6 @@
     <ClInclude Include="pacchettoCommandData.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="resource1.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
     <ClInclude Include="tomWriterTraceListener.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
@@ -100,5 +97,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Converter2.rc">
+      <Filter>File di risorse</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

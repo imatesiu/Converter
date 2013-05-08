@@ -12,7 +12,7 @@ Messaggi::Messaggi(void)
 }
 
 
-void Messaggi::serialize(byte *buffer)
+void Messaggi::serialize(char *buffer)
 {
 	push(buffer, head->NID_MESSAGE, 8, 0);
 	setL_MESSAGE(getSize());
@@ -46,7 +46,7 @@ void Messaggi::serialize(byte *buffer)
 void Messaggi::serialize(array<System::Byte>^bytez){
 	int len=getSize();
 	
-	byte *buffer = new byte[len];
+	char *buffer = new char[len];
 	for(int i = 0; i < len; ++i)
 		buffer[i] = 0;
 	serialize(buffer);
@@ -56,7 +56,7 @@ void Messaggi::serialize(array<System::Byte>^bytez){
 
 }
 
-void Messaggi::deserialize(byte *buffer)
+void Messaggi::deserialize(char *buffer)
 {
 	head->NID_MESSAGE= pop(buffer, 8, 0);
 	head->L_MESSAGE=pop(buffer,11, 8);
@@ -98,7 +98,7 @@ void Messaggi::deserialize(byte *buffer)
 }
 void Messaggi::deserialize(array<System::Byte>^bytez){
 
-	byte *buffer = new byte[bytez->Length];
+	char *buffer = new char[bytez->Length];
 	for(int i = 0; i < bytez->Length; ++i)
 		buffer[i] = bytez[i];
 

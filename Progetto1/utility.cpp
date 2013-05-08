@@ -8,7 +8,7 @@ char vet[5]; // il buffer su cui si deve scrivere
 // dato un offset >=0 (0..*) che rappresenta la posizione di un bit all'interno
 // del vettore di caratteri buf, setta a 1 tale bit.
 //
-void setbit(char buf[], int offset) {
+void setbit(unsigned buf[], int offset) {
   //
   // estrai il Byte da modifcare
   //
@@ -27,7 +27,7 @@ void setbit(char buf[], int offset) {
 // dato un valore data, copia gli len bit meno significativi nel
 // vettore buf alle posizioni di bit assolute off..off+len-1
 //
-void push (char buf[], unsigned int data, int len, int off) {
+void push (unsigned buf[], unsigned int data, int len, int off) {
    //
    // partendo da bit meno significativi di data
    // per n volte, se il bit e'=1 lo propaghi a buf allineandolo a destra
@@ -74,7 +74,7 @@ void copiaArrayInByte(array<System::Byte> ^source, Byte *dest, int N)
 // dato un offset >=0 (0..*) che rappresenta la posizione di un bit all'interno
 // del vettore di caratteri buf, restituisce il valore numerico del bit.
 //
-int getbit(char buf[], int offset) {
+int getbit(unsigned buf[], int offset) {
   //
   // estrai il Byte da leggere
   //
@@ -95,7 +95,7 @@ int getbit(char buf[], int offset) {
 // ed una lunghezza len, restituisce il valore numerico corrispondente
 // ai bits off..off+len-1 del vettore.
 //
-unsigned int pop (char buf[], int len, int off) {
+unsigned int pop (unsigned char buf[], int len, int off) {
    //
    // partendo dal bit piu' significativi ricostruisco il valore numerico
    //
