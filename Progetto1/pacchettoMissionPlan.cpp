@@ -160,7 +160,7 @@ int pacchettoMissionPlan::getT_DOORS_TIME(int index)
 		return data.mS2_vect[index - 1].T_DOORS_TIME;
 }
 
-void pacchettoMissionPlan::serializeMissionPlanPkt(byte *buffer)
+void pacchettoMissionPlan::serializeMissionPlanPkt(unsigned char *buffer)
 {
 
 	push(buffer, data.missionHead.NID_PACKET, 8, 51);
@@ -207,7 +207,7 @@ void pacchettoMissionPlan::serializeMissionPlanPkt(byte *buffer)
 	}
 }
 
-void pacchettoMissionPlan::deserializeMissionPlanPkt(byte *buffer)
+void pacchettoMissionPlan::deserializeMissionPlanPkt(unsigned char *buffer)
 {
 
 	data.missionHead.NID_PACKET=pop(buffer,  8, 51);

@@ -111,7 +111,8 @@ namespace Progetto1 {
 			this->textBox2->Location = System::Drawing::Point(405, 79);
 			this->textBox2->Multiline = true;
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(227, 237);
+			this->textBox2->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
+			this->textBox2->Size = System::Drawing::Size(285, 379);
 			this->textBox2->TabIndex = 4;
 			this->textBox2->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox2_TextChanged);
 			// 
@@ -147,7 +148,7 @@ namespace Progetto1 {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(248, 329);
+			this->label2->Location = System::Drawing::Point(167, 329);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(154, 325);
 			this->label2->TabIndex = 8;
@@ -165,16 +166,16 @@ namespace Progetto1 {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(62, 53);
+			this->label4->Location = System::Drawing::Point(52, 63);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(40, 13);
+			this->label4->Size = System::Drawing::Size(43, 13);
 			this->label4->TabIndex = 10;
-			this->label4->Text = L"INPUT";
+			this->label4->Text = L"INPUT:";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(402, 53);
+			this->label5->Location = System::Drawing::Point(402, 63);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(55, 13);
 			this->label5->TabIndex = 11;
@@ -191,7 +192,7 @@ namespace Progetto1 {
 			// 
 			// progressBar1
 			// 
-			this->progressBar1->Location = System::Drawing::Point(405, 463);
+			this->progressBar1->Location = System::Drawing::Point(473, 683);
 			this->progressBar1->Maximum = 130;
 			this->progressBar1->Name = L"progressBar1";
 			this->progressBar1->Size = System::Drawing::Size(217, 23);

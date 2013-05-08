@@ -27,8 +27,8 @@ public:
 	int getT_TRAIN(){return data.T_TRAIN;};
 	// metodi per la serializzazione e deserializzazione del messaggio
 	// il buffer di byte deve essere stato precedentemente correttamente allocato.
-	void serialize(byte *buff);
-	void deserialize(byte *buff);
+	void serialize(unsigned char *buff);
+	void deserialize(unsigned char *buff);
 	~pacchettoAcknowledgement(void);
 
 	System::String ^ ToString(){

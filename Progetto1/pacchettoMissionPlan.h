@@ -13,8 +13,8 @@ public:
 	// fatti dal compilatore) in Byte del messaggio tenendo anche in conto l'eventuale padding
 	// questa funzione sarà chiamata da chi vorrà serializzare il messaggio, per poter allocare il buffer
 	int getSize();
-	void serializeMissionPlanPkt(byte *buff);
-	void deserializeMissionPlanPkt(byte *buff);
+	void serializeMissionPlanPkt(unsigned char *buff);
+	void deserializeMissionPlanPkt(unsigned char *buff);
 	pacchettoMissionPlan();
 	// funzioni di interfaccia set e get per ogni campo dati del pacchetto
 

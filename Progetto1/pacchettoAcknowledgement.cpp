@@ -12,7 +12,7 @@ pacchettoAcknowledgement::pacchettoAcknowledgement(void)
 
 // metodo per la serializzazion del messaggio
 // il buffer di byte deve essere stato precedentemente correttamente allocato.
-void pacchettoAcknowledgement::serialize(byte *buffer)
+void pacchettoAcknowledgement::serialize(unsigned char *buffer)
 {
 	
 	//push(buffer, data.NID_ENGINE, 24, 51);
@@ -25,7 +25,7 @@ void pacchettoAcknowledgement::serialize(byte *buffer)
 
 // metodo per la deserializzazion del messaggio
 // il buffer di byte deve essere stato precedentemente correttamente allocato.
-void pacchettoAcknowledgement::deserialize(byte *buff)
+void pacchettoAcknowledgement::deserialize(unsigned char *buff)
 {
 	
 	//data.NID_ENGINE = pop(buff, 24, 51);
