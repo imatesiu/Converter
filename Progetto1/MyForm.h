@@ -120,7 +120,8 @@ namespace Progetto1 {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) {L"Presentazione", L"ACk", L"UnCommand"});
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(7) {L"Presentazione", L"ACk", L"UnCommand", L"Comando Itinerari", 
+				L"Stato Linea IXL", L"Stato Linea ATC", L"Comando Direzione Blocco"});
 			this->comboBox1->Location = System::Drawing::Point(506, 16);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(121, 21);
@@ -307,6 +308,95 @@ namespace Progetto1 {
 
 						 }
 
+						 if(selectedIndex==3 ){
+							 //Crea Comando Itinerari
+							 pkt1->get_pacchettoComandoItinerari()->setNID_PACKET(Int32::Parse(arraystr[4]));
+							 pkt1->get_pacchettoComandoItinerari()->setL_PACKET(Int32::Parse(arraystr[5]));
+							 pkt1->get_pacchettoComandoItinerari()->setNID_ITIN(Int32::Parse(arraystr[6]));
+							 pkt1->get_pacchettoComandoItinerari()->setQ_CMDITIN(Int32::Parse(arraystr[7]));
+							 pkt1->get_pacchettoEnd()->setNID_PACKET(255);
+
+
+						 }
+						 if(selectedIndex==4 ){
+							 //Stato Linea IXL
+							 pkt1->get_pacchettoStatoLineaIXL()->setNID_PACKET(Int32::Parse(arraystr[4]));
+							 pkt1->get_pacchettoStatoLineaIXL()->setL_PACKET(Int32::Parse(arraystr[5]));
+							 pkt1->get_pacchettoStatoLineaIXL()->setNID_CDB(Int32::Parse(arraystr[6]),0);
+							 pkt1->get_pacchettoStatoLineaIXL()->setQ_STATOCDB(Int32::Parse(arraystr[7]),0);
+							 pkt1->get_pacchettoStatoLineaIXL()->setQ_DEVIATOIO(Int32::Parse(arraystr[8]),0);
+							 pkt1->get_pacchettoStatoLineaIXL()->setN_ITER(Int32::Parse(arraystr[9]));
+							 int i = 1;
+							 for (int z=0;i<pkt1->get_pacchettoStatoLineaIXL()->getN_ITER();i++){
+								 pkt1->get_pacchettoStatoLineaIXL()->setNID_CDB(Int32::Parse(arraystr[9+i]),i);
+								 pkt1->get_pacchettoStatoLineaIXL()->setQ_STATOCDB(Int32::Parse(arraystr[10+i]),i);
+								 pkt1->get_pacchettoStatoLineaIXL()->setQ_DEVIATOIO(Int32::Parse(arraystr[11+i]),i);
+							 }
+							 i=i+8;
+							 pkt1->get_pacchettoStatoItinerario()->setNID_PACKET(Int32::Parse(arraystr[i]));
+							 i++;
+							 pkt1->get_pacchettoStatoItinerario()->setL_PACKET(Int32::Parse(arraystr[i]));
+							 i++;
+							 pkt1->get_pacchettoStatoItinerario()->setNID_ITIN(Int32::Parse(arraystr[i]),0);
+							 i++;
+							 pkt1->get_pacchettoStatoItinerario()->setQ_STATOITIN(Int32::Parse(arraystr[i]),0);
+							 i++;
+							 pkt1->get_pacchettoStatoItinerario()->setN_ITER(Int32::Parse(arraystr[i]));
+							 i++;
+							 for (int z=0;z<pkt1->get_pacchettoStatoItinerario()->getN_ITER();z++){
+								 pkt1->get_pacchettoStatoItinerario()->setNID_ITIN(Int32::Parse(arraystr[i]),z);
+								 i++;
+								 pkt1->get_pacchettoStatoItinerario()->setQ_STATOITIN(Int32::Parse(arraystr[i]),z);
+								 i++;
+							 }
+
+
+							 pkt1->get_pacchettoStatoSegnali()->setNID_PACKET(Int32::Parse(arraystr[i]));
+							 i++;
+							 pkt1->get_pacchettoStatoSegnali()->setL_PACKET(Int32::Parse(arraystr[i]));
+							 i++;
+							 pkt1->get_pacchettoStatoSegnali()->setNID_SEGN(Int32::Parse(arraystr[i]),0);
+							 i++;
+							 pkt1->get_pacchettoStatoSegnali()->setQSTATO_SEGN(Int32::Parse(arraystr[i]),0);
+							 i++;
+							 pkt1->get_pacchettoStatoSegnali()->setN_ITER(Int32::Parse(arraystr[i]));
+							 i++;
+							 for (int z=0;z<pkt1->get_pacchettoStatoSegnali()->getN_ITER();z++){
+								 pkt1->get_pacchettoStatoSegnali()->setNID_SEGN(Int32::Parse(arraystr[i]),z);
+								 i++;
+								 pkt1->get_pacchettoStatoSegnali()->setQSTATO_SEGN(Int32::Parse(arraystr[i]),z);
+								 i++;
+							 }
+
+							 pkt1->get_pacchettoEnd()->setNID_PACKET(255);
+
+						 }
+						 if(selectedIndex==5){
+							 //Stato Linea ATC
+							 pkt1->get_pacchettoStatoLineaATC()->setNID_PACKET(Int32::Parse(arraystr[4]));
+							 pkt1->get_pacchettoStatoLineaATC()->setL_PACKET(Int32::Parse(arraystr[5]));
+							 pkt1->get_pacchettoStatoLineaATC()->setNID_CDB(Int32::Parse(arraystr[6]),0);
+							 pkt1->get_pacchettoStatoLineaATC()->setQ_STATOCDB(Int32::Parse(arraystr[7]),0);
+							 pkt1->get_pacchettoStatoLineaATC()->setQ_DEVIATIOIO(Int32::Parse(arraystr[8]),0);
+
+							 pkt1->get_pacchettoStatoLineaATC()->setN_ITER(Int32::Parse(arraystr[9]));
+							 int i = 1;
+							 for (int z=0;i<pkt1->get_pacchettoStatoLineaATC()->getN_ITER();i++){
+								 pkt1->get_pacchettoStatoLineaATC()->setNID_CDB(Int32::Parse(arraystr[9+i]),i);
+								 pkt1->get_pacchettoStatoLineaATC()->setQ_STATOCDB(Int32::Parse(arraystr[10+i]),i);
+								 pkt1->get_pacchettoStatoLineaATC()->setQ_DEVIATIOIO(Int32::Parse(arraystr[11+i]),i);
+							 }
+
+						 }
+						 if(selectedIndex==6 ){
+							 //Comando direzione blocco
+							 pkt1->get_pacchettoComandoBlocco()->setNID_PACKET(Int32::Parse(arraystr[4]));
+							 pkt1->get_pacchettoComandoBlocco()->setL_PACKET(Int32::Parse(arraystr[5]));
+							 pkt1->get_pacchettoComandoBlocco()->setNID_BLOCCO(Int32::Parse(arraystr[6]));
+							 pkt1->get_pacchettoComandoBlocco()->setQ_CMDBLOCCO(Int32::Parse(arraystr[7]));
+							 pkt1->get_pacchettoEnd()->setNID_PACKET(255);
+
+						 }
 						 array<Byte>^bytez = gcnew array<Byte>(pkt1->getSize());
 						 pkt1->serialize(bytez);
 
