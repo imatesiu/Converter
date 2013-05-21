@@ -10,7 +10,9 @@ class pacchettopresentazione
 	presentation data;
 public:
 	pacchettopresentazione(void);
-	// funzione che restituisce la dimensione in bit
+	// funzione che restituisce la dimensione (ideale, non quella dovuta agli allineamenti 
+	// fatti dal compilatore) in byte del messaggio tenendo anche in conto l'eventuale padding
+	// questa funzione sarà chiamata da chi vorrà serializzare il messaggio, per poter allocare il buffer
 	int getSize(){return 53;};
 	// funzioni di interfaccia set e get per ogni campo dati del pacchetto
 	
@@ -23,10 +25,10 @@ public:
 	int getM_PORT(){return data.M_PORT;};
 	// metodi per la serializzazione e deserializzazione del messaggio
 	// il buffer di byte deve essere stato precedentemente correttamente allocato.
-	void serialize(unsigned char *buff);
-	void deserialize(unsigned char *buff);
+	void serialize(byte *buff);
+	void deserialize(byte *buff);
 	~pacchettopresentazione(void);
-
+	
 	System::String ^ ToString(){
 		System::String ^out;
 

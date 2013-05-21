@@ -24,7 +24,8 @@ void ApplicationFramework::tomWriterTraceListener::init(void){
 			form->Text = L"Message Log Monitor";
 			form->ResumeLayout(false);
 			form->PerformLayout();
-			form->Visible=true;
+			//form->Visible=true;
+			form->Show();
 			Console::WriteLine("Ciao");
 	
 	};

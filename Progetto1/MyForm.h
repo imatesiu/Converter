@@ -4,6 +4,7 @@
 #include "struttureDatiMessaggi.h"
 #include "Messaggi.h"
 #include "tomWriterTraceListener.h"
+#include "Form1.h"
 
 namespace Progetto1 {
 
@@ -227,13 +228,14 @@ namespace Progetto1 {
 	private: System::Void textBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 			 }
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-				 progressBar1->Step = 1;
+
+				 /* progressBar1->Step = 1;
 				 for(int i=0;i<130;i++){
 				 progressBar1->PerformStep();
-				 //Thread::Sleep(5);
+				 Thread::Sleep(5);
 				 }
 
-				 progressBar1->Value = 0;
+				 progressBar1->Value = 0;*/
 				 //Trace::WriteLine( "Entering Main" );
 				 if(checkBox1->Checked){
 
@@ -263,13 +265,17 @@ namespace Progetto1 {
 				 }else{
 					 try{
 						 int selectedIndex = comboBox1->SelectedIndex;
+
+						 String ^text=textBox1->Text;
+						 array<String^> ^arraystr=text->Split(';');
+						 Messaggi ^pkt1 = gcnew Messaggi();
+						 pkt1->setNID_MESSAGE(Int32::Parse(arraystr[0]));
+						 pkt1->setL_MESSAGE(Int32::Parse(arraystr[1]));
+						 pkt1->setT_TIME(Int32::Parse(arraystr[2]));
+
+
 						 if(selectedIndex==2 ){
-							 String ^text=textBox1->Text;
-							 array<String^> ^arraystr=text->Split(';');
-							 Messaggi ^pkt1 = gcnew Messaggi();
-							 pkt1->setNID_MESSAGE(Int32::Parse(arraystr[0]));
-							 pkt1->setL_MESSAGE(Int32::Parse(arraystr[1]));
-							 pkt1->setT_TRAIN(Int32::Parse(arraystr[2]));
+							 //crea Unconditional Command
 							 pkt1->get_pacchettoCommandData()->setNID_PACKET(Int32::Parse(arraystr[3]));
 							 pkt1->get_pacchettoCommandData()->setL_PACKET(Int32::Parse(arraystr[4]));
 							 pkt1->get_pacchettoCommandData()->setQ_COMMAND_TYPE(Int32::Parse(arraystr[5]));
@@ -278,95 +284,49 @@ namespace Progetto1 {
 							 if( pkt1->get_pacchettoCommandData()->getQ_COMMAND_TYPE()==4)
 								 pkt1->get_pacchettoCommandData()->setM_GOA_LEVEL(Int32::Parse(arraystr[6]));
 
-							 array<Byte>^bytez = gcnew array<Byte>(pkt1->getSize());
-							 pkt1->serialize(bytez);
 
-							 String ^hex = BitConverter::ToString(bytez);
-
-							 String ^bin = "";
-							 for (int i = 0; i < bytez->Length; i++)
-							 {
-
-								 String ^bits =Convert::ToString(bytez[i], 2); 
-								 if(bits->Length<8){
-									 for(int z=bits->Length;z<8;z++){
-										bits="0"+bits;
-									 }
-								 }
-								 bin += bits;
-							 }
-
-							 textBox2->Text="HEX: "+hex+"\n\r BIN: "+bin;
 
 						 }
 						 if(selectedIndex==0 ){
-							 String ^text=textBox1->Text;
-							 array<String^> ^arraystr=text->Split(';');
-							 Messaggi ^pkt1 = gcnew Messaggi();
-							 pkt1->setNID_MESSAGE(Int32::Parse(arraystr[0]));
-							 pkt1->setL_MESSAGE(Int32::Parse(arraystr[1]));
-							 pkt1->setT_TRAIN(Int32::Parse(arraystr[2]));
+							 //Crea presentazione
 							 pkt1->setNID_ENGINE(Int32::Parse(arraystr[3]));
 							 pkt1->get_pacchettoPresentazione()->setNID_PACKET(Int32::Parse(arraystr[4]));
 							 pkt1->get_pacchettoPresentazione()->setL_PACKET(Int32::Parse(arraystr[5]));
 
 							 pkt1->get_pacchettoPresentazione()->setM_PORT(Int32::Parse(arraystr[6]));
-							 array<Byte>^bytez = gcnew array<Byte>(pkt1->getSize());
-							 pkt1->serialize(bytez);
 
-
-							 String ^hex = BitConverter::ToString(bytez);
-
-							 String ^bin = "";
-							 for (int i = 0; i < bytez->Length; i++)
-							 {
-
-								 String ^bits =Convert::ToString(bytez[i], 2); 
-								 if(bits->Length<8){
-									 for(int z=bits->Length;z<8;z++){
-										bits="0"+bits;
-									 }
-								 }
-								 bin += bits;
-							 }
-
-							 textBox2->Text="HEX: "+hex+"\n\r BIN: "+bin;
 
 						 }
 						 if(selectedIndex==1 ){
-							 String ^text=textBox1->Text;
-							 array<String^> ^arraystr=text->Split(';');
-							 Messaggi ^pkt1 = gcnew Messaggi();
-							 pkt1->setNID_MESSAGE(Int32::Parse(arraystr[0]));
-							 pkt1->setL_MESSAGE(Int32::Parse(arraystr[1]));
-							 pkt1->setT_TRAIN(Int32::Parse(arraystr[2]));
+							 //Crea ACK
 							 pkt1->setNID_ENGINE(Int32::Parse(arraystr[3]));
 							 pkt1->get_pacchettoAcknowledgement()->setNID_PACKET(Int32::Parse(arraystr[4]));
 							 pkt1->get_pacchettoAcknowledgement()->setL_PACKET(Int32::Parse(arraystr[5]));
 							 pkt1->get_pacchettoAcknowledgement()->setT_TRAIN(Int32::Parse(arraystr[6]));
 							 pkt1->get_pacchettoAcknowledgement()->setQ_MISSION_RESPONSE(Int32::Parse(arraystr[7]));
-							 array<Byte>^bytez = gcnew array<Byte>(pkt1->getSize());
-							 pkt1->serialize(bytez);
-
-
-							 String ^hex = BitConverter::ToString(bytez);
-
-							 String ^bin = "";
-							 for (int i = 0; i < bytez->Length; i++)
-							 {
-
-								 String ^bits =Convert::ToString(bytez[i], 2);
-								 if(bits->Length<8){
-									 for(int z=bits->Length;z<8;z++){
-										bits="0"+bits;
-									 }
-								 }
-								 bin += bits;
-							 }
-
-							 textBox2->Text="HEX: "+hex+"\n\r BIN: "+bin;
 
 						 }
+
+						 array<Byte>^bytez = gcnew array<Byte>(pkt1->getSize());
+						 pkt1->serialize(bytez);
+
+
+						 String ^hex = BitConverter::ToString(bytez);
+
+						 String ^bin = "";
+						 for (int i = 0; i < bytez->Length; i++)
+						 {
+
+							 String ^bits =Convert::ToString(bytez[i], 2);
+							 if(bits->Length<8){
+								 for(int z=bits->Length;z<8;z++){
+									 bits="0"+bits;
+								 }
+							 }
+							 bin += bits;
+						 }
+
+						 textBox2->Text="HEX: "+hex+"\n\r BIN: "+bin;
 
 
 					 }catch(Exception ^e){

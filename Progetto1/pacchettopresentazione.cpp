@@ -11,7 +11,7 @@ pacchettopresentazione::pacchettopresentazione(void)
 
 // metodo per la serializzazion del messaggio
 // il buffer di byte deve essere stato precedentemente correttamente allocato.
-void pacchettopresentazione::serialize(unsigned char *buffer)
+void pacchettopresentazione::serialize(byte *buffer)
 {
 	//push(buffer, data.NID_ENGINE, 24, 51);
 	push(buffer, data.NID_PACKET, 8, 75);
@@ -23,7 +23,7 @@ void pacchettopresentazione::serialize(unsigned char *buffer)
 
 // metodo per la deserializzazion del messaggio
 // il buffer di byte deve essere stato precedentemente correttamente allocato.
-void pacchettopresentazione::deserialize(unsigned char *buff)
+void pacchettopresentazione::deserialize(byte *buff)
 {
 	
 	

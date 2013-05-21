@@ -119,7 +119,7 @@ int pacchettostatolineaatc::getQ_DEVIATIOIO(int index)
 }
 
 
-void pacchettostatolineaatc::serialize(unsigned char *buffer)
+void pacchettostatolineaatc::serialize(byte *buffer)
 {
 
 	push(buffer, data.NID_PACKET, 8, 51);
@@ -144,7 +144,7 @@ void pacchettostatolineaatc::serialize(unsigned char *buffer)
 
 }
 
-void pacchettostatolineaatc::deserialize(unsigned char *buffer)
+void pacchettostatolineaatc::deserialize(byte *buffer)
 {
 
 	data.NID_PACKET=pop(buffer,  8, 51);

@@ -6,7 +6,7 @@ using namespace std;
 
 pacchettoMissionPlan::pacchettoMissionPlan()
 {
-
+	
 	data.missionHead.NID_PACKET = 0;
 	data.missionHead.L_PACKET = 0;
 	data.missionHead.Q_SCALE = 0;
@@ -23,6 +23,7 @@ pacchettoMissionPlan::pacchettoMissionPlan()
 	data.mS2_vect = NULL;
 }
 
+// funzione che sette N_ITER1
 void pacchettoMissionPlan::setN_ITER1(int N)
 {
 	data.N_ITER1 = N;
@@ -30,7 +31,7 @@ void pacchettoMissionPlan::setN_ITER1(int N)
 	for(int i=0; i<N;i++){
 		data.mS1_vect[i].D_MISSION=0;
 		data.mS1_vect[i].V_MISSION=0;
-
+		
 	}
 }
 
@@ -160,9 +161,9 @@ int pacchettoMissionPlan::getT_DOORS_TIME(int index)
 		return data.mS2_vect[index - 1].T_DOORS_TIME;
 }
 
-void pacchettoMissionPlan::serializeMissionPlanPkt(unsigned char *buffer)
+void pacchettoMissionPlan::serializeMissionPlanPkt(byte *buffer)
 {
-
+	
 	push(buffer, data.missionHead.NID_PACKET, 8, 51);
 	setL_PACKET(getSize());
 	push(buffer, data.missionHead.L_PACKET, 13, 59);
@@ -207,57 +208,55 @@ void pacchettoMissionPlan::serializeMissionPlanPkt(unsigned char *buffer)
 	}
 }
 
-void pacchettoMissionPlan::deserializeMissionPlanPkt(unsigned char *buffer)
+void pacchettoMissionPlan::deserializeMissionPlanPkt(byte *buffer)
 {
-
+	
 	data.missionHead.NID_PACKET=pop(buffer,  8, 51);
-	if(data.missionHead.NID_PACKET==160){
-		data.missionHead.L_PACKET=pop(buffer, 13, 59);
-		data.missionHead.Q_SCALE=pop(buffer, 2, 72);
-		data.mS1.D_MISSION=pop(buffer, 15, 74);
-		data.mS1.V_MISSION=pop(buffer, 7, 89);
-		setN_ITER1(pop(buffer, 5, 96));
-		int offset = 101;
-		for(unsigned int i = 0; i < data.N_ITER1; ++i)
-		{
-			data.mS1_vect[i].D_MISSION=pop(buffer, 15, offset);
-			offset += 15;
-			data.mS1_vect[i].V_MISSION=pop(buffer, 7, offset);
-			offset += 7;
-		}
-		data.mS2.T_START_TIME=pop(buffer, 12, offset);
-		offset += 12;
-		data.mS2.NID_LRGB=pop(buffer, 24, offset);
-		offset += 24;
-		data.mS2.D_STOP=pop(buffer, 15, offset);
+	data.missionHead.L_PACKET=pop(buffer, 13, 59);
+	data.missionHead.Q_SCALE=pop(buffer, 2, 72);
+	data.mS1.D_MISSION=pop(buffer, 15, 74);
+	data.mS1.V_MISSION=pop(buffer, 7, 89);
+	setN_ITER1(pop(buffer, 5, 96));
+	int offset = 101;
+	for(unsigned int i = 0; i < data.N_ITER1; ++i)
+	{
+		data.mS1_vect[i].D_MISSION=pop(buffer, 15, offset);
 		offset += 15;
-		data.mS2.Q_DOORS=pop(buffer, 4, offset);
-		offset += 4;
-		data.mS2.T_DOORS_TIME=pop(buffer, 12, offset);
+		data.mS1_vect[i].V_MISSION=pop(buffer, 7, offset);
+		offset += 7;
+	}
+	data.mS2.T_START_TIME=pop(buffer, 12, offset);
+	offset += 12;
+	data.mS2.NID_LRGB=pop(buffer, 24, offset);
+	offset += 24;
+	data.mS2.D_STOP=pop(buffer, 15, offset);
+	offset += 15;
+	data.mS2.Q_DOORS=pop(buffer, 4, offset);
+	offset += 4;
+	data.mS2.T_DOORS_TIME=pop(buffer, 12, offset);
+	offset += 12;
+	setN_ITER2(pop(buffer, 5, offset));
+	offset += 5;
+	for(unsigned int i = 0; i < data.N_ITER2; ++i)
+	{
+		 data.mS2_vect[i].T_START_TIME=pop(buffer, 12, offset);
 		offset += 12;
-		setN_ITER2(pop(buffer, 5, offset));
-		offset += 5;
-		for(unsigned int i = 0; i < data.N_ITER2; ++i)
-		{
-			data.mS2_vect[i].T_START_TIME=pop(buffer, 12, offset);
-			offset += 12;
-			data.mS2_vect[i].NID_LRGB=pop(buffer, 24, offset);
-			offset += 24;
-			data.mS2_vect[i].D_STOP=pop(buffer, 15, offset);
-			offset += 15;
-			data.mS2_vect[i].Q_DOORS=pop(buffer, 4, offset);
-			offset += 4;
-			data.mS2_vect[i].T_DOORS_TIME=pop(buffer, 12, offset);
-			offset += 12;
-		}
+		data.mS2_vect[i].NID_LRGB=pop(buffer, 24, offset);
+		offset += 24;
+		data.mS2_vect[i].D_STOP=pop(buffer, 15, offset);
+		offset += 15;
+		data.mS2_vect[i].Q_DOORS=pop(buffer, 4, offset);
+		offset += 4;
+		data.mS2_vect[i].T_DOORS_TIME=pop(buffer, 12, offset);
+		offset += 12;
 	}
 }
 
 
 pacchettoMissionPlan::~pacchettoMissionPlan(void)
 {
-	delete data.mS1_vect;
-	delete data.mS2_vect;
+	delete[] data.mS1_vect;
+	delete[] data.mS2_vect;
 }
 
 // funzione che restituisce la dimensione (ideale, non quella dovuta agli allineamenti 
@@ -267,7 +266,7 @@ int pacchettoMissionPlan::getSize()
 {
 	// intero che rappresenta la dimensione in bit
 	int size = 0;
-
+	
 	// 122 per la parte fissa del mission data (considerando 2 volte N_ITER
 	size += 122;
 	// 22 bit per ogni N_ITER
@@ -277,5 +276,3 @@ int pacchettoMissionPlan::getSize()
 	// ritorno il numero di bit occupato dalla struttura dati
 	return size;
 }
-
-

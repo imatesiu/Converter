@@ -2,17 +2,16 @@
 #include "struttureDatiMessaggi.h"
 
 /*-----------------------------------------------------------------------------------------------
+Alessio:
 L'ATS riceve dal treno dei messaggi di acnowledgement
--------------------------------------------------------------------------------------------------*/
+-----------------------------------------------------------------------------------------------*/
 
 class pacchettoAcknowledgement
 {
 	missionAck data;
 public:
 	pacchettoAcknowledgement(void);
-	// funzione che restituisce la dimensione (ideale, non quella dovuta agli allineamenti 
-	// fatti dal compilatore) in byte del messaggio tenendo anche in conto l'eventuale padding
-	// questa funzione sarà chiamata da chi vorrà serializzare il messaggio, per poter allocare il buffer
+	// funzione che restituisce la dimensione in bit
 	int getSize(){return 54;};
 	// funzioni di interfaccia set e get per ogni campo dati del pacchetto
 
@@ -27,10 +26,10 @@ public:
 	int getT_TRAIN(){return data.T_TRAIN;};
 	// metodi per la serializzazione e deserializzazione del messaggio
 	// il buffer di byte deve essere stato precedentemente correttamente allocato.
-	void serialize(unsigned char *buff);
-	void deserialize(unsigned char *buff);
+	void serialize(byte *buff);
+	void deserialize(byte *buff);
 	~pacchettoAcknowledgement(void);
-
+	
 	System::String ^ ToString(){
 		System::String ^out;
 

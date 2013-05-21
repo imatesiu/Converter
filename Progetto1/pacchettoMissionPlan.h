@@ -2,7 +2,9 @@
 #include "struttureDatiMessaggi.h"
 
 /*-----------------------------------------------------------------------------------------------
-L'ATS manda una missione al treno
+Alessio:
+L'ATS manda una missione al treno la missione da eseguire specificandola all'interno di un messaggio 
+mission plan
 -------------------------------------------------------------------------------------------------*/
 
 class pacchettoMissionPlan
@@ -13,11 +15,11 @@ public:
 	// fatti dal compilatore) in Byte del messaggio tenendo anche in conto l'eventuale padding
 	// questa funzione sarà chiamata da chi vorrà serializzare il messaggio, per poter allocare il buffer
 	int getSize();
-	void serializeMissionPlanPkt(unsigned char *buff);
-	void deserializeMissionPlanPkt(unsigned char *buff);
+	void serializeMissionPlanPkt(byte *buff);
+	void deserializeMissionPlanPkt(byte *buff);
 	pacchettoMissionPlan();
 	// funzioni di interfaccia set e get per ogni campo dati del pacchetto
-
+	
 	void setNID_PACKET(int NID){data.missionHead.NID_PACKET = NID;};
 	int getNID_PACKET(){return data.missionHead.NID_PACKET;};
 	void setL_PACKET(int L){data.missionHead.L_PACKET = L;};
@@ -49,7 +51,7 @@ public:
 	int getT_DOORS_TIME(int index);
 	// funzione che serializza il messaggio....il buffer deve contenere tutti 0 prima di invoca il metodo.
 	~pacchettoMissionPlan(void);
-
+	
 	System::String ^ ToString(){
 
 
@@ -58,7 +60,7 @@ public:
 		out = out+"NID_PACKET: "+data.missionHead.NID_PACKET+";";
 		out = out+"L_PACKET: "+data.missionHead.L_PACKET+";";
 		out = out+"Q_SCALE: "+data.missionHead.Q_SCALE+";";
-		out = out+"D_MISSION: "+data.mS1.D_MISSION+";";
+		out = out+"Q_SCALE: "+data.mS1.D_MISSION+";";
 		out = out+"V_MISSION: "+data.mS1.V_MISSION+";";
 		out = out+"N_ITER1: "+data.N_ITER1+";";
 		if(data.mS1_vect){

@@ -4,7 +4,7 @@
 pacchettoAcknowledgement::pacchettoAcknowledgement(void)
 {
 	
-	//data.NID_PACKET = 0;
+	data.NID_PACKET = 0;
 	data.L_PACKET = 0;
 	data.T_TRAIN = 0;
 	data.Q_MISSION_RESPONSE = 0;
@@ -12,7 +12,7 @@ pacchettoAcknowledgement::pacchettoAcknowledgement(void)
 
 // metodo per la serializzazion del messaggio
 // il buffer di byte deve essere stato precedentemente correttamente allocato.
-void pacchettoAcknowledgement::serialize(unsigned char *buffer)
+void pacchettoAcknowledgement::serialize(byte *buffer)
 {
 	
 	//push(buffer, data.NID_ENGINE, 24, 51);
@@ -25,7 +25,7 @@ void pacchettoAcknowledgement::serialize(unsigned char *buffer)
 
 // metodo per la deserializzazion del messaggio
 // il buffer di byte deve essere stato precedentemente correttamente allocato.
-void pacchettoAcknowledgement::deserialize(unsigned char *buff)
+void pacchettoAcknowledgement::deserialize(byte *buff)
 {
 	
 	//data.NID_ENGINE = pop(buff, 24, 51);
