@@ -310,27 +310,27 @@ namespace Progetto1 {
 
 						 if(selectedIndex==3 ){
 							 //Crea Comando Itinerari
-							 pkt1->get_pacchettoComandoItinerari()->setNID_PACKET(Int32::Parse(arraystr[4]));
-							 pkt1->get_pacchettoComandoItinerari()->setL_PACKET(Int32::Parse(arraystr[5]));
-							 pkt1->get_pacchettoComandoItinerari()->setNID_ITIN(Int32::Parse(arraystr[6]));
-							 pkt1->get_pacchettoComandoItinerari()->setQ_CMDITIN(Int32::Parse(arraystr[7]));
+							 pkt1->get_pacchettoComandoItinerari()->setNID_PACKET(Int32::Parse(arraystr[3]));
+							 pkt1->get_pacchettoComandoItinerari()->setL_PACKET(Int32::Parse(arraystr[4]));
+							 pkt1->get_pacchettoComandoItinerari()->setNID_ITIN(Int32::Parse(arraystr[5]));
+							 pkt1->get_pacchettoComandoItinerari()->setQ_CMDITIN(Int32::Parse(arraystr[6]));
 							 pkt1->get_pacchettoEnd()->setNID_PACKET(255);
 
 
 						 }
 						 if(selectedIndex==4 ){
 							 //Stato Linea IXL
-							 pkt1->get_pacchettoStatoLineaIXL()->setNID_PACKET(Int32::Parse(arraystr[4]));
-							 pkt1->get_pacchettoStatoLineaIXL()->setL_PACKET(Int32::Parse(arraystr[5]));
-							 pkt1->get_pacchettoStatoLineaIXL()->setNID_CDB(Int32::Parse(arraystr[6]),0);
-							 pkt1->get_pacchettoStatoLineaIXL()->setQ_STATOCDB(Int32::Parse(arraystr[7]),0);
-							 pkt1->get_pacchettoStatoLineaIXL()->setQ_DEVIATOIO(Int32::Parse(arraystr[8]),0);
-							 pkt1->get_pacchettoStatoLineaIXL()->setN_ITER(Int32::Parse(arraystr[9]));
+							 pkt1->get_pacchettoStatoLineaIXL()->setNID_PACKET(Int32::Parse(arraystr[3]));
+							 pkt1->get_pacchettoStatoLineaIXL()->setL_PACKET(Int32::Parse(arraystr[4]));
+							 pkt1->get_pacchettoStatoLineaIXL()->setNID_CDB(Int32::Parse(arraystr[5]),0);
+							 pkt1->get_pacchettoStatoLineaIXL()->setQ_STATOCDB(Int32::Parse(arraystr[6]),0);
+							 pkt1->get_pacchettoStatoLineaIXL()->setQ_DEVIATOIO(Int32::Parse(arraystr[7]),0);
+							 pkt1->get_pacchettoStatoLineaIXL()->setN_ITER(Int32::Parse(arraystr[8]));
 							 int i = 1;
 							 for (int z=0;i<pkt1->get_pacchettoStatoLineaIXL()->getN_ITER();i++){
-								 pkt1->get_pacchettoStatoLineaIXL()->setNID_CDB(Int32::Parse(arraystr[9+i]),i);
-								 pkt1->get_pacchettoStatoLineaIXL()->setQ_STATOCDB(Int32::Parse(arraystr[10+i]),i);
-								 pkt1->get_pacchettoStatoLineaIXL()->setQ_DEVIATOIO(Int32::Parse(arraystr[11+i]),i);
+								 pkt1->get_pacchettoStatoLineaIXL()->setNID_CDB(Int32::Parse(arraystr[8+i]),i);
+								 pkt1->get_pacchettoStatoLineaIXL()->setQ_STATOCDB(Int32::Parse(arraystr[9+i]),i);
+								 pkt1->get_pacchettoStatoLineaIXL()->setQ_DEVIATOIO(Int32::Parse(arraystr[10+i]),i);
 							 }
 							 i=i+8;
 							 pkt1->get_pacchettoStatoItinerario()->setNID_PACKET(Int32::Parse(arraystr[i]));
@@ -373,27 +373,27 @@ namespace Progetto1 {
 						 }
 						 if(selectedIndex==5){
 							 //Stato Linea ATC
-							 pkt1->get_pacchettoStatoLineaATC()->setNID_PACKET(Int32::Parse(arraystr[4]));
-							 pkt1->get_pacchettoStatoLineaATC()->setL_PACKET(Int32::Parse(arraystr[5]));
-							 pkt1->get_pacchettoStatoLineaATC()->setNID_CDB(Int32::Parse(arraystr[6]),0);
-							 pkt1->get_pacchettoStatoLineaATC()->setQ_STATOCDB(Int32::Parse(arraystr[7]),0);
-							 pkt1->get_pacchettoStatoLineaATC()->setQ_DEVIATIOIO(Int32::Parse(arraystr[8]),0);
+							 pkt1->get_pacchettoStatoLineaATC()->setNID_PACKET(Int32::Parse(arraystr[3]));
+							 pkt1->get_pacchettoStatoLineaATC()->setL_PACKET(Int32::Parse(arraystr[4]));
+							 pkt1->get_pacchettoStatoLineaATC()->setNID_CDB(Int32::Parse(arraystr[5]),0);
+							 pkt1->get_pacchettoStatoLineaATC()->setQ_STATOCDB(Int32::Parse(arraystr[6]),0);
+							 pkt1->get_pacchettoStatoLineaATC()->setQ_DEVIATIOIO(Int32::Parse(arraystr[7]),0);
 
-							 pkt1->get_pacchettoStatoLineaATC()->setN_ITER(Int32::Parse(arraystr[9]));
+							 pkt1->get_pacchettoStatoLineaATC()->setN_ITER(Int32::Parse(arraystr[8]));
 							 int i = 1;
 							 for (int z=0;i<pkt1->get_pacchettoStatoLineaATC()->getN_ITER();i++){
-								 pkt1->get_pacchettoStatoLineaATC()->setNID_CDB(Int32::Parse(arraystr[9+i]),i);
-								 pkt1->get_pacchettoStatoLineaATC()->setQ_STATOCDB(Int32::Parse(arraystr[10+i]),i);
-								 pkt1->get_pacchettoStatoLineaATC()->setQ_DEVIATIOIO(Int32::Parse(arraystr[11+i]),i);
+								 pkt1->get_pacchettoStatoLineaATC()->setNID_CDB(Int32::Parse(arraystr[8+i]),i);
+								 pkt1->get_pacchettoStatoLineaATC()->setQ_STATOCDB(Int32::Parse(arraystr[9+i]),i);
+								 pkt1->get_pacchettoStatoLineaATC()->setQ_DEVIATIOIO(Int32::Parse(arraystr[10+i]),i);
 							 }
 
 						 }
 						 if(selectedIndex==6 ){
 							 //Comando direzione blocco
-							 pkt1->get_pacchettoComandoBlocco()->setNID_PACKET(Int32::Parse(arraystr[4]));
-							 pkt1->get_pacchettoComandoBlocco()->setL_PACKET(Int32::Parse(arraystr[5]));
-							 pkt1->get_pacchettoComandoBlocco()->setNID_BLOCCO(Int32::Parse(arraystr[6]));
-							 pkt1->get_pacchettoComandoBlocco()->setQ_CMDBLOCCO(Int32::Parse(arraystr[7]));
+							 pkt1->get_pacchettoComandoBlocco()->setNID_PACKET(Int32::Parse(arraystr[3]));
+							 pkt1->get_pacchettoComandoBlocco()->setL_PACKET(Int32::Parse(arraystr[4]));
+							 pkt1->get_pacchettoComandoBlocco()->setNID_BLOCCO(Int32::Parse(arraystr[5]));
+							 pkt1->get_pacchettoComandoBlocco()->setQ_CMDBLOCCO(Int32::Parse(arraystr[6]));
 							 pkt1->get_pacchettoEnd()->setNID_PACKET(255);
 
 						 }

@@ -115,26 +115,35 @@ void Messaggi::deserialize(byte *buffer)
 			   }
 
 	case 101: {offset += 51; 
+			   set_pacchettoStatoLineaIXL();
 		       get_pacchettoStatoLineaIXL()->deserialize(buffer); 
 			   offset += get_pacchettoStatoLineaIXL()->getSize(); 
+			   set_pacchettoStatoItinerari();
 			   get_pacchettoStatoItinerario()->deserialize(buffer, offset);
 			   offset += get_pacchettoStatoItinerario()->getSize();
+			   set_pacchettoStatoSegnali();
 			   get_pacchettoStatoSegnali()->deserialize(buffer, offset);
 			   offset += get_pacchettoStatoSegnali()->getSize();
+			   set_pacchettoStatoBlocco();
 			   get_pacchettoStatoBlocco()->deserialize(buffer, offset);
 			   offset += get_pacchettoStatoBlocco()->getSize();
+			   set_pacchettoEnd();
 			   get_pacchettoEnd()->deserialize(buffer, offset);
 			   break;}
 	case 102: {get_pacchettoFaultReporting()->deserialize(buffer); 
 			   break;}
 	case 110: { offset += 51;
+				set_pacchettoComandoItinerari();
 				get_pacchettoComandoItinerari()->deserialize(buffer); 
 				offset += get_pacchettoComandoItinerari()->getSize();
+				set_pacchettoEnd();
 				get_pacchettoEnd()->deserialize(buffer, offset);
 			   break;}
 	case 111: { offset += 51;
+				set_pacchettoComandoBlocco();
 				get_pacchettoComandoBlocco()->deserialize(buffer); 
 				offset += get_pacchettoComandoBlocco()->getSize();
+				set_pacchettoEnd();
 				get_pacchettoEnd()->deserialize(buffer, offset);
 			   break;}
 
@@ -174,6 +183,27 @@ String ^Messaggi::ToString(){
 		 out= out+get_pacchettoStatoLineaATC()->toPrint();
 	if(pkgAck)
 		out= out+get_pacchettoAcknowledgement()->ToString();
+
+	if(pkgStatoLineaIXL)
+		out= out+get_pacchettoStatoLineaIXL()->ToString();
+	if(pkgStatoItinerari)
+		out= out+get_pacchettoStatoItinerario()->ToString();
+	if(pkgStatoSegnali)
+		out= out+get_pacchettoStatoSegnali()->ToString();
+	if(pkgFaultData)
+		out= out+get_pacchettoFaultReporting()->ToString();
+	if(pkgStatoBlocco)
+		out= out+get_pacchettoStatoBlocco()->ToString();
+	if(pkgComandoItinerario)
+		out= out+get_pacchettoComandoItinerari()->ToString();
+	if(pkgComandoBlocco)
+		out= out+get_pacchettoComandoBlocco()->ToString();
+	if(pkgEnd)
+		out= out+get_pacchettoEnd()->ToString();
+
+
+
+
 
 	return out;
 

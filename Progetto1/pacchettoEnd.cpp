@@ -8,14 +8,22 @@ pacchettoEnd::pacchettoEnd(void)
 
 void pacchettoEnd::serialize(byte *buffer, int offset)
 {
-	push(buffer, data.NID_PACKET, 8, offset + 51);
+	push(buffer, data.NID_PACKET, 8, offset);
 }
 
 void pacchettoEnd::deserialize(byte *buffer, int offset)
 {
-	data.NID_PACKET = pop(buffer, 8, offset + 51);
+	data.NID_PACKET = pop(buffer, 8, offset);
 }
 
 pacchettoEnd::~pacchettoEnd(void)
 {
+}
+
+System::String ^pacchettoEnd::ToString(){
+		System::String ^out;
+
+	out = out+"NID_PACKET: "+data.NID_PACKET+";";
+
+	 return out;
 }
