@@ -1,4 +1,5 @@
 #pragma once
+#include "wdogcontrol.h"
 
 namespace Progetto1 {
 
@@ -17,10 +18,26 @@ namespace Progetto1 {
 	public:
 		Form1(void)
 		{
+			this->wdogs =( gcnew wdogcontrol());
+			//this->wdogs->BackColor = System::Drawing::Color::Blue;
+			this->Location =  System::Drawing::Point(72, 113);
+			this->wdogs->Name = "firstControl1";
+			this->wdogs->Size =  System::Drawing::Size(75, 16);
+			this->wdogs->TabIndex = 8;
+			this->wdogs->Text = "Hello World";
 			InitializeComponent();
+			this->Controls->Add(this->wdogs);
 			//
 			//TODO: aggiungere qui il codice del costruttore.
 			//
+			//riempidatagrid();
+
+
+
+
+
+
+
 		}
 
 	protected:
@@ -34,17 +51,36 @@ namespace Progetto1 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::ListView^  listView1;
-	private: Microsoft::Reporting::WinForms::ReportViewer^  reportViewer1;
-	private: System::Windows::Forms::TableLayoutPanel^  tableLayoutPanel1;
-	private: System::Windows::Forms::DataGridView^  dataGridView1;
+
+
+
+
+	private: System::Windows::Forms::MenuStrip^  menuStrip1;
+	private: System::Windows::Forms::ToolStripMenuItem^  rpovaToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  quiToolStripMenuItem;
+	private: System::Windows::Forms::LinkLabel^  linkLabel1;
+	private: System::Windows::Forms::Label^  label11;
+			 System::Windows::Forms::Label^  label0;
+			 System::Windows::Forms::Label^  label1;
+			 System::Windows::Forms::Label^  label2;
+			 System::Windows::Forms::Label^  label3;
+
+			 wdogcontrol ^wdogs;
+	private: System::Windows::Forms::Button^  button1;
+
+
+
+
+
+	private: System::ComponentModel::IContainer^  components;
+
 	protected: 
 
 	private:
 		/// <summary>
 		/// Variabile di progettazione necessaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -53,130 +89,199 @@ namespace Progetto1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::ListViewItem^  listViewItem3 = (gcnew System::Windows::Forms::ListViewItem(gcnew cli::array< System::String^  >(2) {L"pui", 
-				L"lllk"}, -1));
-			System::Windows::Forms::ListViewItem^  listViewItem4 = (gcnew System::Windows::Forms::ListViewItem(L"kkkkkn"));
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			this->listView1 = (gcnew System::Windows::Forms::ListView());
-			this->reportViewer1 = (gcnew Microsoft::Reporting::WinForms::ReportViewer());
-			this->tableLayoutPanel1 = (gcnew System::Windows::Forms::TableLayoutPanel());
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView1))->BeginInit();
+			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+			this->rpovaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->quiToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->linkLabel1 = (gcnew System::Windows::Forms::LinkLabel());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->label0 = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// listView1
+			// menuStrip1
 			// 
-			listViewItem3->ToolTipText = L"ol";
-			listViewItem4->ToolTipText = L"kk";
-			this->listView1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ListViewItem^  >(2) {listViewItem3, listViewItem4});
-			this->listView1->Location = System::Drawing::Point(327, 63);
-			this->listView1->Name = L"listView1";
-			this->listView1->Size = System::Drawing::Size(261, 237);
-			this->listView1->TabIndex = 0;
-			this->listView1->UseCompatibleStateImageBehavior = false;
-			this->listView1->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::listView1_SelectedIndexChanged);
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->rpovaToolStripMenuItem});
+			this->menuStrip1->Location = System::Drawing::Point(0, 0);
+			this->menuStrip1->Name = L"menuStrip1";
+			this->menuStrip1->Size = System::Drawing::Size(704, 24);
+			this->menuStrip1->TabIndex = 4;
+			this->menuStrip1->Text = L"menuStrip1";
 			// 
-			// reportViewer1
+			// rpovaToolStripMenuItem
 			// 
-			this->reportViewer1->Location = System::Drawing::Point(235, 386);
-			this->reportViewer1->Name = L"reportViewer1";
-			this->reportViewer1->Size = System::Drawing::Size(396, 246);
-			this->reportViewer1->TabIndex = 1;
+			this->rpovaToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->quiToolStripMenuItem});
+			this->rpovaToolStripMenuItem->Name = L"rpovaToolStripMenuItem";
+			this->rpovaToolStripMenuItem->Size = System::Drawing::Size(49, 20);
+			this->rpovaToolStripMenuItem->Text = L"rpova";
 			// 
-			// tableLayoutPanel1
+			// quiToolStripMenuItem
 			// 
-			this->tableLayoutPanel1->ColumnCount = 12;
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle()));
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle()));
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 
-				20)));
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 
-				20)));
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 
-				20)));
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 
-				20)));
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 
-				20)));
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 
-				20)));
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 
-				20)));
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 
-				20)));
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 
-				20)));
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 
-				20)));
-			this->tableLayoutPanel1->Location = System::Drawing::Point(71, 147);
-			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
-			this->tableLayoutPanel1->RowCount = 5;
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
-			this->tableLayoutPanel1->Size = System::Drawing::Size(200, 100);
-			this->tableLayoutPanel1->TabIndex = 2;
+			this->quiToolStripMenuItem->Name = L"quiToolStripMenuItem";
+			this->quiToolStripMenuItem->Size = System::Drawing::Size(91, 22);
+			this->quiToolStripMenuItem->Text = L"qui";
 			// 
-			// dataGridView1
+			// linkLabel1
 			// 
-			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, 
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, 
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::ControlText;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle2;
-			this->dataGridView1->Location = System::Drawing::Point(55, 329);
-			this->dataGridView1->Name = L"dataGridView1";
-			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, 
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dataGridView1->RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-			this->dataGridView1->Size = System::Drawing::Size(240, 150);
-			this->dataGridView1->TabIndex = 3;
+			this->linkLabel1->AutoSize = true;
+			this->linkLabel1->LinkColor = System::Drawing::Color::LawnGreen;
+			this->linkLabel1->Location = System::Drawing::Point(476, 206);
+			this->linkLabel1->Name = L"linkLabel1";
+			this->linkLabel1->Size = System::Drawing::Size(27, 13);
+			this->linkLabel1->TabIndex = 5;
+			this->linkLabel1->TabStop = true;
+			this->linkLabel1->Text = L"ISTI";
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->label11->ForeColor = System::Drawing::Color::Red;
+			this->label11->Location = System::Drawing::Point(12, 293);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(58, 19);
+			this->label11->TabIndex = 6;
+			this->label11->Text = L"label1";
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(592, 21);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->TabIndex = 7;
+			this->button1->Text = L"button1";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+			// 
+			// label0
+			// 
+			this->label0->AutoSize = true;
+			this->label0->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->label0->ForeColor = System::Drawing::Color::Blue;
+			this->label0->Location = System::Drawing::Point(1, 0);
+			this->label0->Name = L"label0";
+			this->label0->Size = System::Drawing::Size(15, 19);
+			this->label0->TabIndex = 1;
+			this->label0->Text = L"I";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->label1->ForeColor = System::Drawing::Color::Red;
+			this->label1->Location = System::Drawing::Point(13, 0);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(18, 19);
+			this->label1->TabIndex = 2;
+			this->label1->Text = L"S";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->label2->ForeColor = System::Drawing::Color::Green;
+			this->label2->Location = System::Drawing::Point(28, 0);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(18, 19);
+			this->label2->TabIndex = 3;
+			this->label2->Text = L"T";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->label3->ForeColor = System::Drawing::Color::YellowGreen;
+			this->label3->Location = System::Drawing::Point(43, 0);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(15, 19);
+			this->label3->TabIndex = 4;
+			this->label3->Text = L"I";
 			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(704, 665);
-			this->Controls->Add(this->dataGridView1);
-			this->Controls->Add(this->tableLayoutPanel1);
-			this->Controls->Add(this->reportViewer1);
-			this->Controls->Add(this->listView1);
+			this->ClientSize = System::Drawing::Size(704, 421);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->linkLabel1);
+			this->Controls->Add(this->label11);
+			this->Controls->Add(this->label0);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label3);
+			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"Form1";
 			this->Text = L"Form1";
-			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView1))->EndInit();
+			this->menuStrip1->ResumeLayout(false);
+			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
+
+
+		/*		void riempidatagrid(void){
+		TabellaOrario ^tabella;
+		tabella= gcnew TabellaOrario;
+		tabella->leggiTabellaOrario("..\\FileConfigurazione\\TabellaOrario.xml");
+
+		Console::WriteLine(tabella->ToString());
+		dataGridView1->ColumnCount = 7;
+		dataGridView1->RowCount = tabella->get_TabellaOrario()->Count*8;
+		int colonna=0;
+		int riga=0;
+		dataGridView1->Columns[ 0 ]->Name = "Id_Treno";
+		dataGridView1->Columns[ 1 ]->Name = "None Stazione";
+		dataGridView1->Columns[ 2 ]->Name = "Orario Arrivo";
+		dataGridView1->Columns[ 3 ]->Name = "Orario Partenza";
+		dataGridView1->Columns[ 4 ]->Name = "BinProg";
+		dataGridView1->Columns[ 5 ]->Name = "TempoMAPorte";
+		dataGridView1->Columns[ 6 ]->Name = "LatoAPorte";
+
+		for each( KeyValuePair<int , List<Fermata^>^> kvp in tabella->get_TabellaOrario() )
+		{
+
+		String ^po=kvp.Key+"\n\r";
+		dataGridView1->Rows[riga]->Cells[0]->Value=po;
+
+
+		for each (Fermata ^dvar in kvp.Value)
+		{
+		dataGridView1->Rows[riga]->Cells[1]->Value=dvar->getIdStazione();
+		TimeSpan Arrivo = TimeSpan::FromSeconds(dvar->getOrarioArrivo()*30);
+		dataGridView1->Rows[riga]->Cells[2]->Value= Arrivo.ToString();
+		TimeSpan Partenza = TimeSpan::FromSeconds(dvar->getOrarioPartenza()*30);
+		dataGridView1->Rows[riga]->Cells[3]->Value=Partenza.ToString();
+		dataGridView1->Rows[riga]->Cells[4]->Value=dvar->getBinarioProgrammato();
+		dataGridView1->Rows[riga]->Cells[5]->Value=dvar->gettempoMinimoAperturaPorte();
+		dataGridView1->Rows[riga]->Cells[6]->Value=dvar->getLatoAperturaPorte();
+		riga++;
+		}
+
+		}
+
+		}*/
 #pragma endregion
 	private: System::Void listView1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 			 }
-	private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
-				 this->reportViewer1->RefreshReport();
+
+
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+
+				 wdogs->onNext();
+
+
+
 			 }
 	};
+
+
 }

@@ -79,6 +79,7 @@
     <Reference Include="Microsoft.ReportViewer.WinForms">
       <HintPath>..\..\..\..\..\..\Program Files\Microsoft Visual Studio 11.0\ReportViewer\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -88,9 +89,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Fault.cpp" />
     <ClCompile Include="Form1.cpp" />
+    <ClCompile Include="stateBlocco.cpp" />
+    <ClCompile Include="stateItinerario.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Messaggi.cpp" />
+    <ClCompile Include="Mission.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="pacchettoAcknowledgement.cpp" />
     <ClCompile Include="pacchettoComandoBlocco.cpp" />
@@ -105,16 +110,24 @@
     <ClCompile Include="pacchettostatolineaatc.cpp" />
     <ClCompile Include="pacchettoStatoLineaIXL.cpp" />
     <ClCompile Include="pacchettoStatoSegnali.cpp" />
+    <ClCompile Include="Presentme.cpp" />
+    <ClCompile Include="ProfiloVelocita.cpp" />
     <ClCompile Include="proveSerializzazione.cpp" />
-    <ClCompile Include="String2string.cpp" />
+    <ClCompile Include="stateCDB.cpp" />
+    <ClCompile Include="stateSegnale.cpp" />
     <ClCompile Include="tomWriterTraceListener.cpp" />
     <ClCompile Include="utility.cpp" />
+    <ClCompile Include="wdogcontrol.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Fault.h" />
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="stateBlocco.h" />
+    <ClInclude Include="stateItinerario.h" />
     <ClInclude Include="Messaggi.h" />
+    <ClInclude Include="Mission.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -131,10 +144,14 @@
     <ClInclude Include="pacchettostatolineaatc.h" />
     <ClInclude Include="pacchettoStatoLineaIXL.h" />
     <ClInclude Include="pacchettoStatoSegnali.h" />
-    <ClInclude Include="String2string.h" />
+    <ClInclude Include="Presentme.h" />
+    <ClInclude Include="ProfiloVelocita.h" />
+    <ClInclude Include="stateCDB.h" />
+    <ClInclude Include="stateSegnale.h" />
     <ClInclude Include="struttureDatiMessaggi.h" />
     <ClInclude Include="tomWriterTraceListener.h" />
     <ClInclude Include="utility.h" />
+    <ClInclude Include="wdogcontrol.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">

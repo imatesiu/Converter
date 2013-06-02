@@ -5,6 +5,9 @@
 #include "Messaggi.h"
 #include "tomWriterTraceListener.h"
 #include "Form1.h"
+#include "stateCDB.h"
+#include "stateItinerario.h"
+#include "stateSegnale.h"
 
 namespace Progetto1 {
 
@@ -322,32 +325,35 @@ namespace Progetto1 {
 							 //Stato Linea IXL
 							 pkt1->get_pacchettoStatoLineaIXL()->setNID_PACKET(Int32::Parse(arraystr[3]));
 							 pkt1->get_pacchettoStatoLineaIXL()->setL_PACKET(Int32::Parse(arraystr[4]));
-							 pkt1->get_pacchettoStatoLineaIXL()->setNID_CDB(Int32::Parse(arraystr[5]),0);
-							 pkt1->get_pacchettoStatoLineaIXL()->setQ_STATOCDB(Int32::Parse(arraystr[6]),0);
-							 pkt1->get_pacchettoStatoLineaIXL()->setQ_DEVIATOIO(Int32::Parse(arraystr[7]),0);
+							 stateCDB ^sCDB = gcnew stateCDB(Int32::Parse(arraystr[5]),Int32::Parse(arraystr[6]),Int32::Parse(arraystr[7]));
+							 pkt1->get_pacchettoStatoLineaIXL()->setfirstCDB(sCDB);
 							 pkt1->get_pacchettoStatoLineaIXL()->setN_ITER(Int32::Parse(arraystr[8]));
 							 int i = 1;
 							 for (int z=0;i<pkt1->get_pacchettoStatoLineaIXL()->getN_ITER();i++){
-								 pkt1->get_pacchettoStatoLineaIXL()->setNID_CDB(Int32::Parse(arraystr[8+i]),i);
-								 pkt1->get_pacchettoStatoLineaIXL()->setQ_STATOCDB(Int32::Parse(arraystr[9+i]),i);
-								 pkt1->get_pacchettoStatoLineaIXL()->setQ_DEVIATOIO(Int32::Parse(arraystr[10+i]),i);
+								 stateCDB ^sCDB = gcnew stateCDB(Int32::Parse(arraystr[8+i]),Int32::Parse(arraystr[9+i]),Int32::Parse(arraystr[10+i]));
+								 pkt1->get_pacchettoStatoLineaIXL()->setlastCDB(sCDB);
 							 }
 							 i=i+8;
 							 pkt1->get_pacchettoStatoItinerario()->setNID_PACKET(Int32::Parse(arraystr[i]));
 							 i++;
 							 pkt1->get_pacchettoStatoItinerario()->setL_PACKET(Int32::Parse(arraystr[i]));
 							 i++;
-							 pkt1->get_pacchettoStatoItinerario()->setNID_ITIN(Int32::Parse(arraystr[i]),0);
+							 stateItinerario  ^ itin = gcnew stateItinerario();
+
+							 itin->setNID_ITIN(Int32::Parse(arraystr[i]));
 							 i++;
-							 pkt1->get_pacchettoStatoItinerario()->setQ_STATOITIN(Int32::Parse(arraystr[i]),0);
+							 itin->setQ_STATOITIN(Int32::Parse(arraystr[i]));
+							 pkt1->get_pacchettoStatoItinerario()->setfirstItinerario(itin);
 							 i++;
 							 pkt1->get_pacchettoStatoItinerario()->setN_ITER(Int32::Parse(arraystr[i]));
 							 i++;
 							 for (int z=0;z<pkt1->get_pacchettoStatoItinerario()->getN_ITER();z++){
-								 pkt1->get_pacchettoStatoItinerario()->setNID_ITIN(Int32::Parse(arraystr[i]),z);
+								 int NID_ITIN = Int32::Parse(arraystr[i]);
 								 i++;
-								 pkt1->get_pacchettoStatoItinerario()->setQ_STATOITIN(Int32::Parse(arraystr[i]),z);
+								 int Q_STATOITIN =Int32::Parse(arraystr[i]);
 								 i++;
+								 stateItinerario  ^ itin = gcnew stateItinerario(NID_ITIN,Q_STATOITIN);
+								 pkt1->get_pacchettoStatoItinerario()->setlastItinerario(itin);
 							 }
 
 
@@ -355,17 +361,21 @@ namespace Progetto1 {
 							 i++;
 							 pkt1->get_pacchettoStatoSegnali()->setL_PACKET(Int32::Parse(arraystr[i]));
 							 i++;
-							 pkt1->get_pacchettoStatoSegnali()->setNID_SEGN(Int32::Parse(arraystr[i]),0);
+							 int NID_SEGN = (Int32::Parse(arraystr[i]));
 							 i++;
-							 pkt1->get_pacchettoStatoSegnali()->setQSTATO_SEGN(Int32::Parse(arraystr[i]),0);
+							 int QSTATO_SEGN = (Int32::Parse(arraystr[i]));
 							 i++;
+							 stateSegnale ^sSegnale = gcnew stateSegnale(NID_SEGN,QSTATO_SEGN );
+							 pkt1->get_pacchettoStatoSegnali()->setfirststatoSegnale(sSegnale);
 							 pkt1->get_pacchettoStatoSegnali()->setN_ITER(Int32::Parse(arraystr[i]));
 							 i++;
 							 for (int z=0;z<pkt1->get_pacchettoStatoSegnali()->getN_ITER();z++){
-								 pkt1->get_pacchettoStatoSegnali()->setNID_SEGN(Int32::Parse(arraystr[i]),z);
+								 int setNID_SEGN =Int32::Parse(arraystr[i]);
 								 i++;
-								 pkt1->get_pacchettoStatoSegnali()->setQSTATO_SEGN(Int32::Parse(arraystr[i]),z);
+								 int setQSTATO_SEGN= Int32::Parse(arraystr[i]);
 								 i++;
+								 stateSegnale ^sSegnal = gcnew stateSegnale(setNID_SEGN,setQSTATO_SEGN );
+								 pkt1->get_pacchettoStatoSegnali()->setlaststatoSegnale(sSegnal);
 							 }
 
 							 pkt1->get_pacchettoEnd()->setNID_PACKET(255);
@@ -375,16 +385,14 @@ namespace Progetto1 {
 							 //Stato Linea ATC
 							 pkt1->get_pacchettoStatoLineaATC()->setNID_PACKET(Int32::Parse(arraystr[3]));
 							 pkt1->get_pacchettoStatoLineaATC()->setL_PACKET(Int32::Parse(arraystr[4]));
-							 pkt1->get_pacchettoStatoLineaATC()->setNID_CDB(Int32::Parse(arraystr[5]),0);
-							 pkt1->get_pacchettoStatoLineaATC()->setQ_STATOCDB(Int32::Parse(arraystr[6]),0);
-							 pkt1->get_pacchettoStatoLineaATC()->setQ_DEVIATIOIO(Int32::Parse(arraystr[7]),0);
+							 stateCDB ^sCDB = gcnew stateCDB(Int32::Parse(arraystr[5]),Int32::Parse(arraystr[6]),Int32::Parse(arraystr[7]));
+							 pkt1->get_pacchettoStatoLineaATC()->setfirstCDB(sCDB);
 
 							 pkt1->get_pacchettoStatoLineaATC()->setN_ITER(Int32::Parse(arraystr[8]));
 							 int i = 1;
 							 for (int z=0;i<pkt1->get_pacchettoStatoLineaATC()->getN_ITER();i++){
-								 pkt1->get_pacchettoStatoLineaATC()->setNID_CDB(Int32::Parse(arraystr[8+i]),i);
-								 pkt1->get_pacchettoStatoLineaATC()->setQ_STATOCDB(Int32::Parse(arraystr[9+i]),i);
-								 pkt1->get_pacchettoStatoLineaATC()->setQ_DEVIATIOIO(Int32::Parse(arraystr[10+i]),i);
+								 stateCDB ^sCDB = gcnew stateCDB(Int32::Parse(arraystr[8+i]),Int32::Parse(arraystr[9+i]),Int32::Parse(arraystr[10+i]));
+								 pkt1->get_pacchettoStatoLineaATC()->setlastCDB(sCDB);
 							 }
 
 						 }

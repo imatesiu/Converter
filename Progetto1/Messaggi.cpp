@@ -4,21 +4,20 @@
 
 Messaggi::Messaggi(void)
 {
-	head = new structuredHeader;
-	head->NID_MESSAGE = 0;
-	head->L_MESSAGE = 0;
-	head->T_TIME = 0;
-	head->NID_ENGINE=0;
+	NID_MESSAGE = 0;
+	L_MESSAGE = 0;
+	T_TIME = 0;
+	NID_ENGINE=0;
 }
 
 
 void Messaggi::serialize(byte *buffer)
 {
-	push(buffer, head->NID_MESSAGE, 8, 0);
+	push(buffer, NID_MESSAGE, 8, 0);
 	setL_MESSAGE(getSize());
-	push(buffer, head->L_MESSAGE, 11, 8);
-	push(buffer, head->T_TIME, 32, 19);
-	int N = head->NID_MESSAGE;
+	push(buffer, L_MESSAGE, 11, 8);
+	push(buffer, T_TIME, 32, 19);
+	int N = NID_MESSAGE;
 	int offset = 0;
 	switch (N)
 	{
@@ -26,12 +25,12 @@ void Messaggi::serialize(byte *buffer)
 			   break;}
 	case 201 : {get_pacchettoCommandData()->serializepacchettoCommandData(buffer);
 			   break;}
-	case 215 : {push(buffer, head->NID_ENGINE, 24, 51);
+	case 215 : {push(buffer, NID_ENGINE, 24, 51);
 		get_pacchettoPresentazione()->serialize(buffer);
 			   break;}
 	case 1 : {get_pacchettoStatoLineaATC()->serialize(buffer);
 			 break;}
-	case 210 :{push(buffer, head->NID_ENGINE, 24, 51);
+	case 210 :{push(buffer, NID_ENGINE, 24, 51);
 		get_pacchettoAcknowledgement()->serialize(buffer);
 			  break;}
 	case 101: {offset += 51; 
@@ -79,11 +78,11 @@ void Messaggi::serialize(array<System::Byte>^bytez){
 
 void Messaggi::deserialize(byte *buffer)
 {
-	head->NID_MESSAGE= pop(buffer, 8, 0);
-	head->L_MESSAGE=pop(buffer,11, 8);
-	head->T_TIME=pop(buffer, 32, 19);
+	NID_MESSAGE= pop(buffer, 8, 0);
+	L_MESSAGE=pop(buffer,11, 8);
+	T_TIME=pop(buffer, 32, 19);
 	int offset = 0;
-	switch (head->NID_MESSAGE)
+	switch (NID_MESSAGE)
 	{
 	case 200 : {set_pacchettoMissionPlan();
 		pkgMP->deserializeMissionPlanPkt(buffer);
@@ -96,7 +95,7 @@ void Messaggi::deserialize(byte *buffer)
 
 			   }
 
-	case 215 : {head->NID_ENGINE = pop(buffer, 24, 51);
+	case 215 : {NID_ENGINE = pop(buffer, 24, 51);
 		set_pacchettoPresentazione();
 		pgkPres->deserialize(buffer);
 		break;
@@ -108,7 +107,7 @@ void Messaggi::deserialize(byte *buffer)
 		break;
 			 }
 
-	case 210 : {head->NID_ENGINE = pop(buffer, 24, 51);
+	case 210 : {NID_ENGINE = pop(buffer, 24, 51);
 		set_pacchettoAcknowledgement();
 		pkgAck->deserialize(buffer);
 		break;

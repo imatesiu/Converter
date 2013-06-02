@@ -18,9 +18,6 @@
     <ClCompile Include="MyForm.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="String2string.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
     <ClCompile Include="proveSerializzazione.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
@@ -78,12 +75,36 @@
     <ClCompile Include="utility.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="wdogcontrol.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Presentme.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="stateCDB.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="ProfiloVelocita.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Mission.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="stateItinerario.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="stateSegnale.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="stateBlocco.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Fault.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="String2string.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="tomWriterTraceListener.h">
@@ -138,6 +159,33 @@
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="utility.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="wdogcontrol.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Presentme.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="stateCDB.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="ProfiloVelocita.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Mission.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="stateItinerario.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="stateSegnale.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="stateBlocco.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Fault.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>
