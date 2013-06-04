@@ -329,11 +329,12 @@ namespace Progetto1 {
 							 pkt1->get_pacchettoStatoLineaIXL()->setfirstCDB(sCDB);
 							 pkt1->get_pacchettoStatoLineaIXL()->setN_ITER(Int32::Parse(arraystr[8]));
 							 int i = 1;
-							 for (int z=0;i<pkt1->get_pacchettoStatoLineaIXL()->getN_ITER();i++){
+							 for (int z=0;z<pkt1->get_pacchettoStatoLineaIXL()->getN_ITER();i++){
 								 stateCDB ^sCDB = gcnew stateCDB(Int32::Parse(arraystr[8+i]),Int32::Parse(arraystr[9+i]),Int32::Parse(arraystr[10+i]));
 								 pkt1->get_pacchettoStatoLineaIXL()->setlastCDB(sCDB);
+								 z++;
 							 }
-							 i=i+8;
+							 i=i+10;
 							 pkt1->get_pacchettoStatoItinerario()->setNID_PACKET(Int32::Parse(arraystr[i]));
 							 i++;
 							 pkt1->get_pacchettoStatoItinerario()->setL_PACKET(Int32::Parse(arraystr[i]));

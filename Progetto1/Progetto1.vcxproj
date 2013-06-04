@@ -91,6 +91,7 @@
   <ItemGroup>
     <ClCompile Include="Fault.cpp" />
     <ClCompile Include="Form1.cpp" />
+    <ClCompile Include="pachettoStatoScudetti.cpp" />
     <ClCompile Include="stateBlocco.cpp" />
     <ClCompile Include="stateItinerario.cpp" />
     <ClCompile Include="main.cpp" />
@@ -110,10 +111,10 @@
     <ClCompile Include="pacchettostatolineaatc.cpp" />
     <ClCompile Include="pacchettoStatoLineaIXL.cpp" />
     <ClCompile Include="pacchettoStatoSegnali.cpp" />
-    <ClCompile Include="Presentme.cpp" />
     <ClCompile Include="ProfiloVelocita.cpp" />
     <ClCompile Include="proveSerializzazione.cpp" />
     <ClCompile Include="stateCDB.cpp" />
+    <ClCompile Include="stateScudetti.cpp" />
     <ClCompile Include="stateSegnale.cpp" />
     <ClCompile Include="tomWriterTraceListener.cpp" />
     <ClCompile Include="utility.cpp" />
@@ -124,6 +125,7 @@
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="pachettoStatoScudetti.h" />
     <ClInclude Include="stateBlocco.h" />
     <ClInclude Include="stateItinerario.h" />
     <ClInclude Include="Messaggi.h" />
@@ -144,9 +146,9 @@
     <ClInclude Include="pacchettostatolineaatc.h" />
     <ClInclude Include="pacchettoStatoLineaIXL.h" />
     <ClInclude Include="pacchettoStatoSegnali.h" />
-    <ClInclude Include="Presentme.h" />
     <ClInclude Include="ProfiloVelocita.h" />
     <ClInclude Include="stateCDB.h" />
+    <ClInclude Include="stateScudetti.h" />
     <ClInclude Include="stateSegnale.h" />
     <ClInclude Include="struttureDatiMessaggi.h" />
     <ClInclude Include="tomWriterTraceListener.h" />

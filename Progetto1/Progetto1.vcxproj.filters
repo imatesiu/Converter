@@ -78,9 +78,6 @@
     <ClCompile Include="wdogcontrol.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="Presentme.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
     <ClCompile Include="stateCDB.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
@@ -100,6 +97,12 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Fault.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="pachettoStatoScudetti.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="stateScudetti.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>
@@ -164,9 +167,6 @@
     <ClInclude Include="wdogcontrol.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="Presentme.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
     <ClInclude Include="stateCDB.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
@@ -186,6 +186,12 @@
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="Fault.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="pachettoStatoScudetti.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="stateScudetti.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>
