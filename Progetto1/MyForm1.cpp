@@ -35,6 +35,7 @@ bool Progetto1::MyForm1::SendMessStatoIXL(List< stateItinerario^> ^listI){
 		MessStatoIXL->get_pacchettoStatoBlocco()->setNID_PACKET(101);
 		 stateItinerario ^primoit = listI[0];
 		 listI->RemoveAt(0);
+		 MessStatoIXL->get_pacchettoStatoItinerario()->setN_ITER(listI->Count);
 		MessStatoIXL->get_pacchettoStatoItinerario()->setlastItinerario(listI);
 
 		Socket ^s = gcnew Socket(System::Net::Sockets::AddressFamily::InterNetwork, System::Net::Sockets::SocketType::Dgram,
