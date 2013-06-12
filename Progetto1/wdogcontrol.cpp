@@ -14,6 +14,7 @@ void wdogcontrol::InitializeComponent(){
 	this->label1 = (gcnew System::Windows::Forms::Label());
 	this->label2 = (gcnew System::Windows::Forms::Label());
 	this->label3 = (gcnew System::Windows::Forms::Label());
+	this->label4 = (gcnew System::Windows::Forms::Label());
 	// 
 	// label0
 	// 
@@ -63,15 +64,34 @@ void wdogcontrol::InitializeComponent(){
 	this->label3->TabIndex = 4;
 	this->label3->Text = L"I";
 
+	// 
+	// label4
+	// 
+	this->label4->AutoSize = true;
+	this->label4->Font = (gcnew System::Drawing::Font(L"Cooper Black", 10.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+		static_cast<System::Byte>(0)));
+	this->label4->ForeColor = System::Drawing::Color::Red;
+	this->label4->Location = System::Drawing::Point(1,7);
+	this->label4->Name = L"label4";
+	this->label4->Size = System::Drawing::Size(18, 19);
+	this->label4->TabIndex = 5;
+	this->label4->Text = L"_";
+
 	// Add the controls to the user control.
-	array<System::Windows::Forms::Control^>^temp0 = {label0,label1,label2,label3};
-	Controls->AddRange( temp0 );
+//	array<System::Windows::Forms::Control^>^temp0 = {label0,label1,label2,label3,label4};
+	//Controls->AddRange( temp0 );
+	this->Controls->Add(this->label0);	
+	this->Controls->Add(this->label1);
+	this->Controls->Add(this->label2);
+	this->Controls->Add(this->label3);
+	this->Controls->Add(this->label4);
 
 	// Size the user control.
-	Location =   System::Drawing::Point(72, 113);
-	//this->ClientSize = System::Drawing::Size(12, 366);
-	//Size = System::Drawing::Size( 150, 66 );
-	//ForeColor=System::Drawing::Color::Yellow;
+	this->Location =   System::Drawing::Point(72, 113);
+	this->AutoSize = true;
+	//this->ClientSize = System::Drawing::Size(112, 366);
+	//Size = System::Drawing::Size( 150, 150 );
+	//this->ForeColor=System::Drawing::Color::Yellow;
 	this->ResumeLayout(false);
 	this->PerformLayout();
 }

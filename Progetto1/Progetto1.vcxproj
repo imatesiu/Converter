@@ -89,8 +89,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="binario.cpp" />
     <ClCompile Include="Fault.cpp" />
     <ClCompile Include="Form1.cpp" />
+    <ClCompile Include="Itinerario.cpp" />
+    <ClCompile Include="MyForm1.cpp" />
     <ClCompile Include="pachettoStatoScudetti.cpp" />
     <ClCompile Include="stateBlocco.cpp" />
     <ClCompile Include="stateItinerario.cpp" />
@@ -116,13 +119,22 @@
     <ClCompile Include="stateCDB.cpp" />
     <ClCompile Include="stateScudetti.cpp" />
     <ClCompile Include="stateSegnale.cpp" />
+    <ClCompile Include="stazione.cpp" />
+    <ClCompile Include="tabellaFermate.cpp" />
+    <ClCompile Include="tabellaItinerari.cpp" />
+    <ClCompile Include="tableLayoutPanelSingleItin.cpp" />
     <ClCompile Include="tomWriterTraceListener.cpp" />
     <ClCompile Include="utility.cpp" />
     <ClCompile Include="wdogcontrol.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="binario.h" />
     <ClInclude Include="Fault.h" />
     <ClInclude Include="Form1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Itinerario.h" />
+    <ClInclude Include="MyForm1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="pachettoStatoScudetti.h" />
@@ -150,7 +162,11 @@
     <ClInclude Include="stateCDB.h" />
     <ClInclude Include="stateScudetti.h" />
     <ClInclude Include="stateSegnale.h" />
+    <ClInclude Include="stazione.h" />
     <ClInclude Include="struttureDatiMessaggi.h" />
+    <ClInclude Include="tabellaFermate.h" />
+    <ClInclude Include="tabellaItinerari.h" />
+    <ClInclude Include="tableLayoutPanelSingleItin.h" />
     <ClInclude Include="tomWriterTraceListener.h" />
     <ClInclude Include="utility.h" />
     <ClInclude Include="wdogcontrol.h" />
@@ -161,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm1.resx">
+      <DependentUpon>MyForm1.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

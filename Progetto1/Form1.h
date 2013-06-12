@@ -10,6 +10,10 @@ namespace Progetto1 {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
+	using namespace System::Net;
+	using namespace System::Net::Sockets;
+	using namespace System::Text;
+
 	/// <summary>
 	/// Riepilogo per Form1
 	/// </summary>
@@ -67,6 +71,16 @@ namespace Progetto1 {
 
 			 wdogcontrol ^wdogs;
 	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::Label^  label4;
+	private: System::Windows::Forms::Label^  label5;
+	private: System::Windows::Forms::Label^  label6;
+	private: System::Windows::Forms::Label^  label7;
+	private: System::Windows::Forms::TableLayoutPanel^  tableLayoutPanel1;
+	private: System::Windows::Forms::Button^  button2;
+	private: System::Windows::Forms::Button^  button3;
+
+
+
 
 
 
@@ -99,7 +113,15 @@ namespace Progetto1 {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->tableLayoutPanel1 = (gcnew System::Windows::Forms::TableLayoutPanel());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
+			this->tableLayoutPanel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -149,12 +171,14 @@ namespace Progetto1 {
 			// 
 			// button1
 			// 
+			this->button1->BackColor = System::Drawing::Color::Silver;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button1->Location = System::Drawing::Point(592, 21);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 7;
 			this->button1->Text = L"button1";
-			this->button1->UseVisualStyleBackColor = true;
+			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
 			// 
 			// label0
@@ -163,7 +187,7 @@ namespace Progetto1 {
 			this->label0->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->label0->ForeColor = System::Drawing::Color::Blue;
-			this->label0->Location = System::Drawing::Point(1, 0);
+			this->label0->Location = System::Drawing::Point(0, -2);
 			this->label0->Name = L"label0";
 			this->label0->Size = System::Drawing::Size(15, 19);
 			this->label0->TabIndex = 1;
@@ -205,23 +229,119 @@ namespace Progetto1 {
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"I";
 			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Cooper Black", 9.75F));
+			this->label4->ForeColor = System::Drawing::Color::Red;
+			this->label4->Location = System::Drawing::Point(1, 6);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(14, 15);
+			this->label4->TabIndex = 8;
+			this->label4->Text = L"_";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Cooper Black", 9.75F));
+			this->label5->ForeColor = System::Drawing::Color::Red;
+			this->label5->Location = System::Drawing::Point(15, 6);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(14, 15);
+			this->label5->TabIndex = 9;
+			this->label5->Text = L"_";
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Cooper Black", 9.75F));
+			this->label6->ForeColor = System::Drawing::Color::Red;
+			this->label6->Location = System::Drawing::Point(47, 6);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(14, 15);
+			this->label6->TabIndex = 10;
+			this->label6->Text = L"_";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Cooper Black", 9.75F));
+			this->label7->ForeColor = System::Drawing::Color::Red;
+			this->label7->Location = System::Drawing::Point(32, 6);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(14, 15);
+			this->label7->TabIndex = 11;
+			this->label7->Text = L"_";
+			// 
+			// tableLayoutPanel1
+			// 
+			this->tableLayoutPanel1->AutoSize = true;
+			this->tableLayoutPanel1->ColumnCount = 2;
+			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent, 
+				50)));
+			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent, 
+				50)));
+			this->tableLayoutPanel1->Controls->Add(this->button2, 0, 0);
+			this->tableLayoutPanel1->Controls->Add(this->button3, 1, 1);
+			this->tableLayoutPanel1->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->tableLayoutPanel1->Location = System::Drawing::Point(216, 268);
+			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
+			this->tableLayoutPanel1->RowCount = 4;
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 19)));
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 10)));
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
+			this->tableLayoutPanel1->Size = System::Drawing::Size(257, 100);
+			this->tableLayoutPanel1->TabIndex = 12;
+			// 
+			// button2
+			// 
+			this->button2->AccessibleRole = System::Windows::Forms::AccessibleRole::Grip;
+			this->button2->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->tableLayoutPanel1->SetColumnSpan(this->button2, 2);
+			this->button2->Location = System::Drawing::Point(91, 3);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(75, 23);
+			this->button2->TabIndex = 0;
+			this->button2->Text = L"button2";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &Form1::button2_Click);
+			// 
+			// button3
+			// 
+			this->button3->AutoSize = true;
+			this->button3->Enabled = false;
+			this->button3->Location = System::Drawing::Point(131, 32);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(75, 13);
+			this->button3->TabIndex = 1;
+			this->button3->Text = L"button3";
+			this->button3->UseVisualStyleBackColor = true;
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(704, 421);
+			this->Controls->Add(this->tableLayoutPanel1);
+			this->Controls->Add(this->label0);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->linkLabel1);
 			this->Controls->Add(this->label11);
-			this->Controls->Add(this->label0);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label3);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->label6);
+			this->Controls->Add(this->label5);
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"Form1";
 			this->Text = L"Form1";
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
+			this->tableLayoutPanel1->ResumeLayout(false);
+			this->tableLayoutPanel1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -277,11 +397,33 @@ namespace Progetto1 {
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 
 				 wdogs->onNext();
+				 if(this->button1->BackColor==System::Drawing::Color::Silver){
+					 this->button1->BackColor= System::Drawing::Color::Red;
+					 return;
+				 }
+				 if(this->button1->BackColor== System::Drawing::Color::Red){
+					 this->button1->BackColor= System::Drawing::Color::Silver;
+					 return;
+				 }
 
+				 /*	 Socket ^s = gcnew Socket(System::Net::Sockets::AddressFamily::InterNetwork, System::Net::Sockets::SocketType::Dgram,
+				 System::Net::Sockets::ProtocolType::Udp);
+
+				 IPAddress ^broadcast = IPAddress::Parse("146.48.84.52");
+
+				 array<Byte>^sendBytes = Encoding::ASCII->GetBytes( "Is anybody there?" );
+
+				 IPEndPoint ^ep = gcnew IPEndPoint(broadcast, 23002);
+
+				 s->SendTo( sendBytes, ep);
+
+				 Console::WriteLine("Message sent to the broadcast address");*/
 
 
 			 }
-	};
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+			 }
+};
 
 
 }

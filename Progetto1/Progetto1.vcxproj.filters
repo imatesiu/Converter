@@ -105,6 +105,27 @@
     <ClCompile Include="stateScudetti.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="tableLayoutPanelSingleItin.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="MyForm1.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="binario.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Itinerario.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="stazione.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="tabellaFermate.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="tabellaItinerari.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -192,6 +213,27 @@
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="stateScudetti.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="tableLayoutPanelSingleItin.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="MyForm1.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="binario.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Itinerario.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="stazione.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="tabellaFermate.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="tabellaItinerari.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>
