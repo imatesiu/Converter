@@ -82,12 +82,12 @@ using namespace System::Net::Sockets;
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
-			this->tableLayoutPanel1->Size = System::Drawing::Size(1002, 830);
+			this->tableLayoutPanel1->Size = System::Drawing::Size(808, 830);
 			this->tableLayoutPanel1->TabIndex = 0;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(870, 863);
+			this->button1->Location = System::Drawing::Point(876, 21);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(122, 23);
 			this->button1->TabIndex = 1;
