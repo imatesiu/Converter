@@ -13,7 +13,7 @@ Itinerario::Itinerario(void)
 	latoBanchina = gcnew String ("");
 	prevCDB = 0;
 	nextCDB = 0;
-	cdb=gcnew List<int>();
+	cdb=gcnew List<stateCDB^>();
 	nextstation=0;
 }
 
@@ -29,7 +29,7 @@ System::String^ Itinerario::ToString(){
 	out+=" nextCDB: "+nextCDB;
 	out+=" nextstation: "+nextstation;
 	out+=" CDB: ";
-	for each (int var in cdb)
+	for each (stateCDB ^var in cdb)
 	{
 		out+=var+"; ";
 	}

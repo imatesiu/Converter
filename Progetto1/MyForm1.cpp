@@ -19,7 +19,7 @@ void Progetto1::MyForm1::genera(){
 
 }
 
-bool Progetto1::MyForm1::SendMessStatoIXL(List< stateItinerario^> ^listI){
+bool Progetto1::MyForm1::SendMessStatoIXL(List< stateItinerario^> ^listI, List<stateCDB^> ^listCItin){
 	try{
 		Messaggi ^MessStatoIXL = gcnew Messaggi();
 
@@ -28,15 +28,22 @@ bool Progetto1::MyForm1::SendMessStatoIXL(List< stateItinerario^> ^listI){
 		MessStatoIXL->get_pacchettoStatoItinerario()->setNID_PACKET(101);
 		MessStatoIXL->get_pacchettoStatoSegnali()->setNID_PACKET(101);
 
-				MessStatoIXL->get_pacchettoStatoSegnali()->setL_PACKET(101);
-				MessStatoIXL->get_pacchettoStatoSegnali()->setfirststatoSegnale(gcnew stateSegnale(12,2));
+		MessStatoIXL->get_pacchettoStatoSegnali()->setL_PACKET(101);
+		MessStatoIXL->get_pacchettoStatoSegnali()->setfirststatoSegnale(gcnew stateSegnale(12,2));
 
 		MessStatoIXL->get_pacchettoStatoLineaIXL()->setNID_PACKET(101);
 		MessStatoIXL->get_pacchettoStatoBlocco()->setNID_PACKET(101);
-		 stateItinerario ^primoit = listI[0];
-		 listI->RemoveAt(0);
-		 MessStatoIXL->get_pacchettoStatoItinerario()->setN_ITER(listI->Count);
+		stateItinerario ^primoit = listI[0];
+		MessStatoIXL->get_pacchettoStatoItinerario()->setfirstItinerario(primoit);
+		listI->RemoveAt(0);
+		MessStatoIXL->get_pacchettoStatoItinerario()->setN_ITER(listI->Count);
 		MessStatoIXL->get_pacchettoStatoItinerario()->setlastItinerario(listI);
+
+		stateCDB ^CItin = listCItin[0];
+		listCItin->RemoveAt(0);
+		MessStatoIXL->get_pacchettoStatoLineaIXL()->setfirstCDB(CItin);
+		MessStatoIXL->get_pacchettoStatoLineaIXL()->setN_ITER(listCItin->Count);
+		MessStatoIXL->get_pacchettoStatoLineaIXL()->setlastCDB(listCItin);
 
 		Socket ^s = gcnew Socket(System::Net::Sockets::AddressFamily::InterNetwork, System::Net::Sockets::SocketType::Dgram,
 			System::Net::Sockets::ProtocolType::Udp);
@@ -59,4 +66,25 @@ bool Progetto1::MyForm1::SendMessStatoIXL(List< stateItinerario^> ^listI){
 		Console::WriteLine( "Errore "+eException->Message);
 		return false;
 	}
+}
+
+List<stateCDB^> ^Progetto1::MyForm1::listCdBItin(int idstazione,int iditineraio){
+	if(tabItinerari->getMap()->ContainsKey(idstazione)){
+		if(tabItinerari->getMap()[idstazione]->getItinerariid()->ContainsKey(iditineraio)){
+			Itinerario ^itin = tabItinerari->getMap()[idstazione]->getItinerariid()[iditineraio];
+			return itin->getLCDB();
+		}
+
+	}
+
+
+}
+
+void Progetto1::MyForm1::setCdBItin(List<stateCDB^> ^listCdB, int stato){
+	for each (stateCDB ^cdb in listCdB)
+	{
+		cdb->setQ_STATOCDB(stato);
+	}
+
+
 }

@@ -4,7 +4,7 @@
 stateCDB::stateCDB(void)
 {
 	NID_CDB = 0;
-	Q_STATOCDB = 0;
+	Q_STATOCDB = 3;
 	Q_DEVIATOIO = 0;
 }
 stateCDB::stateCDB(int nid, int state, int dev)

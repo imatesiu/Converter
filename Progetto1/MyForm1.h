@@ -37,7 +37,10 @@ using namespace System::Net::Sockets;
 			//
 		}
 		void genera();
-	private: bool SendMessStatoIXL(List< stateItinerario^> ^listI);
+	private: bool SendMessStatoIXL(List< stateItinerario^> ^listI, List<stateCDB^> ^listCItin);
+			 List<stateCDB^> ^listCdBItin(int idstazione,int iditineraio);
+			 void setCdBItin(List<stateCDB^> ^listCdB, int stato);
+
 	protected:
 		/// <summary>
 		/// Liberare le risorse in uso.
@@ -110,7 +113,7 @@ using namespace System::Net::Sockets;
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 				 List< stateItinerario^> ^listI = gcnew List< stateItinerario^>();
-
+				 List<stateCDB^> ^listCItin = gcnew  List<stateCDB^>();
 				 for each ( tableLayoutPanelSingleItin ^c in tableLayoutPanel1->Controls )
 				 {
 					 int i=0;
@@ -126,14 +129,21 @@ using namespace System::Net::Sockets;
 						 if(i>1){
 							 Button ^s  = (Button ^ )ssx;
 						 stateItinerario^ itin = gcnew stateItinerario();
-						 itin->setNID_ITIN(int::Parse(s->Name)+offset);
+						 int iditinerario = int::Parse(s->Name);
+
+						 List<stateCDB^> ^listC = listCdBItin(offset,iditinerario);
+
+
+						 itin->setNID_ITIN(iditinerario+offset);
 						 if(s->BackColor== System::Drawing::Color::Red){
 							 itin->setQ_STATOITIN(1);
+							 setCdBItin(listC,1);
 						 }else{
 
 							 itin->setQ_STATOITIN(0);
+							 setCdBItin(listC,2);
 						 }
-
+						 listCItin->AddRange(listC);
 						 listI->Add(itin);
 						 Console::WriteLine(itin);
 						 }
@@ -144,7 +154,7 @@ using namespace System::Net::Sockets;
 
 				 }
 
-				 SendMessStatoIXL(listI);
+				 SendMessStatoIXL(listI, listCItin);
 
 			 }
 	};
