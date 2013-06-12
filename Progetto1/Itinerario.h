@@ -4,7 +4,7 @@ using namespace System;
 using namespace System::Collections::Generic;
 ref class Itinerario
 {
-	int ^id;
+	int id;
 	String ^name;
 	String ^direzione;
 	int lrgb;
@@ -17,8 +17,8 @@ ref class Itinerario
 	int nextstation;
 public:
 	Itinerario(void);
-	void setId(int ^i){id = i;}
-	int^ getId(){return id;}
+	void setId(int i){id = i;}
+	int getId(){return id;}
 	void set_nextstation(int i){nextstation = i;}
 	int^ get_nextstation(){return nextstation;}
 	void setName(String ^i){name = i;}

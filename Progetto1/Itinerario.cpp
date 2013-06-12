@@ -4,7 +4,7 @@ using namespace System::Collections::Generic;
 
 Itinerario::Itinerario(void)
 {
-	id = nullptr;
+	id = 0;
 	name=gcnew String("");
 	direzione = gcnew String("");
 	lrgb = 0;

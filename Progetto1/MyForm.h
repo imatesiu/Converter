@@ -407,8 +407,7 @@ namespace Progetto1 {
 							 pkt1->get_pacchettoEnd()->setNID_PACKET(255);
 
 						 }
-						 array<Byte>^bytez = gcnew array<Byte>(pkt1->getSize());
-						 pkt1->serialize(bytez);
+						 array<Byte>^bytez = pkt1->serialize();
 
 
 						 String ^hex = BitConverter::ToString(bytez);

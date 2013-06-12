@@ -15,10 +15,12 @@ ref class tableLayoutPanelSingleItin : public System::Windows::Forms::UserContro
 	int rigau;
 public:
 	tableLayoutPanelSingleItin(stazione ^station);
-	void init(String ^nome);
-	Button^ getButton(String ^textbutton);
-	void addbuttonEntrata(String ^namebutton);
-	void addbuttonUscita(String ^namebutton);
+
+	void init(String ^nome, int id);
+	TableLayoutPanel ^getTableLayoutPanel(){return tableLayoutPanel1;};
+	Button^ getButton(String ^textbutton, int id);
+	void addbuttonEntrata(String ^namebutton, int id);
+	void addbuttonUscita(String ^namebutton, int id);
 	Void button_Click(System::Object^  sender, System::EventArgs^  e);
 	void paint(stazione ^station);
 };

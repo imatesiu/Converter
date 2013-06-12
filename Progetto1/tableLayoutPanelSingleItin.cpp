@@ -4,11 +4,11 @@ tableLayoutPanelSingleItin::tableLayoutPanelSingleItin(stazione ^station)
 {
 	rigae =1;
 	rigau =1;
-	init(station->get_NomeStazione());
+	init(station->get_NomeStazione(), station->get_idStazione());
 	paint(station);
 }
 
-void tableLayoutPanelSingleItin::init(String ^name){
+void tableLayoutPanelSingleItin::init(String ^name, int id){
 	this-> components = gcnew System::ComponentModel::Container;
 	this->errorProvider = gcnew System::Windows::Forms::ErrorProvider;
 	this->tableLayoutPanel1 = (gcnew System::Windows::Forms::TableLayoutPanel());
@@ -35,7 +35,7 @@ void tableLayoutPanelSingleItin::init(String ^name){
 	this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
 	this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
 	this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
-	this->tableLayoutPanel1->Size = System::Drawing::Size(200, 100);
+	this->tableLayoutPanel1->Size = System::Drawing::Size(200, 150);
 	this->tableLayoutPanel1->TabIndex = 12;
 
 
@@ -48,7 +48,7 @@ void tableLayoutPanelSingleItin::init(String ^name){
 		static_cast<System::Byte>(0)));
 	this->label0->ForeColor = System::Drawing::Color::Blue;
 	this->label0->Location = System::Drawing::Point(0, -2);
-	this->label0->Name = L"label0";
+	this->label0->Name = id.ToString();
 	this->label0->Size = System::Drawing::Size(15, 19);
 	this->label0->TabIndex = 1;
 	this->label0->Text = name;
@@ -69,7 +69,7 @@ void tableLayoutPanelSingleItin::init(String ^name){
 
 }
 
-Button^ tableLayoutPanelSingleItin::getButton(String ^textbutton){
+Button^ tableLayoutPanelSingleItin::getButton(String ^textbutton, int id){
 	// 
 	// button
 	// 
@@ -81,7 +81,7 @@ Button^ tableLayoutPanelSingleItin::getButton(String ^textbutton){
 	button->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 
 	//button->Location = System::Drawing::Point(91, 3);
-	button->Name = textbutton;
+	button->Name = id.ToString();
 	button->Size = System::Drawing::Size(75, 23);
 	button->TabIndex = 0;
 	button->Text = textbutton;
@@ -109,15 +109,15 @@ System::Void tableLayoutPanelSingleItin::button_Click(System::Object^  sender, S
 
 }
 
-void tableLayoutPanelSingleItin::addbuttonEntrata(String ^namebutton){
+void tableLayoutPanelSingleItin::addbuttonEntrata(String ^namebutton, int id){
 
-	this->tableLayoutPanel1->Controls->Add(getButton(namebutton), 0, rigae);
+	this->tableLayoutPanel1->Controls->Add(getButton(namebutton, id), 0, rigae);
 	rigae++;
 
 }
-void tableLayoutPanelSingleItin::addbuttonUscita(String ^namebutton){
+void tableLayoutPanelSingleItin::addbuttonUscita(String ^namebutton, int id){
 
-	this->tableLayoutPanel1->Controls->Add(getButton(namebutton), 1, rigau);
+	this->tableLayoutPanel1->Controls->Add(getButton(namebutton, id), 1, rigau);
 	rigau++;
 
 }
@@ -129,9 +129,9 @@ Dictionary<int,Itinerario^ >::ValueCollection ^valuecollitini = station->getItin
 		{
 			if(var->getDStop()>0){
 
-				this->addbuttonEntrata(var->getName());
+				this->addbuttonEntrata(var->getName(),var->getId());
 			}else{
-				this->addbuttonUscita(var->getName());
+				this->addbuttonUscita(var->getName(),var->getId());
 
 			}
 		}
