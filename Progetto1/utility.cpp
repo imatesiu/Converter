@@ -1,8 +1,7 @@
 #include "utility.h"
 
- char masks[] = {-128,64,32,16,8,4,2,1}; // le maschere per settare i bit
+ 
 
-char vet[5]; // il buffer su cui si deve scrivere
 
 //
 // dato un offset >=0 (0..*) che rappresenta la posizione di un bit all'interno
@@ -12,6 +11,8 @@ void utility::setbit(char buf[], int offset) {
   //
   // estrai il Byte da modifcare
   //
+	char masks[] = {-128,64,32,16,8,4,2,1}; // le maschere per settare i bit
+
   int Byteoffset = offset/8;
   int bitoffset = offset%8;
   char workByte;
@@ -86,6 +87,7 @@ int utility::getbit(char buf[], int offset) {
   //
   // leggi il bit;
   //
+  	char masks[] = {-128,64,32,16,8,4,2,1}; // le maschere per settare i bit
   res = (workByte & masks[bitoffset]) != 0;
   return res;
 }
