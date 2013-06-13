@@ -143,7 +143,7 @@ using namespace System::Net::Sockets;
 
 							 itin->setQ_STATOITIN(0);
 							 if(s->BackColor== System::Drawing::Color::Green){
-							 setCdBItin(listC,2);
+							 setCdBItin(listC,0);
 							 listCItin->AddRange(listC);
 							 }
 						 }
