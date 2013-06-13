@@ -38,13 +38,17 @@ bool Progetto1::MyForm1::SendMessStatoIXL(List< stateItinerario^> ^listI, List<s
 		listI->RemoveAt(0);
 		MessStatoIXL->get_pacchettoStatoItinerario()->setN_ITER(listI->Count);
 		MessStatoIXL->get_pacchettoStatoItinerario()->setlastItinerario(listI);
-
+		if(listCItin->Count>1){
 		stateCDB ^CItin = listCItin[0];
 		listCItin->RemoveAt(0);
 		MessStatoIXL->get_pacchettoStatoLineaIXL()->setfirstCDB(CItin);
+		
 		MessStatoIXL->get_pacchettoStatoLineaIXL()->setN_ITER(listCItin->Count);
 		MessStatoIXL->get_pacchettoStatoLineaIXL()->setlastCDB(listCItin);
+		}else{
+			MessStatoIXL->get_pacchettoStatoLineaIXL()->setN_ITER(0);
 
+		}
 		Socket ^s = gcnew Socket(System::Net::Sockets::AddressFamily::InterNetwork, System::Net::Sockets::SocketType::Dgram,
 			System::Net::Sockets::ProtocolType::Udp);
 

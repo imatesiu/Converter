@@ -10,7 +10,7 @@ int main()
 {
 //Trace::WriteLine("Hello world");
 	Progetto1::Form1 ^d = gcnew Progetto1::Form1();
-				 d->Show();
+			//	 d->Show();
 
 
 				 	Progetto1::MyForm1 ^ds = gcnew Progetto1::MyForm1();

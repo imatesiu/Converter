@@ -126,7 +126,7 @@ using namespace System::Net::Sockets;
 							 offset = int::Parse(l->Name);
 
 						 }
-						 if(i>1){
+						 if(i>0){
 							 Button ^s  = (Button ^ )ssx;
 						 stateItinerario^ itin = gcnew stateItinerario();
 						 int iditinerario = int::Parse(s->Name);
@@ -138,12 +138,16 @@ using namespace System::Net::Sockets;
 						 if(s->BackColor== System::Drawing::Color::Red){
 							 itin->setQ_STATOITIN(1);
 							 setCdBItin(listC,1);
+							  listCItin->AddRange(listC);
 						 }else{
 
 							 itin->setQ_STATOITIN(0);
+							 if(s->BackColor== System::Drawing::Color::Green){
 							 setCdBItin(listC,2);
+							 listCItin->AddRange(listC);
+							 }
 						 }
-						 listCItin->AddRange(listC);
+						
 						 listI->Add(itin);
 						 Console::WriteLine(itin);
 						 }

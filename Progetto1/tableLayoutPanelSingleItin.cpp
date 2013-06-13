@@ -103,6 +103,10 @@ System::Void tableLayoutPanelSingleItin::button_Click(System::Object^  sender, S
 		return;
 	}
 	if(button->BackColor== System::Drawing::Color::Red){
+		button->BackColor= System::Drawing::Color::Green;
+		return;
+	}
+	if(button->BackColor== System::Drawing::Color::Green){
 		button->BackColor= System::Drawing::Color::Silver;
 		return;
 	}
