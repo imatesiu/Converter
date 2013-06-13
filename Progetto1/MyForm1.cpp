@@ -81,7 +81,7 @@ List<stateCDB^> ^Progetto1::MyForm1::listCdBItin(int idstazione,int iditineraio)
 
 	}
 
-
+	return nullptr;
 }
 
 void Progetto1::MyForm1::setCdBItin(List<stateCDB^> ^listCdB, int stato){

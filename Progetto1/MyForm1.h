@@ -137,7 +137,7 @@ using namespace System::Net::Sockets;
 						 itin->setNID_ITIN(iditinerario+offset);
 						 if(s->BackColor== System::Drawing::Color::Red){
 							 itin->setQ_STATOITIN(1);
-							 setCdBItin(listC,1);
+							 setCdBItin(listC,2);
 							  listCItin->AddRange(listC);
 						 }else{
 
