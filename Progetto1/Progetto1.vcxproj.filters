@@ -18,7 +18,37 @@
     <ClCompile Include="MyForm.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="proveSerializzazione.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="tomWriterTraceListener.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Form1.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Messaggi.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
     <ClCompile Include="pacchettoAcknowledgement.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="pacchettoComandoBlocco.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="pacchettoComandoItinerari.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="pacchettoCommandData.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="pacchettoEnd.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="pacchettoFaultData.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="pacchettoMissionPlan.cpp">
@@ -27,22 +57,73 @@
     <ClCompile Include="pacchettopresentazione.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="pacchettoStatoBlocco.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="pacchettoStatoItinerario.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
     <ClCompile Include="pacchettostatolineaatc.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="String2string.cpp">
+    <ClCompile Include="pacchettoStatoLineaIXL.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="proveSerializzazione.cpp">
+    <ClCompile Include="pacchettoStatoSegnali.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="utility.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="Messaggi.cpp">
+    <ClCompile Include="wdogcontrol.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="pacchettoCommandData.cpp">
+    <ClCompile Include="stateCDB.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="ProfiloVelocita.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Mission.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="stateItinerario.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="stateSegnale.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="stateBlocco.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Fault.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="pachettoStatoScudetti.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="stateScudetti.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="tableLayoutPanelSingleItin.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="MyForm1.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="binario.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Itinerario.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="stazione.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="tabellaFermate.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="tabellaItinerari.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,7 +131,31 @@
     <ClInclude Include="MyForm.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="tomWriterTraceListener.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Form1.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Messaggi.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
     <ClInclude Include="pacchettoAcknowledgement.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="pacchettoComandoBlocco.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="pacchettoComandoItinerari.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="pacchettoCommandData.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="pacchettoEnd.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="pacchettoFaultData.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="pacchettoMissionPlan.h">
@@ -59,10 +164,19 @@
     <ClInclude Include="pacchettopresentazione.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="proveSerializzazione.h">
+    <ClInclude Include="pacchettoStatoBlocco.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="String2string.h">
+    <ClInclude Include="pacchettoStatoItinerario.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="pacchettostatolineaatc.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="pacchettoStatoLineaIXL.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="pacchettoStatoSegnali.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="struttureDatiMessaggi.h">
@@ -71,13 +185,55 @@
     <ClInclude Include="utility.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="pacchettostatolineaatc.h">
+    <ClInclude Include="wdogcontrol.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="Messaggi.h">
+    <ClInclude Include="stateCDB.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="pacchettoCommandData.h">
+    <ClInclude Include="ProfiloVelocita.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Mission.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="stateItinerario.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="stateSegnale.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="stateBlocco.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Fault.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="pachettoStatoScudetti.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="stateScudetti.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="tableLayoutPanelSingleItin.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="MyForm1.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="binario.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Itinerario.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="stazione.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="tabellaFermate.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="tabellaItinerari.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>
@@ -85,5 +241,17 @@
     <EmbeddedResource Include="MyForm.resx">
       <Filter>File di risorse</Filter>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Converter1.aps" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Converter2.rc">
+      <Filter>File di risorse</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

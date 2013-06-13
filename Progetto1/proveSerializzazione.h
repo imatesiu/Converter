@@ -8,10 +8,10 @@ ref class proveSerializzazione
 {
 public:
 	proveSerializzazione(void);
-	void provaSerializePacchettostatolineaatc(pacchettostatolineaatc &pkt, int index);
-	void provaSerializePacchettoPresentazione(pacchettopresentazione &pkt);
+	/*void provaSerializePacchettostatolineaatc(pacchettostatolineaatc &pkt, int index);
+	void provaSerializePacchettoPresentazione(pacchettopresentazione ^pkt);
 	void provaSerializePacchettoack(pacchettoAcknowledgement &pkt);
-	void provaSerializePacchettoCommandData1(pacchettoCommandData &pkt);
+	void provaSerializePacchettoCommandData1(pacchettoCommandData ^pkt);*/
 
 
 

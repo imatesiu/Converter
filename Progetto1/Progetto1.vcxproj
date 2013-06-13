@@ -58,6 +58,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies />
     </Link>
+    <PostBuildEvent>
+      <Command>copy app.config "$(TargetPath).config"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -70,43 +73,121 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common">
+      <HintPath>Microsoft.ReportViewer.Common</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms">
+      <HintPath>..\..\..\..\..\..\Program Files\Microsoft Visual Studio 11.0\ReportViewer\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="binario.cpp" />
+    <ClCompile Include="Fault.cpp" />
+    <ClCompile Include="Form1.cpp" />
+    <ClCompile Include="Itinerario.cpp" />
+    <ClCompile Include="MyForm1.cpp" />
+    <ClCompile Include="pachettoStatoScudetti.cpp" />
+    <ClCompile Include="stateBlocco.cpp" />
+    <ClCompile Include="stateItinerario.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Messaggi.cpp" />
+    <ClCompile Include="Mission.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="pacchettoAcknowledgement.cpp" />
+    <ClCompile Include="pacchettoComandoBlocco.cpp" />
+    <ClCompile Include="pacchettoComandoItinerari.cpp" />
     <ClCompile Include="pacchettoCommandData.cpp" />
+    <ClCompile Include="pacchettoEnd.cpp" />
+    <ClCompile Include="pacchettoFaultData.cpp" />
     <ClCompile Include="pacchettoMissionPlan.cpp" />
     <ClCompile Include="pacchettopresentazione.cpp" />
+    <ClCompile Include="pacchettoStatoBlocco.cpp" />
+    <ClCompile Include="pacchettoStatoItinerario.cpp" />
     <ClCompile Include="pacchettostatolineaatc.cpp" />
+    <ClCompile Include="pacchettoStatoLineaIXL.cpp" />
+    <ClCompile Include="pacchettoStatoSegnali.cpp" />
+    <ClCompile Include="ProfiloVelocita.cpp" />
     <ClCompile Include="proveSerializzazione.cpp" />
-    <ClCompile Include="String2string.cpp" />
+    <ClCompile Include="stateCDB.cpp" />
+    <ClCompile Include="stateScudetti.cpp" />
+    <ClCompile Include="stateSegnale.cpp" />
+    <ClCompile Include="stazione.cpp" />
+    <ClCompile Include="tabellaFermate.cpp" />
+    <ClCompile Include="tabellaItinerari.cpp" />
+    <ClCompile Include="tableLayoutPanelSingleItin.cpp" />
+    <ClCompile Include="tomWriterTraceListener.cpp" />
     <ClCompile Include="utility.cpp" />
+    <ClCompile Include="wdogcontrol.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="binario.h" />
+    <ClInclude Include="Fault.h" />
+    <ClInclude Include="Form1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Itinerario.h" />
+    <ClInclude Include="MyForm1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="pachettoStatoScudetti.h" />
+    <ClInclude Include="stateBlocco.h" />
+    <ClInclude Include="stateItinerario.h" />
     <ClInclude Include="Messaggi.h" />
+    <ClInclude Include="Mission.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="pacchettoAcknowledgement.h" />
+    <ClInclude Include="pacchettoComandoBlocco.h" />
+    <ClInclude Include="pacchettoComandoItinerari.h" />
     <ClInclude Include="pacchettoCommandData.h" />
+    <ClInclude Include="pacchettoEnd.h" />
+    <ClInclude Include="pacchettoFaultData.h" />
     <ClInclude Include="pacchettoMissionPlan.h" />
     <ClInclude Include="pacchettopresentazione.h" />
+    <ClInclude Include="pacchettoStatoBlocco.h" />
+    <ClInclude Include="pacchettoStatoItinerario.h" />
     <ClInclude Include="pacchettostatolineaatc.h" />
-    <ClInclude Include="proveSerializzazione.h" />
-    <ClInclude Include="String2string.h" />
+    <ClInclude Include="pacchettoStatoLineaIXL.h" />
+    <ClInclude Include="pacchettoStatoSegnali.h" />
+    <ClInclude Include="ProfiloVelocita.h" />
+    <ClInclude Include="stateCDB.h" />
+    <ClInclude Include="stateScudetti.h" />
+    <ClInclude Include="stateSegnale.h" />
+    <ClInclude Include="stazione.h" />
     <ClInclude Include="struttureDatiMessaggi.h" />
+    <ClInclude Include="tabellaFermate.h" />
+    <ClInclude Include="tabellaItinerari.h" />
+    <ClInclude Include="tableLayoutPanelSingleItin.h" />
+    <ClInclude Include="tomWriterTraceListener.h" />
     <ClInclude Include="utility.h" />
+    <ClInclude Include="wdogcontrol.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyForm1.resx">
+      <DependentUpon>MyForm1.h</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Converter1.aps" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Converter2.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
