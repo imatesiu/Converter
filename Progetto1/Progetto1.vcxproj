@@ -94,6 +94,7 @@
     <ClCompile Include="Form1.cpp" />
     <ClCompile Include="Itinerario.cpp" />
     <ClCompile Include="MyForm1.cpp" />
+    <ClCompile Include="MyForm2.cpp" />
     <ClCompile Include="pachettoStatoScudetti.cpp" />
     <ClCompile Include="stateBlocco.cpp" />
     <ClCompile Include="stateItinerario.cpp" />
@@ -122,6 +123,7 @@
     <ClCompile Include="stazione.cpp" />
     <ClCompile Include="tabellaFermate.cpp" />
     <ClCompile Include="tabellaItinerari.cpp" />
+    <ClCompile Include="tableLayoutPanelAllCDB.cpp" />
     <ClCompile Include="tableLayoutPanelSingleItin.cpp" />
     <ClCompile Include="tomWriterTraceListener.cpp" />
     <ClCompile Include="utility.cpp" />
@@ -135,6 +137,9 @@
     </ClInclude>
     <ClInclude Include="Itinerario.h" />
     <ClInclude Include="MyForm1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="MyForm2.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="pachettoStatoScudetti.h" />
@@ -166,6 +171,7 @@
     <ClInclude Include="struttureDatiMessaggi.h" />
     <ClInclude Include="tabellaFermate.h" />
     <ClInclude Include="tabellaItinerari.h" />
+    <ClInclude Include="tableLayoutPanelAllCDB.h" />
     <ClInclude Include="tableLayoutPanelSingleItin.h" />
     <ClInclude Include="tomWriterTraceListener.h" />
     <ClInclude Include="utility.h" />
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm1.resx">
       <DependentUpon>MyForm1.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm2.resx">
+      <DependentUpon>MyForm2.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

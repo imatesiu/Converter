@@ -277,10 +277,9 @@ namespace Progetto1 {
 			// 
 			this->tableLayoutPanel1->AutoSize = true;
 			this->tableLayoutPanel1->ColumnCount = 2;
+			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle()));
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent, 
-				50)));
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent, 
-				50)));
+				100)));
 			this->tableLayoutPanel1->Controls->Add(this->button2, 0, 0);
 			this->tableLayoutPanel1->Controls->Add(this->button3, 1, 1);
 			this->tableLayoutPanel1->Cursor = System::Windows::Forms::Cursors::Hand;
@@ -299,6 +298,7 @@ namespace Progetto1 {
 			this->button2->AccessibleRole = System::Windows::Forms::AccessibleRole::Grip;
 			this->button2->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->tableLayoutPanel1->SetColumnSpan(this->button2, 2);
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.25F));
 			this->button2->Location = System::Drawing::Point(91, 3);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 23);
@@ -311,7 +311,7 @@ namespace Progetto1 {
 			// 
 			this->button3->AutoSize = true;
 			this->button3->Enabled = false;
-			this->button3->Location = System::Drawing::Point(131, 32);
+			this->button3->Location = System::Drawing::Point(3, 32);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(75, 13);
 			this->button3->TabIndex = 1;

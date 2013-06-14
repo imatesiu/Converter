@@ -126,6 +126,12 @@
     <ClCompile Include="tabellaItinerari.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="tableLayoutPanelAllCDB.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="MyForm2.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -236,12 +242,21 @@
     <ClInclude Include="tabellaItinerari.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="tableLayoutPanelAllCDB.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="MyForm2.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
       <Filter>File di risorse</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm1.resx">
       <Filter>File di risorse</Filter>
     </EmbeddedResource>
   </ItemGroup>

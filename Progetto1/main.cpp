@@ -2,7 +2,7 @@
 #include "tomWriterTraceListener.h"
 #include "Form1.h"
 #include "MyForm1.h"
-
+#include "MyForm2.h"
 using namespace System::Diagnostics;
 using namespace ApplicationFramework;
 //#define TRACE
@@ -15,6 +15,9 @@ int main()
 
 				 	Progetto1::MyForm1 ^ds = gcnew Progetto1::MyForm1();
 				 ds->Show();
+
+				 	Progetto1::MyForm2 ^ds2 = gcnew Progetto1::MyForm2();
+				 ds2->Show();
 	//tomWriterTraceListener ^s = gcnew tomWriterTraceListener();
 	// Trace::Listeners->Clear();
 	// Trace::Listeners->Add(s);
