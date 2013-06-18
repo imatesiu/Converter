@@ -298,7 +298,8 @@ namespace Progetto1 {
 			this->button2->AccessibleRole = System::Windows::Forms::AccessibleRole::Grip;
 			this->button2->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->tableLayoutPanel1->SetColumnSpan(this->button2, 2);
-			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.25F));
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			this->button2->Location = System::Drawing::Point(91, 3);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 23);

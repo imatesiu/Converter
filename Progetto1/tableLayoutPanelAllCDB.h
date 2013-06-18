@@ -22,7 +22,8 @@ public:
 	Button^ getButton(String ^textbutton);
 	void addbutton(String ^namebutton, int riga, int colonna);
 	//void addbuttonUscita(String ^namebutton, int id);
-	Void button_Click(System::Object^  sender, System::EventArgs^  e);
+	Void button_Click(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
+	Void button_DoubleClick(System::Object^  sender, System::EventArgs^  e);
 	void paint(stazione ^station);
 	void read(String ^file);
 };

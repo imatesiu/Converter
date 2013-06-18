@@ -123,8 +123,9 @@ Button^ tableLayoutPanelAllCDB::getButton(String ^textbutton){
 	button->TabIndex = 0;
 	button->Text = textbutton;
 	button->UseVisualStyleBackColor = true;
-	button->Click += gcnew System::EventHandler(this, &tableLayoutPanelAllCDB::button_Click);
-
+	//button->SetStyle( ControlStyles::StandardDoubleClick, true );
+	button->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &tableLayoutPanelAllCDB::button_Click);
+	//button->DoubleClick += gcnew System::EventHandler(this, &tableLayoutPanelAllCDB::button_DoubleClick);
 
 
 	return button;
@@ -132,9 +133,10 @@ Button^ tableLayoutPanelAllCDB::getButton(String ^textbutton){
 }
 
 
-System::Void tableLayoutPanelAllCDB::button_Click(System::Object^  sender, System::EventArgs^  e) {
-
+System::Void tableLayoutPanelAllCDB::button_Click(System::Object^  sender, System::Windows::Forms::MouseEventArgs ^  e) {
 	Button ^button =(Button^) sender ;
+	if(e->Clicks==1){
+	
 	if(button->BackColor==System::Drawing::Color::Yellow){
 		button->BackColor= System::Drawing::Color::Red;
 		return;
@@ -147,6 +149,20 @@ System::Void tableLayoutPanelAllCDB::button_Click(System::Object^  sender, Syste
 		button->BackColor= System::Drawing::Color::Yellow;
 		return;
 	}
+	}else{
+
+		button->BackColor= System::Drawing::Color::Blue;
+	}
+}
+
+System::Void tableLayoutPanelAllCDB::button_DoubleClick(System::Object^  sender, System::EventArgs^  e) {
+	MessageBox::Show("You are in the Button.DoubleClick event.");
+	Button ^button =(Button^) sender ;
+	//if(button->BackColor==System::Drawing::Color::Yellow){
+	button->BackColor= System::Drawing::Color::Blue;
+	//	return;
+	//}
+	
 
 }
 

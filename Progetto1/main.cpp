@@ -8,6 +8,7 @@ using namespace ApplicationFramework;
 //#define TRACE
 int main()
 {
+	Console::SetBufferSize(Console::WindowWidth, Int16::MaxValue-1);
 //Trace::WriteLine("Hello world");
 	Progetto1::Form1 ^d = gcnew Progetto1::Form1();
 			//	 d->Show();

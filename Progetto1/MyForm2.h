@@ -49,6 +49,8 @@ namespace Progetto1 {
 			}
 		}
 	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::Button^  button2;
+	private: System::Windows::Forms::TextBox^  textBox1;
 	protected: 
 
 	private:
@@ -65,6 +67,8 @@ namespace Progetto1 {
 		void InitializeComponent(void)
 		{
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -73,19 +77,38 @@ namespace Progetto1 {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(128, 23);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"sendStatoCDB";
+			this->button1->Text = L"sendStatoCDBIXL";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm2::button1_Click);
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(175, 473);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(142, 23);
+			this->button2->TabIndex = 1;
+			this->button2->Text = L"SendStatoCDBATC";
+			this->button2->UseVisualStyleBackColor = true;
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(333, 473);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(275, 20);
+			this->textBox1->TabIndex = 2;
 			// 
 			// MyForm2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1342, 510);
+			this->ClientSize = System::Drawing::Size(1276, 510);
+			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Name = L"MyForm2";
 			this->Text = L"MyForm2";
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -106,6 +129,7 @@ namespace Progetto1 {
 						 sCDB= gcnew  stateCDB(idCDB,2,0);
 					 }
 					 lCDB->Add(sCDB);
+					  Console::WriteLine(sCDB);
 				 }
 
 				 SendMessStatoCDBIXL(lCDB);
