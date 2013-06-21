@@ -1,27 +1,38 @@
-#include "stateCDB.h"
+#include "StateCDB.h"
 
 
-stateCDB::stateCDB(void)
+StateCDB::StateCDB(void)
 {
 	NID_CDB = 0;
-	Q_STATOCDB = 3;
-	Q_DEVIATOIO = 0;
+	NID_OPERATIONAL=0;
+	Q_STATOCDB = typeStateCDB::cdbOccupato;
+	Q_DEVIATOIO = typeStateDeviatoio::deviatoioStatoIgnoto;
 }
-stateCDB::stateCDB(int nid, int state, int dev)
+StateCDB::StateCDB(int nid, int state, int dev)
 {
 	NID_CDB = nid;
-	Q_STATOCDB = state;
-	Q_DEVIATOIO = dev;
+	setQ_STATOCDB(state);
+	setQ_DEVIATOIO( dev);
+	NID_OPERATIONAL=0;
 }
 
-System::String ^stateCDB::ToString() {
+StateCDB::StateCDB(int nid, int state, int dev, int idtrain)
+{
+	NID_CDB = nid;
+	setQ_STATOCDB(state);
+	setQ_DEVIATOIO( dev);
+	NID_OPERATIONAL=idtrain;
+}
+
+System::String ^StateCDB::ToString() {
 	System::String ^out;
-
-
-
 	out = out+"NID_CDB: "+NID_CDB+";";
 	out = out+"Q_STATOCDB: "+Q_STATOCDB+";";
 	out = out+"Q_DEVIATIOIO: "+Q_DEVIATOIO+";";
+	if(NID_OPERATIONAL>0){
+		out = out+"NID_OPERATIONAL: "+NID_OPERATIONAL+";";
+	}
 
 	return out;
 }
+

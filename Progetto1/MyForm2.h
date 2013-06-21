@@ -1,6 +1,6 @@
 #pragma once
 #include "tableLayoutPanelAllCDB.h"
-#include "stateCDB.h"
+#include "StateCDB.h"
 #include "Messaggi.h"
 namespace Progetto1 {
 
@@ -16,7 +16,7 @@ namespace Progetto1 {
 	/// <summary>
 	/// Riepilogo per MyForm2
 	/// </summary>
-	 ref class MyForm2 : public System::Windows::Forms::Form
+	ref class MyForm2 : public System::Windows::Forms::Form
 	{
 		tableLayoutPanelAllCDB ^tablel;
 
@@ -36,7 +36,8 @@ namespace Progetto1 {
 			//TODO: aggiungere qui il codice del costruttore.
 			//
 		}
-		bool SendMessStatoCDBIXL(List< stateCDB^> ^lCDB);
+		bool SendMessStatoCDBIXL(List< StateCDB^> ^lCDB);
+		bool SendMessStatoCDBATC(List< StateCDB^> ^lCDB, int idtreno);
 	protected:
 		/// <summary>
 		/// Liberare le risorse in uso.
@@ -51,6 +52,9 @@ namespace Progetto1 {
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::TextBox^  textBox1;
+	private: System::Windows::Forms::TextBox^  textBox2;
+	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::Label^  label2;
 	protected: 
 
 	private:
@@ -69,6 +73,9 @@ namespace Progetto1 {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -89,19 +96,49 @@ namespace Progetto1 {
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"SendStatoCDBATC";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm2::button2_Click);
 			// 
 			// textBox1
 			// 
 			this->textBox1->Location = System::Drawing::Point(333, 473);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(275, 20);
+			this->textBox1->Size = System::Drawing::Size(126, 20);
 			this->textBox1->TabIndex = 2;
+			// 
+			// textBox2
+			// 
+			this->textBox2->Location = System::Drawing::Point(563, 475);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(160, 20);
+			this->textBox2->TabIndex = 3;
+			this->textBox2->Text = L"146.48.84.52";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(614, 459);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(59, 13);
+			this->label1->TabIndex = 4;
+			this->label1->Text = L"IP dell\'ATS";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(330, 457);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(114, 13);
+			this->label2->TabIndex = 5;
+			this->label2->Text = L"Train Running Number";
 			// 
 			// MyForm2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1276, 510);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
@@ -113,26 +150,62 @@ namespace Progetto1 {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-				 List<stateCDB^> ^lCDB = gcnew List<stateCDB^>();
+				 List<StateCDB^> ^lCDB = gcnew List<StateCDB^>();
 				 for each ( Object ^ssx in tablel->getTableLayoutPanel()->Controls )
 				 {
 					 Button ^s  = safe_cast<Button ^>(ssx);
 					 int idCDB = int::Parse(s->Name);
-					 stateCDB ^sCDB;
+					 StateCDB ^sCDB;
 					 if(s->BackColor== System::Drawing::Color::Red){
-						 sCDB= gcnew stateCDB(idCDB,1,0);
+						 sCDB= gcnew StateCDB(idCDB,1,0);
 					 }
 					 if(s->BackColor== System::Drawing::Color::Green){
-						 sCDB= gcnew stateCDB(idCDB,0,0);
+						 sCDB= gcnew StateCDB(idCDB,0,0);
 					 }
 					 if(s->BackColor== System::Drawing::Color::Yellow){
-						 sCDB= gcnew  stateCDB(idCDB,2,0);
+						 sCDB= gcnew  StateCDB(idCDB,2,0);
 					 }
 					 lCDB->Add(sCDB);
-					  Console::WriteLine(sCDB);
+					 Console::WriteLine(sCDB);
 				 }
 
 				 SendMessStatoCDBIXL(lCDB);
+
+			 }
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+				 if(textBox1->Text!=""){
+					 String ^stringaidtreno = textBox1->Text;
+					 try{
+						 int idtreno = int::Parse(stringaidtreno);
+						 List<StateCDB^> ^lCDB = gcnew List<StateCDB^>();
+						 for each ( Object ^ssx in tablel->getTableLayoutPanel()->Controls )
+						 {
+							 Button ^s  = safe_cast<Button ^>(ssx);
+							 int idCDB = int::Parse(s->Name);
+							 StateCDB ^sCDB;
+							 if(s->BackColor== System::Drawing::Color::Red){
+								 sCDB= gcnew StateCDB(idCDB,1,0);
+							 }
+						//	 if(s->BackColor== System::Drawing::Color::Green){
+							//	 sCDB= gcnew StateCDB(idCDB,0,0);
+							// }
+							 if(s->BackColor== System::Drawing::Color::Yellow){
+								 sCDB= gcnew  StateCDB(idCDB,2,0);
+							 }
+							 lCDB->Add(sCDB);
+							 Console::WriteLine(sCDB);
+						 }
+
+						 //send message udp from ATC to ATS
+						 SendMessStatoCDBATC(lCDB, idtreno);
+					 }catch(Exception ^e){
+						 MessageBox::Show( "You must enter a Number.", "ID Train Number Entry Error",
+							 MessageBoxButtons::OK, MessageBoxIcon::Exclamation );
+
+					 }
+				 }
+
+
 
 			 }
 	};

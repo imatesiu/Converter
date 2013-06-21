@@ -100,7 +100,7 @@ void tabellaItinerari::leggifileconfigurazioneItinerari(String ^nomeFile)
 
 						int cdb = int::Parse( inner3->ReadString());
 
-						newitinerario->getLCDB()->Add(gcnew stateCDB(cdb,0,0));
+						newitinerario->getLCDB()->Add(gcnew StateCDB(cdb,0,0));
 
 					}
 
@@ -160,7 +160,7 @@ void tabellaItinerari::leggifileconfigurazioneItinerari(String ^nomeFile)
 
 
 						int cdb = int::Parse( inner3->ReadString());
-						newitinerario->getLCDB()->Add(gcnew stateCDB(cdb,0,0));
+						newitinerario->getLCDB()->Add(gcnew StateCDB(cdb,0,0));
 
 					}
 

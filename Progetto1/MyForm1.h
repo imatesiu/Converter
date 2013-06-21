@@ -37,9 +37,9 @@ using namespace System::Net::Sockets;
 			//
 		}
 		void genera();
-	private: bool SendMessStatoIXL(List< stateItinerario^> ^listI, List<stateCDB^> ^listCItin);
-			 List<stateCDB^> ^listCdBItin(int idstazione,int iditineraio);
-			 void setCdBItin(List<stateCDB^> ^listCdB, int stato);
+	private: bool SendMessStatoIXL(List< stateItinerario^> ^listI, List<StateCDB^> ^listCItin);
+			 List<StateCDB^> ^listCdBItin(int idstazione,int iditineraio);
+			 void setCdBItin(List<StateCDB^> ^listCdB, int stato);
 
 	protected:
 		/// <summary>
@@ -113,7 +113,7 @@ using namespace System::Net::Sockets;
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 				 List< stateItinerario^> ^listI = gcnew List< stateItinerario^>();
-				 List<stateCDB^> ^listCItin = gcnew  List<stateCDB^>();
+				 List<StateCDB^> ^listCItin = gcnew  List<StateCDB^>();
 				 for each ( tableLayoutPanelSingleItin ^c in tableLayoutPanel1->Controls )
 				 {
 					 int i=0;
@@ -131,7 +131,7 @@ using namespace System::Net::Sockets;
 						 stateItinerario^ itin = gcnew stateItinerario();
 						 int iditinerario = int::Parse(s->Name);
 
-						 List<stateCDB^> ^listC = listCdBItin(offset,iditinerario);
+						 List<StateCDB^> ^listC = listCdBItin(offset,iditinerario);
 
 
 						 itin->setNID_ITIN(iditinerario+offset);

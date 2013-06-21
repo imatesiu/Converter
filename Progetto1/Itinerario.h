@@ -1,6 +1,6 @@
 #pragma once
 #using <System.dll>
-#include "stateCDB.h"
+#include "StateCDB.h"
 using namespace System;
 using namespace System::Collections::Generic;
 ref class Itinerario
@@ -14,7 +14,7 @@ ref class Itinerario
 	String ^latoBanchina;
 	int prevCDB;
 	int nextCDB;
-	List<stateCDB^> ^cdb;
+	List<StateCDB^> ^cdb;
 	int nextstation;
 public:
 	Itinerario(void);
@@ -39,7 +39,7 @@ public:
 	void setNextCDB(int p){nextCDB = p;}
 	int getNextCDB(){return nextCDB;}
 	
-	List<stateCDB^>^ getLCDB(){return cdb;}
+	List<StateCDB^>^ getLCDB(){return cdb;}
 
 		virtual System::String^ ToString() override;
 };

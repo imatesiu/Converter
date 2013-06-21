@@ -19,7 +19,7 @@ void Progetto1::MyForm1::genera(){
 
 }
 
-bool Progetto1::MyForm1::SendMessStatoIXL(List< stateItinerario^> ^listI, List<stateCDB^> ^listCItin){
+bool Progetto1::MyForm1::SendMessStatoIXL(List< stateItinerario^> ^listI, List<StateCDB^> ^listCItin){
 	try{
 		Messaggi ^MessStatoIXL = gcnew Messaggi();
 
@@ -39,7 +39,7 @@ bool Progetto1::MyForm1::SendMessStatoIXL(List< stateItinerario^> ^listI, List<s
 		MessStatoIXL->get_pacchettoStatoItinerario()->setN_ITER(listI->Count);
 		MessStatoIXL->get_pacchettoStatoItinerario()->setlastItinerario(listI);
 		if(listCItin->Count>1){
-		stateCDB ^CItin = listCItin[0];
+		StateCDB ^CItin = listCItin[0];
 		listCItin->RemoveAt(0);
 		MessStatoIXL->get_pacchettoStatoLineaIXL()->setfirstCDB(CItin);
 		
@@ -72,7 +72,7 @@ bool Progetto1::MyForm1::SendMessStatoIXL(List< stateItinerario^> ^listI, List<s
 	}
 }
 
-List<stateCDB^> ^Progetto1::MyForm1::listCdBItin(int idstazione,int iditineraio){
+List<StateCDB^> ^Progetto1::MyForm1::listCdBItin(int idstazione,int iditineraio){
 	if(tabItinerari->getMap()->ContainsKey(idstazione)){
 		if(tabItinerari->getMap()[idstazione]->getItinerariid()->ContainsKey(iditineraio)){
 			Itinerario ^itin = tabItinerari->getMap()[idstazione]->getItinerariid()[iditineraio];
@@ -84,8 +84,8 @@ List<stateCDB^> ^Progetto1::MyForm1::listCdBItin(int idstazione,int iditineraio)
 	return nullptr;
 }
 
-void Progetto1::MyForm1::setCdBItin(List<stateCDB^> ^listCdB, int stato){
-	for each (stateCDB ^cdb in listCdB)
+void Progetto1::MyForm1::setCdBItin(List<StateCDB^> ^listCdB, int stato){
+	for each (StateCDB ^cdb in listCdB)
 	{
 		cdb->setQ_STATOCDB(stato);
 	}
