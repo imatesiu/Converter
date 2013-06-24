@@ -116,7 +116,6 @@
     <ClCompile Include="pacchettoStatoLineaIXL.cpp" />
     <ClCompile Include="pacchettoStatoSegnali.cpp" />
     <ClCompile Include="ProfiloVelocita.cpp" />
-    <ClCompile Include="proveSerializzazione.cpp" />
     <ClCompile Include="StateCDB.cpp" />
     <ClCompile Include="stateScudetti.cpp" />
     <ClCompile Include="stateSegnale.cpp" />

@@ -388,13 +388,13 @@ namespace Progetto1 {
 							 pkt1->get_pacchettoStatoLineaATC()->setL_PACKET(Int32::Parse(arraystr[4]));
 							 pkt1->get_pacchettoStatoLineaATC()->setNID_OPERATIONAL(Int32::Parse(arraystr[5]));
 							 StateCDB ^sCDB = gcnew StateCDB(Int32::Parse(arraystr[6]),Int32::Parse(arraystr[7]),Int32::Parse(arraystr[8]));
-							 pkt1->get_pacchettoStatoLineaATC()->setfirstCDB(sCDB);
+							 pkt1->get_pacchettoStatoLineaATC()->setCDB(sCDB);
 
 							 pkt1->get_pacchettoStatoLineaATC()->setN_ITER(Int32::Parse(arraystr[9]));
 							 int i = 1;
 							 for (int z=0;i<pkt1->get_pacchettoStatoLineaATC()->getN_ITER();i++){
 								 StateCDB ^sCDB = gcnew StateCDB(Int32::Parse(arraystr[10+i]),Int32::Parse(arraystr[11+i]),Int32::Parse(arraystr[12+i]));
-								 pkt1->get_pacchettoStatoLineaATC()->setlastCDB(sCDB);
+								 pkt1->get_pacchettoStatoLineaATC()->setCDB(sCDB);
 							 }
 
 						 }

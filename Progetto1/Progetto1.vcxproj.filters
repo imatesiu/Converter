@@ -18,9 +18,6 @@
     <ClCompile Include="MyForm.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="proveSerializzazione.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
     <ClCompile Include="tomWriterTraceListener.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
@@ -257,6 +254,9 @@
       <Filter>File di risorse</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm1.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm2.resx">
       <Filter>File di risorse</Filter>
     </EmbeddedResource>
   </ItemGroup>

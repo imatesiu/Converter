@@ -60,13 +60,11 @@ bool Progetto1::MyForm2::SendMessStatoCDBATC(List< StateCDB^> ^lCDB, int idtreno
 		MessStatoCDBATC->get_pacchettoStatoLineaATC()->setNID_PACKET(1);
 		MessStatoCDBATC->get_pacchettoStatoLineaATC()->setNID_OPERATIONAL(idtreno);
 
-		StateCDB ^CDBFirst = lCDB[0];
-		lCDB->RemoveAt(0);
-		MessStatoCDBATC->get_pacchettoStatoLineaATC()->setfirstCDB(CDBFirst);
+		
+		MessStatoCDBATC->get_pacchettoStatoLineaATC()->setCDB(lCDB);
 
-		MessStatoCDBATC->get_pacchettoStatoLineaATC()->setN_ITER(lCDB->Count);
-		MessStatoCDBATC->get_pacchettoStatoLineaATC()->setlastCDB(lCDB);
-
+		MessStatoCDBATC->get_pacchettoStatoLineaATC()->setN_ITER(lCDB->Count-1);
+		
 		Socket ^s = gcnew Socket(System::Net::Sockets::AddressFamily::InterNetwork, System::Net::Sockets::SocketType::Dgram,
 			System::Net::Sockets::ProtocolType::Udp);
 
