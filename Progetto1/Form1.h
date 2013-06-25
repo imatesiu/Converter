@@ -256,22 +256,22 @@ namespace Progetto1 {
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Cooper Black", 9.75F));
 			this->label6->ForeColor = System::Drawing::Color::Red;
-			this->label6->Location = System::Drawing::Point(47, 6);
+			this->label6->Location = System::Drawing::Point(58, 6);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(14, 15);
 			this->label6->TabIndex = 10;
 			this->label6->Text = L"_";
 			// 
-			// label7
+			// label7 Gill Sans Ultra Bold
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Font = (gcnew System::Drawing::Font(L"Cooper Black", 9.75F));
+			this->label7->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold", 9.75F));
 			this->label7->ForeColor = System::Drawing::Color::Red;
-			this->label7->Location = System::Drawing::Point(32, 6);
+			this->label7->Location = System::Drawing::Point(55, 0);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(14, 15);
 			this->label7->TabIndex = 11;
-			this->label7->Text = L"_";
+			this->label7->Text = L"A";
 			// 
 			// tableLayoutPanel1
 			// 

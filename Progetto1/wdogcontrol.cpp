@@ -68,14 +68,14 @@ void wdogcontrol::InitializeComponent(){
 	// label4
 	// 
 	this->label4->AutoSize = true;
-	this->label4->Font = (gcnew System::Drawing::Font(L"Cooper Black", 10.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+	this->label4->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 		static_cast<System::Byte>(0)));
 	this->label4->ForeColor = System::Drawing::Color::Red;
-	this->label4->Location = System::Drawing::Point(1,7);
+	this->label4->Location = System::Drawing::Point(55,0);
 	this->label4->Name = L"label4";
 	this->label4->Size = System::Drawing::Size(18, 19);
 	this->label4->TabIndex = 5;
-	this->label4->Text = L"_";
+	this->label4->Text = L"A";
 
 	// Add the controls to the user control.
 //	array<System::Windows::Forms::Control^>^temp0 = {label0,label1,label2,label3,label4};
