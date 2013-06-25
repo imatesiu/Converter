@@ -16,7 +16,7 @@
 
 ref class Messaggi
 {
-		// puntatore all'header per i messaggi ATS/ATO
+	// puntatore all'header per i messaggi ATS/ATO
 	//structuredHeader *head;
 	unsigned int NID_MESSAGE;
 	unsigned int L_MESSAGE;

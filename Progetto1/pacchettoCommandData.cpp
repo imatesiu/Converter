@@ -19,15 +19,15 @@ pacchettoCommandData::pacchettoCommandData(void)
 void pacchettoCommandData::serializepacchettoCommandData(byte *buffer)
 {
 
- utility::push(buffer, NID_PACKET, 8, 51);
+	utility::push(buffer, NID_PACKET, 8, 51);
 	setL_PACKET(getSize());
- utility::push(buffer, L_PACKET, 13, 59);
- utility::push(buffer, Q_COMMAND_TYPE, 3, 72);
+	utility::push(buffer, L_PACKET, 13, 59);
+	utility::push(buffer, Q_COMMAND_TYPE, 3, 72);
 	if(Q_COMMAND_TYPE==4){
-	 utility::push(buffer, M_GOA_LEVEL, 2, 75);
+		utility::push(buffer, M_GOA_LEVEL, 2, 75);
 	}
 	if(Q_COMMAND_TYPE==5){
-	 utility::push(buffer, NID_OPERATIONAL, 32, 75);
+		utility::push(buffer, NID_OPERATIONAL, 32, 75);
 
 	}
 
@@ -36,14 +36,14 @@ void pacchettoCommandData::serializepacchettoCommandData(byte *buffer)
 void pacchettoCommandData::deserializepacchettoCommandData(byte *buffer)
 {
 
-	NID_PACKET= utility::pop(buffer,  8, 51);
-	L_PACKET= utility::pop(buffer, 13, 59);
-	Q_COMMAND_TYPE= utility::pop(buffer,3, 72);
+	NID_PACKET=utility::pop(buffer,  8, 51);
+	L_PACKET=utility::pop(buffer, 13, 59);
+	Q_COMMAND_TYPE=utility::pop(buffer,3, 72);
 	if(Q_COMMAND_TYPE==4){
-		M_GOA_LEVEL= utility::pop(buffer, 2, 75);
+		M_GOA_LEVEL=utility::pop(buffer, 2, 75);
 	}
 	if(Q_COMMAND_TYPE==5){
-		NID_OPERATIONAL= utility::pop(buffer, 32, 75);
+		NID_OPERATIONAL=utility::pop(buffer, 32, 75);
 
 	}
 }

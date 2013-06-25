@@ -1,18 +1,18 @@
 #pragma once
-
-#include "struttureDatiMessaggi.h"
 #include <iostream>
 #using <System.dll>
 using namespace System;
 using namespace std;
-typedef __int8 byte;
-ref class utility {
 
+
+typedef __int8 byte;
+ref class utility{
+
+public:
 //
 // dato un valore data, copia gli len bit meno significativi nel
 // vettore buf alle posizioni di bit assolute off..off+len-1
 //
-public:
 static void push (char buf[], unsigned int data, int len, int off);
 
 //
@@ -22,7 +22,7 @@ static void push (char buf[], unsigned int data, int len, int off);
 static void setbit( char buf[], int offset);
 
 // converte un char in un intero senza segno 0x80 = 128 non -128!!
-static unsigned int toint(char C);
+//unsigned int toint(char C);
 
 // funzione che copia gli N elementi di un byte[] in un array<Byte>
 //void copiaByteInArray(byte *source, array<Byte> ^dest, int N);

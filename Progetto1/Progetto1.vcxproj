@@ -96,8 +96,8 @@
     <ClCompile Include="MyForm1.cpp" />
     <ClCompile Include="MyForm2.cpp" />
     <ClCompile Include="pachettoStatoScudetti.cpp" />
-    <ClCompile Include="stateBlocco.cpp" />
-    <ClCompile Include="stateItinerario.cpp" />
+    <ClCompile Include="StateBlocco.cpp" />
+    <ClCompile Include="StateItinerario.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Messaggi.cpp" />
     <ClCompile Include="Mission.cpp" />
@@ -117,8 +117,8 @@
     <ClCompile Include="pacchettoStatoSegnali.cpp" />
     <ClCompile Include="ProfiloVelocita.cpp" />
     <ClCompile Include="StateCDB.cpp" />
-    <ClCompile Include="stateScudetti.cpp" />
-    <ClCompile Include="stateSegnale.cpp" />
+    <ClCompile Include="StateScudetti.cpp" />
+    <ClCompile Include="StateSegnale.cpp" />
     <ClCompile Include="stazione.cpp" />
     <ClCompile Include="tabellaFermate.cpp" />
     <ClCompile Include="tabellaItinerari.cpp" />
@@ -142,8 +142,8 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="pachettoStatoScudetti.h" />
-    <ClInclude Include="stateBlocco.h" />
-    <ClInclude Include="stateItinerario.h" />
+    <ClInclude Include="StateBlocco.h" />
+    <ClInclude Include="StateItinerario.h" />
     <ClInclude Include="Messaggi.h" />
     <ClInclude Include="Mission.h" />
     <ClInclude Include="MyForm.h">
@@ -164,8 +164,8 @@
     <ClInclude Include="pacchettoStatoSegnali.h" />
     <ClInclude Include="ProfiloVelocita.h" />
     <ClInclude Include="StateCDB.h" />
-    <ClInclude Include="stateScudetti.h" />
-    <ClInclude Include="stateSegnale.h" />
+    <ClInclude Include="StateScudetti.h" />
+    <ClInclude Include="StateSegnale.h" />
     <ClInclude Include="stazione.h" />
     <ClInclude Include="struttureDatiMessaggi.h" />
     <ClInclude Include="tabellaFermate.h" />

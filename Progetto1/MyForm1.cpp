@@ -19,7 +19,7 @@ void Progetto1::MyForm1::genera(){
 
 }
 
-bool Progetto1::MyForm1::SendMessStatoIXL(List< stateItinerario^> ^listI, List<StateCDB^> ^listCItin){
+bool Progetto1::MyForm1::SendMessStatoIXL(List< StateItinerario^> ^listI, List<StateCDB^> ^listCItin){
 	try{
 		Messaggi ^MessStatoIXL = gcnew Messaggi();
 
@@ -29,25 +29,24 @@ bool Progetto1::MyForm1::SendMessStatoIXL(List< stateItinerario^> ^listI, List<S
 		MessStatoIXL->get_pacchettoStatoSegnali()->setNID_PACKET(101);
 
 		MessStatoIXL->get_pacchettoStatoSegnali()->setL_PACKET(101);
-		MessStatoIXL->get_pacchettoStatoSegnali()->setfirststatoSegnale(gcnew stateSegnale(12,2));
+		MessStatoIXL->get_pacchettoStatoSegnali()->setstatoSegnale(gcnew StateSegnale(12,2));
 
 		MessStatoIXL->get_pacchettoStatoLineaIXL()->setNID_PACKET(101);
 		MessStatoIXL->get_pacchettoStatoBlocco()->setNID_PACKET(101);
-		stateItinerario ^primoit = listI[0];
-		MessStatoIXL->get_pacchettoStatoItinerario()->setfirstItinerario(primoit);
-		listI->RemoveAt(0);
-		MessStatoIXL->get_pacchettoStatoItinerario()->setN_ITER(listI->Count);
-		MessStatoIXL->get_pacchettoStatoItinerario()->setlastItinerario(listI);
-		if(listCItin->Count>1){
-		StateCDB ^CItin = listCItin[0];
-		listCItin->RemoveAt(0);
-		MessStatoIXL->get_pacchettoStatoLineaIXL()->setfirstCDB(CItin);
+	
+		MessStatoIXL->get_pacchettoStatoItinerario()->setN_ITER(listI->Count-1);
+		MessStatoIXL->get_pacchettoStatoItinerario()->setItinerario(listI);
+		if(listCItin->Count>0){
 		
-		MessStatoIXL->get_pacchettoStatoLineaIXL()->setN_ITER(listCItin->Count);
-		MessStatoIXL->get_pacchettoStatoLineaIXL()->setlastCDB(listCItin);
+		
+		
+		MessStatoIXL->get_pacchettoStatoLineaIXL()->setN_ITER(listCItin->Count-1);
+		MessStatoIXL->get_pacchettoStatoLineaIXL()->setCDB(listCItin);
 		}else{
 			MessStatoIXL->get_pacchettoStatoLineaIXL()->setN_ITER(0);
-
+			
+			MessStatoIXL->get_pacchettoStatoLineaIXL()->setCDB(gcnew StateCDB());
+			
 		}
 		Socket ^s = gcnew Socket(System::Net::Sockets::AddressFamily::InterNetwork, System::Net::Sockets::SocketType::Dgram,
 			System::Net::Sockets::ProtocolType::Udp);

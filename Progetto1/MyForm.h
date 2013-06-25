@@ -6,8 +6,8 @@
 #include "tomWriterTraceListener.h"
 #include "Form1.h"
 #include "StateCDB.h"
-#include "stateItinerario.h"
-#include "stateSegnale.h"
+#include "StateItinerario.h"
+#include "StateSegnale.h"
 
 namespace Progetto1 {
 
@@ -326,12 +326,12 @@ namespace Progetto1 {
 							 pkt1->get_pacchettoStatoLineaIXL()->setNID_PACKET(Int32::Parse(arraystr[3]));
 							 pkt1->get_pacchettoStatoLineaIXL()->setL_PACKET(Int32::Parse(arraystr[4]));
 							 StateCDB ^sCDB = gcnew StateCDB(Int32::Parse(arraystr[5]),Int32::Parse(arraystr[6]),Int32::Parse(arraystr[7]));
-							 pkt1->get_pacchettoStatoLineaIXL()->setfirstCDB(sCDB);
+							 pkt1->get_pacchettoStatoLineaIXL()->setCDB(sCDB);
 							 pkt1->get_pacchettoStatoLineaIXL()->setN_ITER(Int32::Parse(arraystr[8]));
 							 int i = 1;
 							 for (int z=0;z<pkt1->get_pacchettoStatoLineaIXL()->getN_ITER();i++){
 								 StateCDB ^sCDB = gcnew StateCDB(Int32::Parse(arraystr[8+i]),Int32::Parse(arraystr[9+i]),Int32::Parse(arraystr[10+i]));
-								 pkt1->get_pacchettoStatoLineaIXL()->setlastCDB(sCDB);
+								 pkt1->get_pacchettoStatoLineaIXL()->setCDB(sCDB);
 								 z++;
 							 }
 							 i=i+10;
@@ -339,12 +339,12 @@ namespace Progetto1 {
 							 i++;
 							 pkt1->get_pacchettoStatoItinerario()->setL_PACKET(Int32::Parse(arraystr[i]));
 							 i++;
-							 stateItinerario  ^ itin = gcnew stateItinerario();
+							 StateItinerario  ^ itin = gcnew StateItinerario();
 
 							 itin->setNID_ITIN(Int32::Parse(arraystr[i]));
 							 i++;
 							 itin->setQ_STATOITIN(Int32::Parse(arraystr[i]));
-							 pkt1->get_pacchettoStatoItinerario()->setfirstItinerario(itin);
+							 pkt1->get_pacchettoStatoItinerario()->setItinerario(itin);
 							 i++;
 							 pkt1->get_pacchettoStatoItinerario()->setN_ITER(Int32::Parse(arraystr[i]));
 							 i++;
@@ -353,8 +353,8 @@ namespace Progetto1 {
 								 i++;
 								 int Q_STATOITIN =Int32::Parse(arraystr[i]);
 								 i++;
-								 stateItinerario  ^ itin = gcnew stateItinerario(NID_ITIN,Q_STATOITIN);
-								 pkt1->get_pacchettoStatoItinerario()->setlastItinerario(itin);
+								 StateItinerario  ^ itin = gcnew StateItinerario(NID_ITIN,Q_STATOITIN);
+								 pkt1->get_pacchettoStatoItinerario()->setItinerario(itin);
 							 }
 
 
@@ -366,8 +366,8 @@ namespace Progetto1 {
 							 i++;
 							 int QSTATO_SEGN = (Int32::Parse(arraystr[i]));
 							 i++;
-							 stateSegnale ^sSegnale = gcnew stateSegnale(NID_SEGN,QSTATO_SEGN );
-							 pkt1->get_pacchettoStatoSegnali()->setfirststatoSegnale(sSegnale);
+							 StateSegnale ^sSegnale = gcnew StateSegnale(NID_SEGN,QSTATO_SEGN );
+							 pkt1->get_pacchettoStatoSegnali()->setstatoSegnale(sSegnale);
 							 pkt1->get_pacchettoStatoSegnali()->setN_ITER(Int32::Parse(arraystr[i]));
 							 i++;
 							 for (int z=0;z<pkt1->get_pacchettoStatoSegnali()->getN_ITER();z++){
@@ -375,8 +375,8 @@ namespace Progetto1 {
 								 i++;
 								 int setQSTATO_SEGN= Int32::Parse(arraystr[i]);
 								 i++;
-								 stateSegnale ^sSegnal = gcnew stateSegnale(setNID_SEGN,setQSTATO_SEGN );
-								 pkt1->get_pacchettoStatoSegnali()->setlaststatoSegnale(sSegnal);
+								 StateSegnale ^sSegnal = gcnew StateSegnale(setNID_SEGN,setQSTATO_SEGN );
+								 pkt1->get_pacchettoStatoSegnali()->setstatoSegnale(sSegnal);
 							 }
 
 							 pkt1->get_pacchettoEnd()->setNID_PACKET(255);

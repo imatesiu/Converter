@@ -1,6 +1,5 @@
 #include "utility.h"
 
- 
 
 
 //
@@ -11,12 +10,11 @@ void utility::setbit(char buf[], int offset) {
   //
   // estrai il Byte da modifcare
   //
-	char masks[] = {-128,64,32,16,8,4,2,1}; // le maschere per settare i bit
-
   int Byteoffset = offset/8;
   int bitoffset = offset%8;
   char workByte;
   workByte= buf[Byteoffset];
+   char masks[] = {-128,64,32,16,8,4,2,1}; // le maschere per settare i bit
   //
   // setta il bit;
   //
@@ -44,7 +42,7 @@ void utility::push (char buf[], unsigned int data, int len, int off) {
 }
 
 // converte un char in un intero senza segno 0x80 = 128 non -128!!
-unsigned int utility::toint(char C) {
+/*unsigned int toint(char C) {
  int res =0;
   if ((C & (1<<7)) != 0) res = res+128;
   if ((C & (1<<6)) != 0) res = res+64;
@@ -55,7 +53,7 @@ unsigned int utility::toint(char C) {
   if ((C & (1<<1)) != 0) res = res+2;
   if ((C & (1<<0)) != 0) res = res+1;
   return res;
-};
+};*/
 
 /*// funzione che copia gli N elementi di un Byte[] in un array<Byte>
 void copiaByteInArray(Byte *source, array<Byte> ^dest, int N)
@@ -84,10 +82,10 @@ int utility::getbit(char buf[], int offset) {
   int bitoffset = offset%8;
   char workByte;
   workByte= buf[Byteoffset];
+   char masks[] = {-128,64,32,16,8,4,2,1}; // le maschere per settare i bit
   //
   // leggi il bit;
   //
-  	char masks[] = {-128,64,32,16,8,4,2,1}; // le maschere per settare i bit
   res = (workByte & masks[bitoffset]) != 0;
   return res;
 }

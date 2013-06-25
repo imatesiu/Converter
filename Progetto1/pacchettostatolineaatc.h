@@ -45,10 +45,9 @@ public:
 	
 
 	void setCDB(List< StateCDB^> ^all){pstato=all;};
-	void setCDB( StateCDB ^one){pstato->Add(one);};
 	List< StateCDB^> ^getCDB(){return pstato;};
 
-	
+	void setCDB(StateCDB ^one){pstato->Add(one);};
 
 
 

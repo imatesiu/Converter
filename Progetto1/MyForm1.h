@@ -1,7 +1,7 @@
 #pragma once
 #include "tableLayoutPanelSingleItin.h"
 #include "tabellaItinerari.h"
-#include "stateItinerario.h"
+#include "StateItinerario.h"
 #include "Messaggi.h"
 
 
@@ -37,7 +37,7 @@ using namespace System::Net::Sockets;
 			//
 		}
 		void genera();
-	private: bool SendMessStatoIXL(List< stateItinerario^> ^listI, List<StateCDB^> ^listCItin);
+	private: bool SendMessStatoIXL(List< StateItinerario^> ^listI, List<StateCDB^> ^listCItin);
 			 List<StateCDB^> ^listCdBItin(int idstazione,int iditineraio);
 			 void setCdBItin(List<StateCDB^> ^listCdB, int stato);
 
@@ -112,7 +112,7 @@ using namespace System::Net::Sockets;
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-				 List< stateItinerario^> ^listI = gcnew List< stateItinerario^>();
+				 List< StateItinerario^> ^listI = gcnew List< StateItinerario^>();
 				 List<StateCDB^> ^listCItin = gcnew  List<StateCDB^>();
 				 for each ( tableLayoutPanelSingleItin ^c in tableLayoutPanel1->Controls )
 				 {
@@ -128,7 +128,7 @@ using namespace System::Net::Sockets;
 						 }
 						 if(i>0){
 							 Button ^s  = (Button ^ )ssx;
-						 stateItinerario^ itin = gcnew stateItinerario();
+						 StateItinerario^ itin = gcnew StateItinerario();
 						 int iditinerario = int::Parse(s->Name);
 
 						 List<StateCDB^> ^listC = listCdBItin(offset,iditinerario);
