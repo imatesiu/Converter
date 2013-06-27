@@ -11,7 +11,6 @@ public:
 	void serialize(array<Byte> ^buffer, int offset);
 	void deserialize(array<Byte> ^buffer, int offset);
 	int getSize(){return 8;};
-	~pacchettoEnd(void);
 	virtual System::String ^ToString() override;
 };
 
