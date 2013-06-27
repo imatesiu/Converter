@@ -33,7 +33,7 @@ bool Progetto1::MyForm1::SendMessStatoIXL(List< StateItinerario^> ^listI, List<S
 
 		MessStatoIXL->get_pacchettoStatoLineaIXL()->setNID_PACKET(101);
 		MessStatoIXL->get_pacchettoStatoBlocco()->setNID_PACKET(101);
-	
+		MessStatoIXL->get_pacchettoStatoBlocco()->setStatoBlocco(gcnew StateBlocco());
 		MessStatoIXL->get_pacchettoStatoItinerario()->setN_ITER(listI->Count-1);
 		MessStatoIXL->get_pacchettoStatoItinerario()->setItinerario(listI);
 		if(listCItin->Count>0){
