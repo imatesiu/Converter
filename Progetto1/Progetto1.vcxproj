@@ -167,7 +167,6 @@
     <ClInclude Include="StateScudetti.h" />
     <ClInclude Include="StateSegnale.h" />
     <ClInclude Include="stazione.h" />
-    <ClInclude Include="struttureDatiMessaggi.h" />
     <ClInclude Include="tabellaFermate.h" />
     <ClInclude Include="tabellaItinerari.h" />
     <ClInclude Include="tableLayoutPanelAllCDB.h" />
