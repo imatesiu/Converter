@@ -252,9 +252,9 @@ namespace Progetto1 {
 						 text= text->Replace("-","");
 					 if(text->Contains(" "))
 						 text= text->Replace(" ","");
-					 int len = ( text->Length / 2)+(text->Length%2);
+					 int len = ( text->Length / 2)+(text->Length%2)+1;
 					 array<Byte>^bytez = gcnew array<Byte>(len);
-					 for (int i = 0; i < bytez->Length; i++)
+					 for (int i = 0; i < bytez->Length-1; i++)
 					 {
 						 String ^str = text->Substring(i *2, 2);
 						 int h =str->Length;

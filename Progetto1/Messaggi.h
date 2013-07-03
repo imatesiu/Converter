@@ -11,6 +11,7 @@
 #include "pacchettoStatoBlocco.h"
 #include "pacchettoComandoBlocco.h"
 #include "pacchettoStatoSegnali.h"
+#include "pachettoStatoScudetti.h"
 #include "pacchettoEnd.h"
 #include "pacchettoFaultData.h"
 
@@ -36,7 +37,7 @@ ref class Messaggi
 	pacchettoStatoSegnali ^pkgStatoSegnali;
 	pacchettoFaultData ^pkgFaultData;
 	pacchettoStatoBlocco ^pkgStatoBlocco;
-
+	pachettoStatoScudetti ^pkgStatoScudetti;
 	pacchettoComandoItinerari ^pkgComandoItinerario;
 	pacchettoComandoBlocco ^pkgComandoBlocco;
 	pacchettoEnd ^pkgEnd;
@@ -57,6 +58,9 @@ public:
 
 	void set_pacchettoEnd(){pkgEnd = gcnew pacchettoEnd;};
 	pacchettoEnd ^ get_pacchettoEnd(){return pkgEnd;};
+
+	void set_pacchettoStatoScudetti(){pkgStatoScudetti = gcnew pachettoStatoScudetti;};
+	pachettoStatoScudetti^ get_pacchettoStatoScudetti(){return pkgStatoScudetti;};
 
 	void set_pacchettoComandoItinerari(){pkgComandoItinerario = gcnew pacchettoComandoItinerari;};
 	pacchettoComandoItinerari^ get_pacchettoComandoItinerari(){return pkgComandoItinerario;};

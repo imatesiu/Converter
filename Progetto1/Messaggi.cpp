@@ -25,7 +25,7 @@ void Messaggi::setNID_MESSAGE(int N){
 		set_pacchettoStatoBlocco(); 
 		set_pacchettoEnd(); break;}
 	case 102: {set_pacchettoFaultReporting(); break;}
-	case 110: {set_pacchettoComandoItinerari(); set_pacchettoEnd(); break;}
+	case 10: {set_pacchettoComandoItinerari(); set_pacchettoEnd(); break;}
 	case 111: {set_pacchettoComandoBlocco(); set_pacchettoEnd(); break;}		
 	default:
 		break;
@@ -69,7 +69,7 @@ void Messaggi::serialize(array<Byte> ^buffer)
 		break;}
 	case 102: {get_pacchettoFaultReporting()->serialize(buffer); 
 		break;}
-	case 110: { offset += 51;
+	case 10: { offset += 51;
 		get_pacchettoComandoItinerari()->serialize(buffer); 
 		offset += get_pacchettoComandoItinerari()->getSize();
 		get_pacchettoEnd()->serialize(buffer, offset);
@@ -139,22 +139,44 @@ void Messaggi::deserialize(array<Byte> ^buffer)
 	case 101: {offset += 51; 
 		set_pacchettoStatoLineaIXL();
 		get_pacchettoStatoLineaIXL()->deserialize(buffer); 
-		offset += get_pacchettoStatoLineaIXL()->getSize(); 
+		offset += get_pacchettoStatoLineaIXL()->getL_PACKET();// 
+
+	
+		set_pacchettoStatoSegnali();
+		get_pacchettoStatoSegnali()->deserialize(buffer, offset);
+		offset += get_pacchettoStatoSegnali()->getL_PACKET();//getSize();
+
+		set_pacchettoStatoBlocco();
+		get_pacchettoStatoBlocco()->deserialize(buffer, offset);
+		int offset1 = get_pacchettoStatoBlocco()->getSize();
+		offset += get_pacchettoStatoBlocco()->getL_PACKET();//->getSize();//
+
+		set_pacchettoStatoScudetti();
+		get_pacchettoStatoScudetti()->deserialize(buffer, offset);
+		offset += get_pacchettoStatoScudetti()->getL_PACKET();//->getSize();
+
+		set_pacchettoEnd();
+		get_pacchettoEnd()->deserialize(buffer, offset);
+		offset += get_pacchettoEnd()->getSize();
+	break;
 		set_pacchettoStatoItinerari();
 		get_pacchettoStatoItinerario()->deserialize(buffer, offset);
 		offset += get_pacchettoStatoItinerario()->getSize();
-		set_pacchettoStatoSegnali();
-		get_pacchettoStatoSegnali()->deserialize(buffer, offset);
-		offset += get_pacchettoStatoSegnali()->getSize();
-		set_pacchettoStatoBlocco();
-		get_pacchettoStatoBlocco()->deserialize(buffer, offset);
-		offset += get_pacchettoStatoBlocco()->getSize();
-		set_pacchettoEnd();
-		get_pacchettoEnd()->deserialize(buffer, offset);
+	
+		
+		
+			
+				
+		
+		
+
+
+
+		
 		break;}
 	case 102: {get_pacchettoFaultReporting()->deserialize(buffer); 
 		break;}
-	case 110: { offset += 51;
+	case 10: { offset += 51;
 		set_pacchettoComandoItinerari();
 		get_pacchettoComandoItinerari()->deserialize(buffer); 
 		offset += get_pacchettoComandoItinerari()->getSize();
@@ -181,7 +203,7 @@ String ^Messaggi::ToString(){
 
 	String ^out = "NID_MESSAGE "+getNID_MESSAGE()+";\n";
 	out = out+"L_MESSAGE "+getL_MESSAGE()+";";
-	out = out+"T_TRAIN "+getT_TIME()+";";
+	out = out+"T_TRAIN "+T_TIME+";";
 	if(getNID_ENGINE()>0){
 		out = out+"NID_ENGINE "+getNID_ENGINE()+";";
 	}
@@ -209,6 +231,8 @@ String ^Messaggi::ToString(){
 		out= out+get_pacchettoStatoBlocco()->ToString();
 	if(pkgComandoItinerario)
 		out= out+get_pacchettoComandoItinerari()->ToString();
+	if(pkgStatoScudetti)
+		out= out+get_pacchettoStatoScudetti()->ToString();
 	if(pkgComandoBlocco)
 		out= out+get_pacchettoComandoBlocco()->ToString();
 	if(pkgEnd)
@@ -236,7 +260,7 @@ int Messaggi::getSize(){
 		case 210 :{len+=24+pkgAck->getSize();break;}
 		case 101: {len += pkgStatoLineaIXL->getSize() + pkgStatoItinerari->getSize() + pkgStatoSegnali->getSize() + pkgStatoBlocco->getSize() + pkgEnd->getSize(); break;}
 		case 102: {len += pkgFaultData->getSize(); break;}
-		case 110: {len +=pkgComandoItinerario->getSize()+ pkgEnd->getSize(); break;}
+		case 10: {len +=pkgComandoItinerario->getSize()+ pkgEnd->getSize(); break;}
 		case 111: {len +=pkgComandoBlocco->getSize()+ pkgEnd->getSize(); break;}
 		default: break;
 		}
