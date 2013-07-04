@@ -412,6 +412,7 @@ namespace Progetto1 {
 
 						 String ^hex = BitConverter::ToString(bytez);
 
+						 String ^hex2 = hex->Replace("-","");
 						 String ^bin = "";
 						 for (int i = 0; i < bytez->Length; i++)
 						 {
@@ -425,7 +426,7 @@ namespace Progetto1 {
 							 bin += bits;
 						 }
 
-						 textBox2->Text="HEX: "+hex+"\n\r BIN: "+bin;
+						 textBox2->Text="HEX: "+hex+"\n\r" +" HEX2: "+hex2+"\n\r  BIN: "+bin;
 
 
 					 }catch(Exception ^e){
