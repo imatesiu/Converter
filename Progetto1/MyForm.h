@@ -233,6 +233,7 @@ namespace Progetto1 {
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(121, 21);
 			this->comboBox2->TabIndex = 132;
+			this->comboBox2->SelectedIndex=1;
 			// 
 			// textBox3
 			// 
@@ -497,49 +498,56 @@ namespace Progetto1 {
 	private: System::Void checkBox1_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 			 }
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-				 if(!checkBox1->Checked){	
-					 int selectedIndex = comboBox2->SelectedIndex;
+				 try{
+					 if(!checkBox1->Checked){	
+						 int selectedIndex = comboBox2->SelectedIndex;
 
-					 String ^ip=textBox2->Text;
-					 String ^port=textBox3->Text;
+						 String ^ip=textBox3->Text;
+						 String ^port=textBox4->Text;
 
-					 int len = ( hex2->Length / 2)+(hex2->Length%2)+1;
-					 array<Byte>^sendBytes = gcnew array<Byte>(len);
-					 for (int i = 0; i < sendBytes->Length-1; i++)
-					 {
-						 String ^str = hex2->Substring(i *2, 2);
-						 int h =str->Length;
-						 if(h>1){
-							 sendBytes[i] = Byte::Parse(str,System::Globalization::NumberStyles::HexNumber);
+						 int len = ( hex2->Length / 2)+(hex2->Length%2)+1;
+						 array<Byte>^sendBytes = gcnew array<Byte>(len);
+						 for (int i = 0; i < sendBytes->Length-1; i++)
+						 {
+							 String ^str = hex2->Substring(i *2, 2);
+							 int h =str->Length;
+							 if(h>1){
+								 sendBytes[i] = Byte::Parse(str,System::Globalization::NumberStyles::HexNumber);
+							 }
 						 }
-					 }
 
-					 if(selectedIndex==0 ){
-						 //send tcp
+						 if(selectedIndex==0 ){
+							 //send tcp
 
-						 Socket ^sock = gcnew Socket( System::Net::Sockets::AddressFamily::InterNetwork,System::Net::Sockets::SocketType::Stream,System::Net::Sockets::ProtocolType::Tcp );
-						 IPAddress ^broadcast = IPAddress::Parse(ip);
-						 IPEndPoint ^ep = gcnew IPEndPoint(broadcast, int::Parse(port));
-
-						 sock->SendTo( sendBytes, ep);
-
-					 }else{
-
-						 if(selectedIndex==1 ){
-							 //send udp
-							 Socket ^s = gcnew Socket(System::Net::Sockets::AddressFamily::InterNetwork, System::Net::Sockets::SocketType::Dgram,
-								 System::Net::Sockets::ProtocolType::Udp);
-
+							 Socket ^sock = gcnew Socket( System::Net::Sockets::AddressFamily::InterNetwork,System::Net::Sockets::SocketType::Stream,System::Net::Sockets::ProtocolType::Tcp );
 							 IPAddress ^broadcast = IPAddress::Parse(ip);
 							 IPEndPoint ^ep = gcnew IPEndPoint(broadcast, int::Parse(port));
 
-							 s->SendTo( sendBytes, ep);
+							 sock->SendTo( sendBytes, ep);
+
+						 }else{
+
+							 if(selectedIndex==1 ){
+								 //send udp
+								 Socket ^s = gcnew Socket(System::Net::Sockets::AddressFamily::InterNetwork, System::Net::Sockets::SocketType::Dgram,
+									 System::Net::Sockets::ProtocolType::Udp);
+
+								 IPAddress ^broadcast = IPAddress::Parse(ip);
+								 IPEndPoint ^ep = gcnew IPEndPoint(broadcast, int::Parse(port));
+
+								 s->SendTo( sendBytes, ep);
+
+							 }
 
 						 }
+					 }else{
 
+						  MessageBox::Show("Serializza un messaggio prima");
+						 
 					 }
+				 }catch(Exception ^e){
+					 Console::WriteLine(e->Message);
 				 }
-
 			 };
 
 
