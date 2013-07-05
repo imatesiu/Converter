@@ -65,6 +65,7 @@ namespace Progetto1 {
 	private: System::Windows::Forms::ComboBox^  comboBox2;
 	private: System::Windows::Forms::TextBox^  textBox3;
 	private: System::Windows::Forms::Label^  label7;
+	private: System::Windows::Forms::TextBox^  textBox4;
 
 	protected: 
 
@@ -73,7 +74,7 @@ namespace Progetto1 {
 		/// Variabile di progettazione necessaria.
 		/// </summary>
 		System::ComponentModel::Container ^components;
-
+		String ^hex2;
 #pragma region Windows Form Designer generated code
 		/// <summary>
 		/// Metodo necessario per il supporto della finestra di progettazione. Non modificare
@@ -98,6 +99,7 @@ namespace Progetto1 {
 			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// textBox1
@@ -249,11 +251,20 @@ namespace Progetto1 {
 			this->label7->TabIndex = 134;
 			this->label7->Text = L"Destinazione";
 			// 
+			// textBox4
+			// 
+			this->textBox4->Location = System::Drawing::Point(506, 620);
+			this->textBox4->Name = L"textBox4";
+			this->textBox4->Size = System::Drawing::Size(100, 20);
+			this->textBox4->TabIndex = 135;
+			this->textBox4->Text = L"4011";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(730, 715);
+			this->Controls->Add(this->textBox4);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->comboBox2);
@@ -460,7 +471,7 @@ namespace Progetto1 {
 
 						 String ^hex = BitConverter::ToString(bytez);
 
-						 String ^hex2 = hex->Replace("-","");
+						 hex2 = hex->Replace("-","");
 						 String ^bin = "";
 						 for (int i = 0; i < bytez->Length; i++)
 						 {
@@ -486,24 +497,53 @@ namespace Progetto1 {
 	private: System::Void checkBox1_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 			 }
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-				 int selectedIndex = comboBox2->SelectedIndex;
+				 if(!checkBox1->Checked){	
+					 int selectedIndex = comboBox2->SelectedIndex;
 
-				 String ^ip=textBox2->Text;
+					 String ^ip=textBox2->Text;
+					 String ^port=textBox3->Text;
 
-
-
-				 if(selectedIndex==0 ){
-
-				 }else{
-
-					 if(selectedIndex==1 ){
-
+					 int len = ( hex2->Length / 2)+(hex2->Length%2)+1;
+					 array<Byte>^sendBytes = gcnew array<Byte>(len);
+					 for (int i = 0; i < sendBytes->Length-1; i++)
+					 {
+						 String ^str = hex2->Substring(i *2, 2);
+						 int h =str->Length;
+						 if(h>1){
+							 sendBytes[i] = Byte::Parse(str,System::Globalization::NumberStyles::HexNumber);
+						 }
 					 }
 
+					 if(selectedIndex==0 ){
+						 //send tcp
+
+						 Socket ^sock = gcnew Socket( System::Net::Sockets::AddressFamily::InterNetwork,System::Net::Sockets::SocketType::Stream,System::Net::Sockets::ProtocolType::Tcp );
+						 IPAddress ^broadcast = IPAddress::Parse(ip);
+						 IPEndPoint ^ep = gcnew IPEndPoint(broadcast, int::Parse(port));
+
+						 sock->SendTo( sendBytes, ep);
+
+					 }else{
+
+						 if(selectedIndex==1 ){
+							 //send udp
+							 Socket ^s = gcnew Socket(System::Net::Sockets::AddressFamily::InterNetwork, System::Net::Sockets::SocketType::Dgram,
+								 System::Net::Sockets::ProtocolType::Udp);
+
+							 IPAddress ^broadcast = IPAddress::Parse(ip);
+							 IPEndPoint ^ep = gcnew IPEndPoint(broadcast, int::Parse(port));
+
+							 s->SendTo( sendBytes, ep);
+
+						 }
+
+					 }
 				 }
-				 
+
 			 };
 
 
 
 	};
+
+};
