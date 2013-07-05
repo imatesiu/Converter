@@ -61,6 +61,10 @@ namespace Progetto1 {
 	private: System::Windows::Forms::Label^  label6;
 
 	private: System::Windows::Forms::ProgressBar^  progressBar1;
+	private: System::Windows::Forms::Button^  button2;
+	private: System::Windows::Forms::ComboBox^  comboBox2;
+	private: System::Windows::Forms::TextBox^  textBox3;
+	private: System::Windows::Forms::Label^  label7;
 
 	protected: 
 
@@ -90,6 +94,10 @@ namespace Progetto1 {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
+			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// textBox1
@@ -205,11 +213,51 @@ namespace Progetto1 {
 			this->progressBar1->Style = System::Windows::Forms::ProgressBarStyle::Continuous;
 			this->progressBar1->TabIndex = 130;
 			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(548, 555);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(75, 23);
+			this->button2->TabIndex = 131;
+			this->button2->Text = L"Invia";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+			// 
+			// comboBox2
+			// 
+			this->comboBox2->FormattingEnabled = true;
+			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(2) {L"TCP", L"UDP"});
+			this->comboBox2->Location = System::Drawing::Point(388, 555);
+			this->comboBox2->Name = L"comboBox2";
+			this->comboBox2->Size = System::Drawing::Size(121, 21);
+			this->comboBox2->TabIndex = 132;
+			// 
+			// textBox3
+			// 
+			this->textBox3->Location = System::Drawing::Point(388, 620);
+			this->textBox3->Name = L"textBox3";
+			this->textBox3->Size = System::Drawing::Size(100, 20);
+			this->textBox3->TabIndex = 133;
+			this->textBox3->Text = L"127.0.0.1";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(385, 604);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(68, 13);
+			this->label7->TabIndex = 134;
+			this->label7->Text = L"Destinazione";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(730, 715);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->textBox3);
+			this->Controls->Add(this->comboBox2);
+			this->Controls->Add(this->button2);
 			this->Controls->Add(this->progressBar1);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
@@ -437,8 +485,25 @@ namespace Progetto1 {
 			 }
 	private: System::Void checkBox1_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 			 }
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+				 int selectedIndex = comboBox2->SelectedIndex;
+
+				 String ^ip=textBox2->Text;
+
+
+
+				 if(selectedIndex==0 ){
+
+				 }else{
+
+					 if(selectedIndex==1 ){
+
+					 }
+
+				 }
+				 
+			 };
+
+
+
 	};
-
-
-
-};
