@@ -114,7 +114,7 @@ Button^ tableLayoutPanelAllCDB::getButton(String ^textbutton){
 	button->AccessibleRole = System::Windows::Forms::AccessibleRole::Grip;
 	button->Anchor = System::Windows::Forms::AnchorStyles::Top;
 
-	button->BackColor = System::Drawing::Color::Green;
+	button->BackColor = System::Drawing::Color::Gray;
 	button->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 	button->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.25F));
 	//button->Location = System::Drawing::Point(91, 3);
@@ -137,16 +137,16 @@ System::Void tableLayoutPanelAllCDB::button_Click(System::Object^  sender, Syste
 	Button ^button =(Button^) sender ;
 	if(e->Clicks==1){
 	
-	if(button->BackColor==System::Drawing::Color::Yellow){
-		button->BackColor= System::Drawing::Color::Red;
+	if(button->BackColor==System::Drawing::Color::Gray){
+		button->BackColor= System::Drawing::Color::White;
 		return;
 	}
 	if(button->BackColor== System::Drawing::Color::Red){
-		button->BackColor= System::Drawing::Color::Green;
+		button->BackColor= System::Drawing::Color::Gray;
 		return;
 	}
-	if(button->BackColor== System::Drawing::Color::Green){
-		button->BackColor= System::Drawing::Color::Yellow;
+	if(button->BackColor== System::Drawing::Color::White){
+		button->BackColor= System::Drawing::Color::Red;
 		return;
 	}
 	}else{

@@ -29,7 +29,7 @@ bool Progetto1::MyForm2::SendMessStatoCDBIXL(List< StateCDB^> ^lCDB){
 			System::Net::Sockets::ProtocolType::Udp);
 
 		IPAddress ^broadcast = IPAddress::Parse(textBox2->Text);
-		IPEndPoint ^ep = gcnew IPEndPoint(broadcast, 23002);
+		IPEndPoint ^ep = gcnew IPEndPoint(broadcast, int::Parse(textBox3->Text));
 
 		array<Byte>^sendBytes=	MessStatoCDBIXL->serialize();
 
@@ -67,7 +67,7 @@ bool Progetto1::MyForm2::SendMessStatoCDBATC(List< StateCDB^> ^lCDB, int idtreno
 			System::Net::Sockets::ProtocolType::Udp);
 
 		IPAddress ^broadcast = IPAddress::Parse(textBox2->Text);
-		IPEndPoint ^ep = gcnew IPEndPoint(broadcast, 23002);
+		IPEndPoint ^ep = gcnew IPEndPoint(broadcast, int::Parse(textBox3->Text));
 
 		array<Byte>^sendBytes=	MessStatoCDBATC->serialize();
 

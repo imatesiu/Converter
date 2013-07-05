@@ -55,6 +55,8 @@ namespace Progetto1 {
 	private: System::Windows::Forms::TextBox^  textBox2;
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label2;
+	private: System::Windows::Forms::TextBox^  textBox3;
+	private: System::Windows::Forms::Label^  label3;
 	protected: 
 
 	private:
@@ -76,6 +78,8 @@ namespace Progetto1 {
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -131,11 +135,30 @@ namespace Progetto1 {
 			this->label2->TabIndex = 5;
 			this->label2->Text = L"Train Running Number";
 			// 
+			// textBox3
+			// 
+			this->textBox3->Location = System::Drawing::Point(751, 474);
+			this->textBox3->Name = L"textBox3";
+			this->textBox3->Size = System::Drawing::Size(100, 20);
+			this->textBox3->TabIndex = 6;
+			this->textBox3->Text = L"4011";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(751, 455);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(26, 13);
+			this->label3->TabIndex = 7;
+			this->label3->Text = L"Port";
+			// 
 			// MyForm2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1276, 510);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->textBox2);
@@ -157,13 +180,13 @@ namespace Progetto1 {
 					 int idCDB = int::Parse(s->Name);
 					 StateCDB ^sCDB;
 					 if(s->BackColor== System::Drawing::Color::Red){
-						 sCDB= gcnew StateCDB(idCDB,1,0);
+						 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbOccupato,0);
 					 }
-					 if(s->BackColor== System::Drawing::Color::Green){
-						 sCDB= gcnew StateCDB(idCDB,0,0);
+					 if(s->BackColor== System::Drawing::Color::Gray){
+						 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbLibero,0);
 					 }
-					 if(s->BackColor== System::Drawing::Color::Yellow){
-						 sCDB= gcnew  StateCDB(idCDB,2,0);
+					 if(s->BackColor== System::Drawing::Color::White){
+						 sCDB= gcnew  StateCDB(idCDB,typeStateCDB::cdbImpegnato,0);
 					 }
 					 lCDB->Add(sCDB);
 					 Console::WriteLine(sCDB);
@@ -184,14 +207,14 @@ namespace Progetto1 {
 							 int idCDB = int::Parse(s->Name);
 							 StateCDB ^sCDB;
 							 if(s->BackColor== System::Drawing::Color::Red){
-								 sCDB= gcnew StateCDB(idCDB,1,0);
+								 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbOccupato,0);
 								  lCDB->Add(sCDB);
 							 }
 						//	 if(s->BackColor== System::Drawing::Color::Green){
 							//	 sCDB= gcnew StateCDB(idCDB,0,0);
 							// }
-							 if(s->BackColor== System::Drawing::Color::Yellow){
-								 sCDB= gcnew  StateCDB(idCDB,2,0);
+							 if(s->BackColor== System::Drawing::Color::White){
+								 sCDB= gcnew  StateCDB(idCDB,typeStateCDB::cdbImpegnato,0);
 								  lCDB->Add(sCDB);
 							 }
 							
