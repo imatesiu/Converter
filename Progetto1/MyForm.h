@@ -520,9 +520,9 @@ namespace Progetto1 {
 							 //send tcp
 
 							 Socket ^sock = gcnew Socket( System::Net::Sockets::AddressFamily::InterNetwork,System::Net::Sockets::SocketType::Stream,System::Net::Sockets::ProtocolType::Tcp );
-							 IPAddress ^broadcast = IPAddress::Parse(ip);
-							 IPEndPoint ^ep = gcnew IPEndPoint(broadcast, int::Parse(port));
-
+							 IPAddress ^broadcastip = IPAddress::Parse(ip);
+							 IPEndPoint ^ep = gcnew IPEndPoint(broadcastip, int::Parse(port));
+							 sock->Connect(ep);
 							 sock->SendTo( sendBytes, ep);
 
 						 }else{
