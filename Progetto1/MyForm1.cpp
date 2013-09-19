@@ -24,7 +24,7 @@ bool Progetto1::MyForm1::SendMessStatoIXL(List< StateItinerario^> ^listI, List<S
 		Messaggi ^MessStatoIXL = gcnew Messaggi();
 
 
-		MessStatoIXL->setNID_MESSAGE(101);
+		MessStatoIXL->setNID_MESSAGE(MessIXL::StatoLineaIXL);
 		MessStatoIXL->get_pacchettoStatoItinerario()->setNID_PACKET(101);
 		MessStatoIXL->get_pacchettoStatoSegnali()->setNID_PACKET(101);
 

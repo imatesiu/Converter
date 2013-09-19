@@ -5,7 +5,7 @@ bool Progetto1::MyForm2::SendMessStatoCDBIXL(List< StateCDB^> ^lCDB){
 		Messaggi ^MessStatoCDBIXL = gcnew Messaggi();
 
 
-		MessStatoCDBIXL->setNID_MESSAGE(101);
+		MessStatoCDBIXL->setNID_MESSAGE(MessIXL::StatoLineaIXL);
 		MessStatoCDBIXL->get_pacchettoStatoItinerario()->setNID_PACKET(101);
 		MessStatoCDBIXL->get_pacchettoStatoItinerario()->setItinerario(gcnew StateItinerario());
 
@@ -54,8 +54,8 @@ bool Progetto1::MyForm2::SendMessStatoCDBATC(List< StateCDB^> ^lCDB, int idtreno
 		Messaggi ^MessStatoCDBATC = gcnew Messaggi();
 
 
-		MessStatoCDBATC->setNID_MESSAGE(1);
-		MessStatoCDBATC->get_pacchettoStatoLineaATC()->setNID_PACKET(1);
+		MessStatoCDBATC->setNID_MESSAGE(MessATC::StatoLineaATC);
+		MessStatoCDBATC->get_pacchettoStatoLineaATC()->setNID_PACKET(0);
 		MessStatoCDBATC->get_pacchettoStatoLineaATC()->setNID_OPERATIONAL(idtreno);
 
 		

@@ -108,7 +108,7 @@
     <ClCompile Include="pacchettoCommandData.cpp" />
     <ClCompile Include="pacchettoEnd.cpp" />
     <ClCompile Include="pacchettoFaultData.cpp" />
-    <ClCompile Include="pacchettoMissionPlan.cpp" />
+    <ClCompile Include="pacchettoMissionData.cpp" />
     <ClCompile Include="pacchettopresentazione.cpp" />
     <ClCompile Include="pacchettoStatoBlocco.cpp" />
     <ClCompile Include="pacchettoStatoItinerario.cpp" />
@@ -155,7 +155,7 @@
     <ClInclude Include="pacchettoCommandData.h" />
     <ClInclude Include="pacchettoEnd.h" />
     <ClInclude Include="pacchettoFaultData.h" />
-    <ClInclude Include="pacchettoMissionPlan.h" />
+    <ClInclude Include="pacchettoMissionData.h" />
     <ClInclude Include="pacchettopresentazione.h" />
     <ClInclude Include="pacchettoStatoBlocco.h" />
     <ClInclude Include="pacchettoStatoItinerario.h" />

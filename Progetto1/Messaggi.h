@@ -1,7 +1,6 @@
 #pragma once
-#include "struttureDatiMessaggi.h"
 #include "pacchettoCommandData.h"
-#include "pacchettoMissionPlan.h"
+#include "pacchettoMissionData.h"
 #include "pacchettopresentazione.h"
 #include "pacchettostatolineaatc.h"
 #include "pacchettoAcknowledgement.h"
@@ -11,10 +10,18 @@
 #include "pacchettoStatoBlocco.h"
 #include "pacchettoComandoBlocco.h"
 #include "pacchettoStatoSegnali.h"
-#include "pachettoStatoScudetti.h"
 #include "pacchettoEnd.h"
 #include "pacchettoFaultData.h"
+#include "pachettoStatoScudetti.h"
 
+/*Utilizzo questa classe per creare serializzare deserializzare i messaggi specificando
+i pacchetti da inserire nel messaggio*/
+
+//questa classe rappresenta un messaggio cosi come definito nei documenti di specifica
+//e contiene i metodi per serializzare e desirializzare un messaggio
+enum  MessATC{ StatoLineaATC = 11,  FaultReportingATC = 12 };
+enum  MessIXL{ StatoLineaIXL = 1,  FaultReportingIXL = 211 , ComandoItinerari = 10, ComandoBlocco=231};
+enum  MessATO{ MissionPlan = 20,  FaultReportingATO = 25, UnconditionCommand=21, Acknol=22,Presentation=27 };
 ref class Messaggi
 {
 	// puntatore all'header per i messaggi ATS/ATO
@@ -25,7 +32,7 @@ ref class Messaggi
 	unsigned int NID_ENGINE;
 	// puntatori alle strutture dati per i pacchetti ATS/ATO
 	pacchettoCommandData ^pkgcd1;
-	pacchettoMissionPlan ^pkgMP;
+	pacchettoMissionData ^pkgMP;
 	pacchettopresentazione ^pgkPres;
 	pacchettostatolineaatc ^pkgStatoATC;
 	pacchettoAcknowledgement ^pkgAck;
@@ -38,6 +45,8 @@ ref class Messaggi
 	pacchettoFaultData ^pkgFaultData;
 	pacchettoStatoBlocco ^pkgStatoBlocco;
 	pachettoStatoScudetti ^pkgStatoScudetti;
+
+
 	pacchettoComandoItinerari ^pkgComandoItinerario;
 	pacchettoComandoBlocco ^pkgComandoBlocco;
 	pacchettoEnd ^pkgEnd;
@@ -86,8 +95,8 @@ public:
 	void set_pacchettoCommandData(){ pkgcd1 = gcnew pacchettoCommandData;};
 	pacchettoCommandData^ get_pacchettoCommandData(){ return pkgcd1;};
 
-	void set_pacchettoMissionPlan(){ pkgMP = gcnew pacchettoMissionPlan;};
-	pacchettoMissionPlan^ get_pacchettoMissionPlan(){ return pkgMP;};
+	void set_pacchettoMissionData(){ pkgMP = gcnew pacchettoMissionData;};
+	pacchettoMissionData^ get_pacchettoMissionData(){ return pkgMP;};
 
 	void set_pacchettoPresentazione(){ pgkPres = gcnew pacchettopresentazione;};
 	pacchettopresentazione^ get_pacchettoPresentazione(){ return pgkPres;};
@@ -98,7 +107,7 @@ public:
 	void set_pacchettoAcknowledgement(){ pkgAck = gcnew pacchettoAcknowledgement;};
 	pacchettoAcknowledgement^ get_pacchettoAcknowledgement(){ return pkgAck;};
 
-	void serialize(array<Byte> ^buffer);
+	void serialize(array<Byte>^buffer);
 	
 
 	array<System::Byte>^ serialize();

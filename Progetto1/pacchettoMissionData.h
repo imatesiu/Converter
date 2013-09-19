@@ -12,7 +12,7 @@ L'ATS manda una missione al treno la missione da eseguire specificandola all'int
 mission plan
 -------------------------------------------------------------------------------------------------*/
 
-ref class pacchettoMissionPlan
+ref class pacchettoMissionData
 {
 	unsigned int NID_PACKET ;
 	unsigned int L_PACKET;
@@ -32,7 +32,7 @@ public:
 	int getSize();
 	void serializeMissionPlanPkt(array<Byte> ^buff);
 	void deserializeMissionPlanPkt(array<Byte> ^buff);
-	pacchettoMissionPlan();
+	pacchettoMissionData();
 	// funzioni di interfaccia set e get per ogni campo dati del pacchetto
 	
 	void setNID_PACKET(int NID){NID_PACKET = NID;};
