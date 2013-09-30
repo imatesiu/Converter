@@ -201,29 +201,33 @@ namespace Progetto1 {
 					 try{
 						 int idtreno = int::Parse(stringaidtreno);
 						 List<StateCDB^> ^lCDB = gcnew List<StateCDB^>();
+						 int k = 0;
 						 for each ( Object ^ssx in tablel->getTableLayoutPanel()->Controls )
 						 {
+							 k++;
 							 Button ^s  = safe_cast<Button ^>(ssx);
 							 int idCDB = int::Parse(s->Name);
 							 StateCDB ^sCDB;
 							 if(s->BackColor== System::Drawing::Color::Red){
 								 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbOccupato,0);
 								 lCDB->Add(sCDB);
+								 Console::WriteLine(sCDB);
 							 }
-							 if(s->BackColor== System::Drawing::Color::Gray){
+							 if(s->BackColor== System::Drawing::Color::Green){
 								 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbLibero,0);
 								 lCDB->Add(sCDB);
 							 }
 							 if(s->BackColor== System::Drawing::Color::White){
 								 sCDB= gcnew  StateCDB(idCDB,typeStateCDB::cdbImpegnato,0);
 								 lCDB->Add(sCDB);
+								 Console::WriteLine(sCDB);
 							 }
 
-							 Console::WriteLine(sCDB);
+							 
 						 }
-
+						 Console::WriteLine("k {0} ",k);
 						 //send message udp from ATC to ATS
-						 if(lCDB!=nullptr){
+						 if(lCDB->Count>0){
 							 SendMessStatoCDBATC(lCDB, idtreno);
 						 }
 					 }catch(Exception ^e){
