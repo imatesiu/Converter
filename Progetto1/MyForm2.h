@@ -208,21 +208,24 @@ namespace Progetto1 {
 							 StateCDB ^sCDB;
 							 if(s->BackColor== System::Drawing::Color::Red){
 								 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbOccupato,0);
-								  lCDB->Add(sCDB);
+								 lCDB->Add(sCDB);
 							 }
-						//	 if(s->BackColor== System::Drawing::Color::Green){
-							//	 sCDB= gcnew StateCDB(idCDB,0,0);
-							// }
+							 if(s->BackColor== System::Drawing::Color::Gray){
+								 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbLibero,0);
+								 lCDB->Add(sCDB);
+							 }
 							 if(s->BackColor== System::Drawing::Color::White){
 								 sCDB= gcnew  StateCDB(idCDB,typeStateCDB::cdbImpegnato,0);
-								  lCDB->Add(sCDB);
+								 lCDB->Add(sCDB);
 							 }
-							
+
 							 Console::WriteLine(sCDB);
 						 }
 
 						 //send message udp from ATC to ATS
-						 SendMessStatoCDBATC(lCDB, idtreno);
+						 if(lCDB!=nullptr){
+							 SendMessStatoCDBATC(lCDB, idtreno);
+						 }
 					 }catch(Exception ^e){
 						 MessageBox::Show( "You must enter a Number.", "ID Train Number Entry Error",
 							 MessageBoxButtons::OK, MessageBoxIcon::Exclamation );
