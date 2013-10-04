@@ -1,13 +1,13 @@
 #pragma once
-#include "pacchettoMissionData.h"
-#include "utility.h"
+#include "messaggi\\pacchettoMissionData.h"
+#include "messaggi\\utility.h"
 #include "struttureDatiMessaggi.h"
-#include "Messaggi.h"
+#include "messaggi\\Messaggi.h"
 #include "tomWriterTraceListener.h"
 #include "Form1.h"
-#include "StateCDB.h"
-#include "StateItinerario.h"
-#include "StateSegnale.h"
+#include "messaggi\\StateCDB.h"
+#include "messaggi\\StateItinerario.h"
+#include "messaggi\\StateSegnale.h"
 
 namespace Progetto1 {
 
@@ -444,17 +444,22 @@ namespace Progetto1 {
 						 }
 						 if(selectedIndex==5){
 							 //Stato Linea ATC
-							 pkt1->get_pacchettoStatoLineaATC()->setNID_PACKET(Int32::Parse(arraystr[3]));
-							 pkt1->get_pacchettoStatoLineaATC()->setL_PACKET(Int32::Parse(arraystr[4]));
-							 pkt1->get_pacchettoStatoLineaATC()->setNID_OPERATIONAL(Int32::Parse(arraystr[5]));
-							 StateCDB ^sCDB = gcnew StateCDB(Int32::Parse(arraystr[6]),Int32::Parse(arraystr[7]),Int32::Parse(arraystr[8]));
-							 pkt1->get_pacchettoStatoLineaATC()->setCDB(sCDB);
+							 pkt1->get_pacchettoPositionDataATC()->setNID_PACKET(Int32::Parse(arraystr[3]));
+							 pkt1->get_pacchettoPositionDataATC()->setL_PACKET(Int32::Parse(arraystr[4]));
+								int nid_op= Int32::Parse(arraystr[5]);
+								int nid_eg=Int32::Parse(arraystr[6]);
+								int nid_cdb=Int32::Parse(arraystr[7]);
+								StateCDB ^sCDB = gcnew StateCDB(nid_cdb,typeStateCDB::cdbOccupato,typeStateDeviatoio::deviatoioNonPresente,nid_op,nid_eg);
+							 pkt1->get_pacchettoPositionDataATC()->setCDB(sCDB);
 
-							 pkt1->get_pacchettoStatoLineaATC()->setN_ITER(Int32::Parse(arraystr[9]));
+							 pkt1->get_pacchettoPositionDataATC()->setN_ITER(Int32::Parse(arraystr[8]));
 							 int i = 1;
-							 for (int z=0;i<pkt1->get_pacchettoStatoLineaATC()->getN_ITER();i++){
-								 StateCDB ^sCDB = gcnew StateCDB(Int32::Parse(arraystr[10+i]),Int32::Parse(arraystr[11+i]),Int32::Parse(arraystr[12+i]));
-								 pkt1->get_pacchettoStatoLineaATC()->setCDB(sCDB);
+							 for (int z=0;i<pkt1->get_pacchettoPositionDataATC()->getN_ITER();i++){
+								  nid_op= Int32::Parse(arraystr[9+i]);
+								 nid_eg=Int32::Parse(arraystr[10+i]);
+								 nid_cdb=Int32::Parse(arraystr[11+i]);
+								StateCDB ^sCDB = gcnew StateCDB(nid_cdb,typeStateCDB::cdbOccupato,typeStateDeviatoio::deviatoioNonPresente,nid_op,nid_eg);
+								 pkt1->get_pacchettoPositionDataATC()->setCDB(sCDB);
 							 }
 
 						 }

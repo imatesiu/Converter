@@ -1,8 +1,8 @@
 #pragma once
 #include "tableLayoutPanelSingleItin.h"
 #include "tabellaItinerari.h"
-#include "StateItinerario.h"
-#include "Messaggi.h"
+#include "messaggi\\StateItinerario.h"
+#include "messaggi\\Messaggi.h"
 
 
 namespace Progetto1 {

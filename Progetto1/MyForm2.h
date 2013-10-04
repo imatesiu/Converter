@@ -1,7 +1,7 @@
 #pragma once
 #include "tableLayoutPanelAllCDB.h"
-#include "StateCDB.h"
-#include "Messaggi.h"
+#include "messaggi\\StateCDB.h"
+#include "messaggi\\Messaggi.h"
 namespace Progetto1 {
 
 	using namespace System;
@@ -209,7 +209,7 @@ namespace Progetto1 {
 							 int idCDB = int::Parse(s->Name);
 							 StateCDB ^sCDB;
 							 if(s->BackColor== System::Drawing::Color::Red){
-								 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbOccupato,0);
+								 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbOccupato,0,idtreno,11);
 								 lCDB->Add(sCDB);
 								 Console::WriteLine(sCDB);
 							 }

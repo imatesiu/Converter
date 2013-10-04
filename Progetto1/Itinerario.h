@@ -1,5 +1,5 @@
 #pragma once
-#include "StateCDB.h"
+#include "messaggi\\StateCDB.h"
 using namespace System;
 using namespace System::Collections::Generic;
 ref class Itinerario
