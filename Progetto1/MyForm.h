@@ -454,12 +454,13 @@ namespace Progetto1 {
 
 							 pkt1->get_pacchettoPositionDataATC()->setN_ITER(Int32::Parse(arraystr[8]));
 							 int i = 1;
-							 for (int z=0;i<pkt1->get_pacchettoPositionDataATC()->getN_ITER();i++){
-								  nid_op= Int32::Parse(arraystr[9+i]);
-								 nid_eg=Int32::Parse(arraystr[10+i]);
-								 nid_cdb=Int32::Parse(arraystr[11+i]);
+							 for (int z=0;z<pkt1->get_pacchettoPositionDataATC()->getN_ITER();z++){
+								  nid_op= Int32::Parse(arraystr[9+z]);
+								  nid_eg=Int32::Parse(arraystr[10+z]);
+								 nid_cdb=Int32::Parse(arraystr[11+z]);
 								StateCDB ^sCDB = gcnew StateCDB(nid_cdb,typeStateCDB::cdbOccupato,typeStateDeviatoio::deviatoioNonPresente,nid_op,nid_eg);
 								 pkt1->get_pacchettoPositionDataATC()->setCDB(sCDB);
+								 i++;
 							 }
 
 						 }
