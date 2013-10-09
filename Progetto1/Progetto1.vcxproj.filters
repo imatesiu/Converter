@@ -27,76 +27,7 @@
     <ClCompile Include="Form1.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="Messaggi.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="pacchettoAcknowledgement.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="pacchettoComandoBlocco.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="pacchettoComandoItinerari.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="pacchettoCommandData.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="pacchettoEnd.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="pacchettoFaultData.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="pacchettopresentazione.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="pacchettoStatoBlocco.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="pacchettoStatoItinerario.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="pacchettostatolineaatc.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="pacchettoStatoLineaIXL.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="pacchettoStatoSegnali.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="utility.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
     <ClCompile Include="wdogcontrol.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="stateCDB.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="ProfiloVelocita.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="Mission.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="stateItinerario.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="stateSegnale.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="stateBlocco.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="Fault.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="pachettoStatoScudetti.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="stateScudetti.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="tableLayoutPanelSingleItin.cpp">
@@ -126,7 +57,79 @@
     <ClCompile Include="MyForm2.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="pacchettoMissionData.cpp">
+    <ClCompile Include="messaggi\Fault.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\pacchettoPositionDataATC.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\pachettoStatoScudetti.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\StateBlocco.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\StateItinerario.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\Messaggi.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\Mission.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\pacchettoAcknowledgement.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\pacchettoComandoBlocco.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\pacchettoComandoItinerari.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\pacchettoCommandData.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\pacchettoEnd.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\pacchettoFaultData.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\pacchettoMissionData.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\pacchettopresentazione.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\pacchettoStatoBlocco.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\pacchettoStatoItinerario.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\pacchettostatolineaatc.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\pacchettoStatoLineaIXL.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\pacchettoStatoSegnali.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\ProfiloVelocita.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\StateCDB.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\StateScudetti.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\StateSegnale.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="messaggi\utility.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>
@@ -140,76 +143,7 @@
     <ClInclude Include="Form1.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="Messaggi.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="pacchettoAcknowledgement.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="pacchettoComandoBlocco.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="pacchettoComandoItinerari.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="pacchettoCommandData.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="pacchettoEnd.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="pacchettoFaultData.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="pacchettopresentazione.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="pacchettoStatoBlocco.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="pacchettoStatoItinerario.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="pacchettostatolineaatc.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="pacchettoStatoLineaIXL.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="pacchettoStatoSegnali.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="utility.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
     <ClInclude Include="wdogcontrol.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="stateCDB.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="ProfiloVelocita.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="Mission.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="stateItinerario.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="stateSegnale.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="stateBlocco.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="Fault.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="pachettoStatoScudetti.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="stateScudetti.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="tableLayoutPanelSingleItin.h">
@@ -239,7 +173,79 @@
     <ClInclude Include="MyForm2.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="pacchettoMissionData.h">
+    <ClInclude Include="messaggi\Fault.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\pacchettoPositionDataATC.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\pachettoStatoScudetti.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\StateBlocco.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\StateItinerario.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\Messaggi.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\Mission.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\pacchettoAcknowledgement.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\pacchettoComandoBlocco.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\pacchettoComandoItinerari.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\pacchettoCommandData.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\pacchettoEnd.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\pacchettoFaultData.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\pacchettoMissionData.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\pacchettopresentazione.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\pacchettoStatoBlocco.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\pacchettoStatoItinerario.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\pacchettostatolineaatc.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\pacchettoStatoLineaIXL.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\pacchettoStatoSegnali.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\ProfiloVelocita.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\StateCDB.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\StateScudetti.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\StateSegnale.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="messaggi\utility.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>

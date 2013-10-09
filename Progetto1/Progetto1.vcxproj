@@ -73,12 +73,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.ReportViewer.Common">
-      <HintPath>Microsoft.ReportViewer.Common</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms">
-      <HintPath>..\..\..\..\..\..\Program Files\Microsoft Visual Studio 11.0\ReportViewer\Microsoft.ReportViewer.WinForms.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
