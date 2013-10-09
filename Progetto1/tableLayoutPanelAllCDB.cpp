@@ -1,14 +1,25 @@
 #include "tableLayoutPanelAllCDB.h"
 
-tableLayoutPanelAllCDB::tableLayoutPanelAllCDB(String ^namef)
+tableLayoutPanelAllCDB::tableLayoutPanelAllCDB(String ^namef, TextBox^ ta)
 {
 	rigae =1;
 	rigau =1;
 	namefile=namef;
+	Textarea=ta;
 	init();
 	read("..\\FileConfigurazione\\CDB.csv");
+	ToolTip1 = gcnew System::Windows::Forms::ToolTip();
 }
 
+/*tableLayoutPanelAllCDB::tableLayoutPanelAllCDB(String ^namef)
+{
+	rigae =1;
+	rigau =1;
+	namefile=namef;
+	Textarea=ta;
+	init();
+	read("..\\FileConfigurazione\\CDB.csv");
+}*/
 
 void tableLayoutPanelAllCDB::init(){
 	this-> components = gcnew System::ComponentModel::Container;
@@ -126,7 +137,7 @@ Button^ tableLayoutPanelAllCDB::getButton(String ^textbutton){
 	//button->SetStyle( ControlStyles::StandardDoubleClick, true );
 	button->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &tableLayoutPanelAllCDB::button_Click);
 	//button->DoubleClick += gcnew System::EventHandler(this, &tableLayoutPanelAllCDB::button_DoubleClick);
-
+	
 
 	return button;
 
@@ -143,10 +154,15 @@ System::Void tableLayoutPanelAllCDB::button_Click(System::Object^  sender, Syste
 	}
 	if(button->BackColor== System::Drawing::Color::Red){
 		button->BackColor= System::Drawing::Color::Gray;
-		return;
+		button->Tag="0";
+		ToolTip1->SetToolTip(button,"Vuoto");
+		
 	}
 	if(button->BackColor== System::Drawing::Color::White){
 		button->BackColor= System::Drawing::Color::Red;
+		button->Tag=Textarea->Text;
+		
+		ToolTip1->SetToolTip(button,Textarea->Text);
 		return;
 	}
 	}else{
@@ -167,8 +183,9 @@ System::Void tableLayoutPanelAllCDB::button_DoubleClick(System::Object^  sender,
 }
 
 void tableLayoutPanelAllCDB::addbutton(String ^namebutton, int riga, int colonna){
-
-	this->tableLayoutPanel1->Controls->Add(getButton(namebutton), colonna, riga);
+	System::Windows::Forms::Button ^button = getButton(namebutton);
+	this->tableLayoutPanel1->Controls->Add(button, colonna, riga);
+	
 	//	rigae++;
 
 }

@@ -24,7 +24,7 @@ namespace Progetto1 {
 		MyForm2(void)
 		{
 			InitializeComponent();
-			tablel = gcnew tableLayoutPanelAllCDB("station");
+			tablel = gcnew tableLayoutPanelAllCDB("station", textBox1);
 			tablel->Location =  System::Drawing::Point(1, 1);
 			tablel->Name = "firstControl1";
 			//tablel->Size =  System::Drawing::Size(75, 16);
@@ -37,7 +37,7 @@ namespace Progetto1 {
 			//
 		}
 		bool SendMessStatoCDBIXL(List< StateCDB^> ^lCDB);
-		bool SendMessStatoCDBATC(List< StateCDB^> ^lCDB, int idtreno);
+		bool SendMessStatoCDBATC(List< StateCDB^> ^lCDB);
 	protected:
 		/// <summary>
 		/// Liberare le risorse in uso.
@@ -170,6 +170,8 @@ namespace Progetto1 {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
+			
+
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -197,9 +199,9 @@ namespace Progetto1 {
 			 }
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 				 if(textBox1->Text!=""){
-					 String ^stringaidtreno = textBox1->Text;
+					// String ^stringaidtreno = textBox1->Text;
 					 try{
-						 int idtreno = int::Parse(stringaidtreno);
+						
 						 List<StateCDB^> ^lCDB = gcnew List<StateCDB^>();
 						 int k = 0;
 						 for each ( Object ^ssx in tablel->getTableLayoutPanel()->Controls )
@@ -207,8 +209,10 @@ namespace Progetto1 {
 							 k++;
 							 Button ^s  = safe_cast<Button ^>(ssx);
 							 int idCDB = int::Parse(s->Name);
+							
 							 StateCDB ^sCDB;
 							 if(s->BackColor== System::Drawing::Color::Red){
+								 int idtreno = int::Parse((String^)s->Tag);
 								 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbOccupato,0,idtreno,11);
 								 lCDB->Add(sCDB);
 								 Console::WriteLine(sCDB);
@@ -228,7 +232,7 @@ namespace Progetto1 {
 						 Console::WriteLine("k {0} ",k);
 						 //send message udp from ATC to ATS
 						 if(lCDB->Count>0){
-							 SendMessStatoCDBATC(lCDB, idtreno);
+							 SendMessStatoCDBATC(lCDB);
 						 }
 					 }catch(Exception ^e){
 						 MessageBox::Show( "You must enter a Number.", "ID Train Number Entry Error",

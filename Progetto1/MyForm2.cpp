@@ -49,7 +49,7 @@ bool Progetto1::MyForm2::SendMessStatoCDBIXL(List< StateCDB^> ^lCDB){
 }
 
 
-bool Progetto1::MyForm2::SendMessStatoCDBATC(List< StateCDB^> ^lCDB, int idtreno){
+bool Progetto1::MyForm2::SendMessStatoCDBATC(List< StateCDB^> ^lCDB){
 	try{
 		Messaggi ^MessStatoCDBATC = gcnew Messaggi();
 

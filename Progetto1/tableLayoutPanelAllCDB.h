@@ -11,12 +11,14 @@ ref class tableLayoutPanelAllCDB : public System::Windows::Forms::UserControl
 	System::Windows::Forms::Label^  label0;
 	System::ComponentModel::IContainer^ components;
 	System::Windows::Forms::ErrorProvider^ errorProvider;
+	System::Windows::Forms::TextBox^ Textarea;
 	String ^namefile;
 	int rigae;
 	int rigau;
+	System::Windows::Forms::ToolTip ^ToolTip1;
 public:
-	tableLayoutPanelAllCDB(String ^namef);
-
+	tableLayoutPanelAllCDB(String ^namef, TextBox^ ta);
+	//tableLayoutPanelAllCDB(String ^namef);
 	void init();
 	TableLayoutPanel ^getTableLayoutPanel(){return tableLayoutPanel1;};
 	Button^ getButton(String ^textbutton);
