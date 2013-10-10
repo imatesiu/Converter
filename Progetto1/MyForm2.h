@@ -104,9 +104,13 @@ namespace Progetto1 {
 			// 
 			// textBox1
 			// 
+			this->textBox1->BackColor = System::Drawing::Color::Black;
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Courier New", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->textBox1->ForeColor = System::Drawing::Color::White;
 			this->textBox1->Location = System::Drawing::Point(333, 473);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(126, 20);
+			this->textBox1->Size = System::Drawing::Size(126, 21);
 			this->textBox1->TabIndex = 2;
 			// 
 			// textBox2
@@ -169,8 +173,6 @@ namespace Progetto1 {
 			this->Text = L"MyForm2";
 			this->ResumeLayout(false);
 			this->PerformLayout();
-
-			
 
 		}
 #pragma endregion

@@ -24,8 +24,8 @@ int main()
 	// Trace::Listeners->Add(s);
 	// Trace::AutoFlush=true;
   
-				 Progetto1::MyForm2 ^ds3 = gcnew Progetto1::MyForm2();
-				 ds3->Show();
+			/*	 Progetto1::MyForm2 ^ds3 = gcnew Progetto1::MyForm2();
+				 ds3->Show();*/
 	
 	Progetto1::MyForm ^aform = gcnew Progetto1::MyForm();
 	//aform->ShowDialog();
