@@ -2,6 +2,7 @@
 #include "tableLayoutPanelAllCDB.h"
 #include "messaggi\\StateCDB.h"
 #include "messaggi\\Messaggi.h"
+#include "messaggi\\utility.h"
 namespace Progetto1 {
 
 	using namespace System;
@@ -24,7 +25,7 @@ namespace Progetto1 {
 		MyForm2(void)
 		{
 			InitializeComponent();
-			tablel = gcnew tableLayoutPanelAllCDB("station", textBox1);
+			tablel = gcnew tableLayoutPanelAllCDB("station", textBox1, textBox4);
 			tablel->Location =  System::Drawing::Point(1, 1);
 			tablel->Name = "firstControl1";
 			//tablel->Size =  System::Drawing::Size(75, 16);
@@ -38,6 +39,7 @@ namespace Progetto1 {
 		}
 		bool SendMessStatoCDBIXL(List< StateCDB^> ^lCDB);
 		bool SendMessStatoCDBATC(List< StateCDB^> ^lCDB);
+		void serializzeNetWork(List< StateCDB^> ^lCDB);
 	protected:
 		/// <summary>
 		/// Liberare le risorse in uso.
@@ -57,6 +59,9 @@ namespace Progetto1 {
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::TextBox^  textBox3;
 	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Button^  button3;
+	private: System::Windows::Forms::Label^  label4;
+	private: System::Windows::Forms::TextBox^  textBox4;
 	protected: 
 
 	private:
@@ -80,6 +85,9 @@ namespace Progetto1 {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -156,11 +164,44 @@ namespace Progetto1 {
 			this->label3->TabIndex = 7;
 			this->label3->Text = L"Port";
 			// 
+			// button3
+			// 
+			this->button3->Location = System::Drawing::Point(12, 430);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(142, 23);
+			this->button3->TabIndex = 8;
+			this->button3->Text = L"SendNetWork";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm2::button3_Click);
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(330, 414);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(80, 13);
+			this->label4->TabIndex = 9;
+			this->label4->Text = L"Engine Number";
+			// 
+			// textBox4
+			// 
+			this->textBox4->BackColor = System::Drawing::Color::Black;
+			this->textBox4->Font = (gcnew System::Drawing::Font(L"Courier New", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->textBox4->ForeColor = System::Drawing::Color::White;
+			this->textBox4->Location = System::Drawing::Point(333, 430);
+			this->textBox4->Name = L"textBox4";
+			this->textBox4->Size = System::Drawing::Size(126, 21);
+			this->textBox4->TabIndex = 10;
+			// 
 			// MyForm2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1276, 510);
+			this->Controls->Add(this->textBox4);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->button3);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->label2);
@@ -197,13 +238,14 @@ namespace Progetto1 {
 				 }
 
 				 SendMessStatoCDBIXL(lCDB);
+				 
 
 			 }
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 				 if(textBox1->Text!=""){
-					// String ^stringaidtreno = textBox1->Text;
+					 // String ^stringaidtreno = textBox1->Text;
 					 try{
-						
+
 						 List<StateCDB^> ^lCDB = gcnew List<StateCDB^>();
 						 int k = 0;
 						 for each ( Object ^ssx in tablel->getTableLayoutPanel()->Controls )
@@ -211,11 +253,14 @@ namespace Progetto1 {
 							 k++;
 							 Button ^s  = safe_cast<Button ^>(ssx);
 							 int idCDB = int::Parse(s->Name);
-							
+
 							 StateCDB ^sCDB;
 							 if(s->BackColor== System::Drawing::Color::Red){
-								 int idtreno = int::Parse((String^)s->Tag);
-								 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbOccupato,0,idtreno,11);
+								 String ^str = (String^)s->Tag;
+								 array<String^> ^arrstring = str->Split(';');
+								 int idtreno = int::Parse(arrstring[0]);
+								 int idftreno = int::Parse(arrstring[1]);
+								 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbOccupato,0,idtreno,idftreno);
 								 lCDB->Add(sCDB);
 								 Console::WriteLine(sCDB);
 							 }
@@ -229,12 +274,13 @@ namespace Progetto1 {
 								 Console::WriteLine(sCDB);
 							 }
 
-							 
+
 						 }
 						 Console::WriteLine("k {0} ",k);
 						 //send message udp from ATC to ATS
 						 if(lCDB->Count>0){
 							 SendMessStatoCDBATC(lCDB);
+							// serializzeNetWork(lCDB);
 						 }
 					 }catch(Exception ^e){
 						 MessageBox::Show( "You must enter a Number.", "ID Train Number Entry Error",
@@ -246,5 +292,56 @@ namespace Progetto1 {
 
 
 			 }
-	};
+
+
+	
+	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+
+				  try{
+
+						 List<StateCDB^> ^lCDB = gcnew List<StateCDB^>();
+						 int k = 0;
+						 for each ( Object ^ssx in tablel->getTableLayoutPanel()->Controls )
+						 {
+							 k++;
+							 Button ^s  = safe_cast<Button ^>(ssx);
+							 int idCDB = int::Parse(s->Name);
+
+							 StateCDB ^sCDB;
+							 if(s->BackColor== System::Drawing::Color::Red){
+								 String ^str = (String^)s->Tag;
+								 array<String^> ^arrstring = str->Split(';');
+								 int idtreno = int::Parse(arrstring[0]);
+								 int idftreno = int::Parse(arrstring[1]);
+								 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbOccupato,0,idtreno,idftreno);
+								 lCDB->Add(sCDB);
+								 Console::WriteLine(sCDB);
+							 }
+							 if(s->BackColor== System::Drawing::Color::Green){
+								 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbLibero,0);
+								 lCDB->Add(sCDB);
+							 }
+							 if(s->BackColor== System::Drawing::Color::White){
+								 sCDB= gcnew  StateCDB(idCDB,typeStateCDB::cdbImpegnato,0);
+								 lCDB->Add(sCDB);
+								 Console::WriteLine(sCDB);
+							 }
+
+
+						 }
+						 Console::WriteLine("k {0} ",k);
+						 //send message udp from ATC to ATS
+						 if(lCDB->Count>0){
+							 serializzeNetWork(lCDB);
+						 }
+					 }catch(Exception ^e){
+						 MessageBox::Show( "You must enter a Number.", "ID Train Number Entry Error",
+							 MessageBoxButtons::OK, MessageBoxIcon::Exclamation );
+
+					 }
+
+
+
+			 }
+};
 }

@@ -12,12 +12,13 @@ ref class tableLayoutPanelAllCDB : public System::Windows::Forms::UserControl
 	System::ComponentModel::IContainer^ components;
 	System::Windows::Forms::ErrorProvider^ errorProvider;
 	System::Windows::Forms::TextBox^ Textarea;
+	System::Windows::Forms::TextBox^ Textarea2;
 	String ^namefile;
 	int rigae;
 	int rigau;
 	System::Windows::Forms::ToolTip ^ToolTip1;
 public:
-	tableLayoutPanelAllCDB(String ^namef, TextBox^ ta);
+	tableLayoutPanelAllCDB(String ^namef, TextBox^ ta1 ,TextBox^ ta2 );
 	//tableLayoutPanelAllCDB(String ^namef);
 	void init();
 	TableLayoutPanel ^getTableLayoutPanel(){return tableLayoutPanel1;};

@@ -1,11 +1,12 @@
 #include "tableLayoutPanelAllCDB.h"
 
-tableLayoutPanelAllCDB::tableLayoutPanelAllCDB(String ^namef, TextBox^ ta)
+tableLayoutPanelAllCDB::tableLayoutPanelAllCDB(String ^namef, TextBox^ ta1 ,TextBox^ ta2 )
 {
 	rigae =1;
 	rigau =1;
 	namefile=namef;
-	Textarea=ta;
+	Textarea=ta1;
+	Textarea2=ta2;
 	init();
 	read("..\\FileConfigurazione\\CDB.csv");
 	ToolTip1 = gcnew System::Windows::Forms::ToolTip();
@@ -160,9 +161,9 @@ System::Void tableLayoutPanelAllCDB::button_Click(System::Object^  sender, Syste
 	}
 	if(button->BackColor== System::Drawing::Color::White){
 		button->BackColor= System::Drawing::Color::Red;
-		button->Tag=Textarea->Text;
+		button->Tag=Textarea->Text+";"+Textarea2->Text;
 		
-		ToolTip1->SetToolTip(button,Textarea->Text);
+		ToolTip1->SetToolTip(button,Textarea->Text+" "+Textarea2->Text);
 		return;
 	}
 	}else{
