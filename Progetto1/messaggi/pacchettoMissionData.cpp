@@ -129,6 +129,7 @@ void pacchettoMissionData::deserializeMissionPlanPkt(array<Byte>^buffer)
 		int T_DOORS_TIME=utility::pop(buffer, 12, offset);
 		offset += 12;
 		mS2_vect->Add(gcnew Mission(T_START_TIME,NID_LRGB,D_STOP,Q_DOORS,T_DOORS_TIME));
+		Console::WriteLine(i);
 	}
 }
 
