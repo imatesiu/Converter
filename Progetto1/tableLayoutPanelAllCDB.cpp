@@ -206,11 +206,42 @@ void tableLayoutPanelAllCDB::paint(stazione ^station){
 void tableLayoutPanelAllCDB::read(String ^file){
 	int riga=0;
 	
-	if (File::Exists(file))
-	{
+	//if (File::Exists(file))
+	//{
 		// Create a file to write to.
-
-		array<String^> ^righe =	File::ReadAllLines(file);
+		String^ tmpFilename = System::IO::Path::GetTempFileName();
+		 Stream^ readStream = System::Reflection::Assembly::GetExecutingAssembly()->GetManifestResourceStream("CDB.csv");
+		 FileStream^ writeStream = gcnew FileStream(tmpFilename, FileMode::Create);
+		 readStream->CopyTo(writeStream);
+		 readStream->Close();
+		  writeStream->Close();
+		 /*StreamReader ^streamreader = gcnew StreamReader(readStream);
+		 MemoryStream ^memStream = gcnew MemoryStream();
+		 readStream->CopyTo(memStream);
+		  array<unsigned char> ^caratteri =	memStream->ToArray();
+		  String ^elemento="";
+		  int colonna=0;
+		  for each (char var in caratteri)
+		  {
+			  if(Convert::ToChar( var ).ToString()!=";"){
+				  elemento+=Convert::ToChar( var ).ToString();
+			  }else{
+				  if(elemento!="" & elemento!="\r"& elemento!="\n"){
+				  addbutton(elemento,riga,colonna);
+				  elemento="";
+				  colonna++;
+				    }else
+				  {
+					   colonna=0;
+					  riga=riga+2;
+				  }
+			  }
+		  }*/
+		 
+            
+            
+		 
+		array<String^> ^righe =	 File::ReadAllLines(tmpFilename);
 		for each (String ^var in righe)
 		{
 			int colonna=0;
@@ -227,6 +258,6 @@ void tableLayoutPanelAllCDB::read(String ^file){
 
 		}
 
-	}
+	//}
 
 }

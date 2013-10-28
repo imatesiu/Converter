@@ -162,6 +162,7 @@
     <ClInclude Include="messaggi\StateCDB.h" />
     <ClInclude Include="messaggi\StateScudetti.h" />
     <ClInclude Include="messaggi\StateSegnale.h" />
+    <ClInclude Include="resource2.h" />
     <ClInclude Include="stazione.h" />
     <ClInclude Include="tabellaFermate.h" />
     <ClInclude Include="tabellaItinerari.h" />
@@ -186,11 +187,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <_EmbedManagedResourceFile Include="..\FileConfigurazione\CDB.csv">
+      <FileType>Document</FileType>
+    </_EmbedManagedResourceFile>
     <None Include="app.config" />
     <None Include="Converter1.aps" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Converter2.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <_EmbedManagedResourceFile Include="..\FileConfigurazione\ConfigurazioneItinerari.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

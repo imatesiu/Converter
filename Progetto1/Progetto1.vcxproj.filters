@@ -248,6 +248,9 @@
     <ClInclude Include="messaggi\utility.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="resource2.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
@@ -271,5 +274,13 @@
     <ResourceCompile Include="Converter2.rc">
       <Filter>File di risorse</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <_EmbedManagedResourceFile Include="..\FileConfigurazione\ConfigurazioneItinerari.xml">
+      <Filter>File di risorse</Filter>
+    </_EmbedManagedResourceFile>
+    <_EmbedManagedResourceFile Include="..\FileConfigurazione\CDB.csv">
+      <Filter>File di risorse</Filter>
+    </_EmbedManagedResourceFile>
   </ItemGroup>
 </Project>
