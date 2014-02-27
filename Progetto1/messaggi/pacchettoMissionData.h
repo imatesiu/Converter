@@ -19,15 +19,15 @@ mission plan
 
 ref class pacchettoMissionData
 {
-	unsigned int NID_PACKET ;
-	unsigned int L_PACKET;
-	unsigned int Q_SCALE ;
+	 int NID_PACKET ;
+	 int L_PACKET;
+	 int Q_SCALE ;
 	
-	unsigned int N_ITER1;
+	 int N_ITER1;
 	// questo vettore verrà allocato con la new quando sarà noto il valore di N_ITER
 	List<ProfiloVelocita^>^mS1_vect;
 
-	unsigned int N_ITER2;
+	 int N_ITER2;
 	// questo vettore verrà allocato con la new quando sarà noto il valore di N_ITER
 	List<Mission^>^mS2_vect;
 public:
@@ -35,8 +35,8 @@ public:
 	// fatti dal compilatore) in Byte del messaggio tenendo anche in conto l'eventuale padding
 	// questa funzione sarà chiamata da chi vorrà serializzare il messaggio, per poter allocare il buffer
 	int getSize();
-	void serializeMissionPlanPkt(array<Byte>^buff);
-	void deserializeMissionPlanPkt(array<Byte>^buff);
+	void serialize(array<Byte>^buff,int offset);
+	void deserialize(array<Byte>^buff,int offset);
 	pacchettoMissionData();
 	// funzioni di interfaccia set e get per ogni campo dati del pacchetto
 	

@@ -47,7 +47,7 @@ void Messaggi::serialize(array<Byte>^buffer)
 	int offset = 0;
 	switch (N)
 	{
-	case MessATO::MissionPlan : {get_pacchettoMissionData()->serializeMissionPlanPkt(buffer);
+	case MessATO::MissionPlan : {get_pacchettoMissionData()->serialize(buffer,offset);
 		break;}
 	case MessATO::UnconditionCommand : {get_pacchettoCommandData()->serializepacchettoCommandData(buffer);
 		break;}
@@ -111,8 +111,10 @@ void Messaggi::deserialize(array<Byte>^buffer)
 		int offset = 0;
 		switch (NID_MESSAGE)
 		{
-		case MessATO::MissionPlan : {set_pacchettoMissionData();
-			pkgMP->deserializeMissionPlanPkt(buffer);
+		case MessATO::MissionPlan : {
+			offset += 51;
+			set_pacchettoMissionData();
+			pkgMP->deserialize(buffer,offset);
 			break;
 
 									}

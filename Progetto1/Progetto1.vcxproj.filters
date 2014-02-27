@@ -132,6 +132,24 @@
     <ClCompile Include="messaggi\utility.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="TrainInfo3.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="SingleTrainInfoForm.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Train.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyListTrain.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="physicalTrain.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Fermata.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -251,6 +269,21 @@
     <ClInclude Include="resource2.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="TrainInfo3.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="SingleTrainInfoForm.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Train.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyListTrain.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="physicalTrain.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
@@ -263,6 +296,9 @@
       <Filter>File di risorse</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm2.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainInfo3.resx">
       <Filter>File di risorse</Filter>
     </EmbeddedResource>
   </ItemGroup>
