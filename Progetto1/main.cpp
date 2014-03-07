@@ -8,14 +8,14 @@ using namespace ApplicationFramework;
 //#define TRACE
 int main()
 {
-	Console::SetBufferSize(Console::WindowWidth, Int16::MaxValue-1);
+//	Console::SetBufferSize(Console::WindowWidth, Int16::MaxValue-1);
 
-	System::Reflection::Assembly^ myAssembly = System::Reflection::Assembly::GetExecutingAssembly();
-	 Stream ^myStream = myAssembly->GetManifestResourceStream("CDB.csv");
-	 Stream ^myStream3 = myAssembly->GetManifestResourceStream("IDR_TXT1");
-	 Stream ^myStream1 = myAssembly->GetManifestResourceStream("Converter.ConfigurazioneItinerari.xml");
-	 	 Stream ^myStream2 = myAssembly->GetManifestResourceStream("Progetto1.ConfigurazioneItinerari.xml");
-		 Stream^ readStream = System::Reflection::Assembly::GetExecutingAssembly()->GetManifestResourceStream("ConfigurazioneItinerari.xml");
+	//System::Reflection::Assembly^ myAssembly = System::Reflection::Assembly::GetExecutingAssembly();
+	// Stream ^myStream = myAssembly->GetManifestResourceStream("CDB.csv");
+	 //Stream ^myStream3 = myAssembly->GetManifestResourceStream("IDR_TXT1");
+	 //Stream ^myStream1 = myAssembly->GetManifestResourceStream("Converter.ConfigurazioneItinerari.xml");
+	 //	 Stream ^myStream2 = myAssembly->GetManifestResourceStream("Progetto1.ConfigurazioneItinerari.xml");
+	//	 Stream^ readStream = System::Reflection::Assembly::GetExecutingAssembly()->GetManifestResourceStream("ConfigurazioneItinerari.xml");
 //System::Resources::IResourceReader^ reader = gcnew   System::Resources::ResourceReader("Resource.resx");
 //System::Resources::IResourceReader^ reader = gcnew   System::Resources::ResourceReader("Converter2.rc");
    //   IDictionaryEnumerator ^en = reader->GetEnumerator();

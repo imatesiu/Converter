@@ -319,4 +319,12 @@
       <Filter>File di risorse</Filter>
     </_EmbedManagedResourceFile>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico">
+      <Filter>File di risorse</Filter>
+    </Image>
+    <Image Include="app.ico">
+      <Filter>File di risorse</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

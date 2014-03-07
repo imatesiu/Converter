@@ -1,7 +1,6 @@
 #include "pacchettoMissionData.h"
 #include "utility.h"
-#include <iostream>
-using namespace std;
+
 #include "Mission.h"
 
 
