@@ -1,27 +1,26 @@
 #pragma once
-enum typeStateItineraio  {itinerarioStatoNonInAtto = 0, itinerarioStatoInAtto = 1};
 
-/*Utilizzo questa classe per serializzare le informazioni dello stato dell'itinerario del pacchetto stato itinerario
-rivevuto dall'IXL*/
+public enum class QStateItineraio  {itinerarioStatoNonInAtto = 0, itinerarioStatoInAtto = 1};
 
+/*
+Rappresenta le informazioni dello stato dell'itinerario del pacchetto stato itinerario rivevuto dall'IXL
+*/
+using namespace System::Diagnostics::CodeAnalysis;
 
-//questa classe rappresenta lo stato di un itinerario
-ref class StateItinerario
+[ExcludeFromCodeCoverage]
+public ref class StateItinerario
 {
-	unsigned int NID_ITIN;
+	int NID_ITIN;
 	int Q_STATOITIN ;
 	
 public:
 	StateItinerario(void);
-	StateItinerario(int N, int Q){NID_ITIN=N;setQ_STATOITIN(Q);};
+	StateItinerario(int N, int Q){NID_ITIN=N;Q_STATOITIN =Q;};
 	void setNID_ITIN( int N){NID_ITIN=N;};
 	int getNID_ITIN(){return NID_ITIN;};
 	void setQ_STATOITIN( int Q){
-		if((Q>=0) & (Q<2)){
-			Q_STATOITIN=Q;
-		}else{
-			Q_STATOITIN=typeStateItineraio::itinerarioStatoInAtto;
-		}
+					Q_STATOITIN=(int)Q;
+		
 	};
 	int getQ_STATOITIN(){return Q_STATOITIN;};
 	int Size(){return 34;}
@@ -32,9 +31,6 @@ public:
 				Q_STATOITIN=newitin->getQ_STATOITIN();
 				ret=true;
 			}
-
-
-
 		}
 		return ret;
 	};

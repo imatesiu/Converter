@@ -6,11 +6,12 @@ stazione::stazione(void)
 	idStazione = 0;
 	itinerari= gcnew Dictionary<int,List<Itinerario^>^ >;
 	itinerariid= gcnew Dictionary<int,Itinerario^ >;
+	binari = gcnew List<binario^>();
 
 }
 
 System::String^ stazione::ToString() {
-	String ^out="";
+	String ^out="Station Name:"+get_NomeStazione()+"Station id:"+get_idStazione();
 	for each( KeyValuePair<int , List<Itinerario^>^> kvp in itinerari )
 	{
 
@@ -30,6 +31,10 @@ System::String^ stazione::ToString() {
 		out+=" "+ kvp->Value+"\n\r";
 
 
+	}
+	for each (binario ^var in binari)
+	{
+		out+=" "+ var->ToString()+"\n\r";
 	}
 
 

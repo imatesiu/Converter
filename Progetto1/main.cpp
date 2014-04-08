@@ -3,9 +3,13 @@
 #include "Form1.h"
 #include "MyForm1.h"
 #include "MyForm2.h"
+#include "TrainInfo3.h"
+#include "TrainGraph.h"
+#include "TabellaOrario.h"
 using namespace System::Diagnostics;
 using namespace ApplicationFramework;
 //#define TRACE
+[STAThread]
 int main()
 {
 //	Console::SetBufferSize(Console::WindowWidth, Int16::MaxValue-1);
@@ -30,7 +34,8 @@ int main()
 //Trace::WriteLine("Hello world");
 	//Progetto1::Form1 ^d = gcnew Progetto1::Form1();
 	//			 d->Show();
-
+	Progetto1::TrainInfo3 ^ed= gcnew Progetto1::TrainInfo3();
+	ed->Show();
 
 			//	 	Progetto1::MyForm1 ^ds = gcnew Progetto1::MyForm1();
 			//	 ds->Show();
@@ -42,6 +47,9 @@ int main()
 	// Trace::Listeners->Add(s);
 	// Trace::AutoFlush=true;
   
+				 	Progetto1::TrainGraph ^tg = gcnew Progetto1::TrainGraph(gcnew TabellaOrario());
+				 tg->Show();
+
 			/*	 Progetto1::MyForm2 ^ds3 = gcnew Progetto1::MyForm2();
 				 ds3->Show();*/
 	

@@ -1,42 +1,33 @@
 #pragma once
 #include "utility.h"
 #include "StateCDB.h"
+#include "pacchettoBase.h"
 using namespace System;
 using namespace System::Collections::Generic;
 using namespace System::Collections;
+using namespace System::Diagnostics::CodeAnalysis;
+
+/*
+Rappresenta le informazioni contenute nel pacchetto Stato linea che l'ATS riceve dal ATC, con le informazioni sullo stato dei CDB, nel messaggio di stato della linea 
+**pacchetto cambiato classe inutilizzata
+*/
 
 
-/*Utilizzo questa classe per rappresentare le informazioni contenute nel pacchetto Stato linea che l'ATS riceve dal ATC
-nel messaggio di stato della linea, sono presenti anche i metodi per serializzare e deserializzare il contenuto della classe*/
-
-
-//questa classe rappresenta un Pacchetto per ricevere informazioni sullo stato dei CDB dall'ATC
-
-ref class pacchettostatolineaatc
+[ExcludeFromCodeCoverage]
+public ref class pacchettostatolineaatc : pacchettoBase
 {
-	unsigned int NID_PACKET;
-	unsigned int L_PACKET ;
-	unsigned int NID_OPERATIONAL ;
+	int L_PACKET ;
+	int NID_OPERATIONAL ;
 	
-	unsigned int N_ITER ;
-	// questo vettore verrà allocato con la new quando sarà noto il valore di N_ITER
+	int N_ITER ;
 	List< StateCDB^> ^pstato;
 public:
 	pacchettostatolineaatc();
-	
-	
-	
-public:
-	// funzione che restituisce la dimensione (ideale, non quella dovuta agli allineamenti 
-	// fatti dal compilatore) in byte del messaggio tenendo anche in conto l'eventuale padding
-	// questa funzione sarà chiamata da chi vorrà serializzare il messaggio, per poter allocare il buffer
-	int getSize();
-	void serialize(array<Byte>^buff);
-	void deserialize(array<Byte>^buff);
-	
-	// funzioni di interfaccia set e get per ogni campo dati del pacchetto
-	
 
+	virtual int getSize() override;
+	virtual void serialize(array<Byte>^buff, int offset) override;
+	virtual void deserialize(array<Byte>^buff, int offset) override;
+	
 	void setNID_PACKET(int NID){NID_PACKET = NID;};
 	int getNID_PACKET(){return NID_PACKET;};
 	void setL_PACKET(int L){L_PACKET = L;};
@@ -48,23 +39,11 @@ public:
 	void setN_ITER(int N);
 	int getN_ITER(){return N_ITER;};
 
-	
-
 	void setCDB(List< StateCDB^> ^all){pstato=all;};
 	List< StateCDB^> ^getCDB(){return pstato;};
 
 	void setCDB(StateCDB ^one){pstato->Add(one);};
 
-
-
-	/*void setNID_CDB(int index, int NID);
-	int getNID_CDB(int index);
-	void setQ_DEVIATIOIO(int index, int Q);
-	int getQ_DEVIATIOIO(int index);
-	void setQ_STATOCDB(int index, int Q);
-	int getQ_STATOCDB(int index);*/
-
 	System::String^ toPrint();
-
 };
 

@@ -3,14 +3,11 @@
 
 pacchettoPositionDataATC::pacchettoPositionDataATC(void)
 {
-
-
-	NID_PACKET = 0;
-	L_PACKET = 0;
-	N_ITER=0;
-	ListPostionData = gcnew List<StateCDB^>();
+	setNID_PACKET(PacchettoID::PositionDataATC);
+	setL_PACKET( 0);
+	setN_ITER(0);
+	setCDB( gcnew List<StateCDB^>());
 }
-
 
 int pacchettoPositionDataATC::getSize()
 {
@@ -30,79 +27,78 @@ int pacchettoPositionDataATC::getSize()
 System::String^ pacchettoPositionDataATC::toPrint(){
 	String ^out;
 
-	out = out+"NID_PACKET: "+NID_PACKET+";";
-	out = out+"L_PACKET: "+L_PACKET+";";
+	out = out+"NID_PACKET: "+get_NID_PACKET()+";";
+	out = out+"L_PACKET: "+getL_PACKET()+";";
 
-	if(ListPostionData->Count>0)
-		out = out+ListPostionData[0]->ToString();
-	out = out+"N_ITER: "+N_ITER+";";
+	if(getListCDB()->Count>0)
+		out = out+getListCDB()[0]->ToString();
+	out = out+"N_ITER: "+getN_ITER()+";";
 
-	for( int i=1;i<ListPostionData->Count;i++)
+	for( int i=1;i<getListCDB()->Count;i++)
 	{
-		out = out+ListPostionData[i]->ToString();
+		out = out+getListCDB()[i]->ToString();
 
 	}
 
 	return out;
 }
 
-// funzione che setta N_ITER
 void pacchettoPositionDataATC::setN_ITER(int N)
 {
 	N_ITER = N;
 
 }
 
-
-
-void pacchettoPositionDataATC::serialize(array<Byte>^buffer)
+void pacchettoPositionDataATC::serialize(array<Byte>^buffer, int offset)
 {
-
-	utility::push(buffer, NID_PACKET, 8, 51);
+	utility::push(buffer, NID_PACKET, 8, offset);
+	offset += 8;
 	setL_PACKET(getSize());
-	utility::push(buffer, L_PACKET, 13, 59);
+	utility::push(buffer, L_PACKET, 13, offset);
+	offset += 13;
 
 	if(ListPostionData->Count>0){
-		
-		utility::push(buffer,  ListPostionData[0]->getNID_ENGINE(), 32, 72);
-		utility::push(buffer, ListPostionData[0]->getNID_OPERATIONAL(), 32, 104);
-		utility::push(buffer,  ListPostionData[0]->getNID_CDB(), 32, 136);
+
+		utility::push(buffer,  ListPostionData[0]->getNID_ENGINE(), 32, offset);
+		offset += 32;
+		utility::push(buffer, ListPostionData[0]->getNID_OPERATIONAL(), 32, offset);
+		offset += 32;
+		utility::push(buffer,  ListPostionData[0]->getNID_CDB(), 32, offset);
+		offset += 32;
 	}
 
-	utility::push(buffer, N_ITER, 16, 168);
+	offset = 168;
+	utility::push(buffer, N_ITER, 16, offset);
+	offset += 16;
 
-	int offset = 184;
 	for( int i=1;i<ListPostionData->Count;i++)
 	{
-
 		utility::push(buffer, ListPostionData[i]->getNID_ENGINE(), 32, offset);
 		offset+=32;
 		utility::push(buffer,  ListPostionData[i]->getNID_OPERATIONAL(), 32, offset);
 		offset+=32;
 		utility::push(buffer,  ListPostionData[i]->getNID_CDB(), 32, offset);
 		offset += 32;
-
 	}
-
 }
 
-void pacchettoPositionDataATC::deserialize(array<Byte>^buffer)
+void pacchettoPositionDataATC::deserialize(array<Byte>^buffer, int offset)
 {
 
 	NID_PACKET=utility::pop(buffer,  8, 51);
 	if(NID_PACKET!=255){
-	L_PACKET=utility::pop(buffer, 13, 59);
-	
+		L_PACKET=utility::pop(buffer, 13, 59);
+
 
 		int tNID_ENGINE =utility::pop(buffer, 32, 72);
 		int tNID_OPERATIONAL  =utility::pop(buffer, 32, 104);
 		int tNID_CDB =utility::pop(buffer, 32, 136);
 
-		ListPostionData->Add(gcnew StateCDB(tNID_CDB,typeStateCDB::cdbOccupato,typeStateDeviatoio::deviatoioStatoIgnoto,tNID_OPERATIONAL,tNID_ENGINE));
+		setCDB(gcnew StateCDB(tNID_CDB,QStateCDB::cdbOccupato,QStateDeviatoio::deviatoioStatoIgnoto,tNID_OPERATIONAL,tNID_ENGINE));
 		setN_ITER(utility::pop(buffer, 16, 168));
 		int offset = 184;
 
-		for(unsigned int i = 0; i < N_ITER; ++i)
+		for(int i = 0; i < N_ITER; ++i)
 		{
 			tNID_ENGINE=utility::pop(buffer, 32, offset);
 			offset += 32;
@@ -111,7 +107,7 @@ void pacchettoPositionDataATC::deserialize(array<Byte>^buffer)
 			tNID_CDB=utility::pop(buffer, 32, offset);
 			offset += 32;
 
-			ListPostionData->Add(gcnew  StateCDB(tNID_CDB,typeStateCDB::cdbOccupato,typeStateDeviatoio::deviatoioStatoIgnoto,tNID_OPERATIONAL,tNID_ENGINE));
+			setCDB(gcnew  StateCDB(tNID_CDB,QStateCDB::cdbOccupato,QStateDeviatoio::deviatoioStatoIgnoto,tNID_OPERATIONAL,tNID_ENGINE));
 		}
 	}
 

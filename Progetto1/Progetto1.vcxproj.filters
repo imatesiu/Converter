@@ -45,12 +45,6 @@
     <ClCompile Include="stazione.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="tabellaFermate.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="tabellaItinerari.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
     <ClCompile Include="tableLayoutPanelAllCDB.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
@@ -150,6 +144,33 @@
     <ClCompile Include="Fermata.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="EditorMapTreni.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="TrainGraph.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorTabellaOrario.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="ItineraryBox.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="mapTrenoFisicoLogico.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="TrenoFisicoLogico.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="lrbg.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="TabellaStazioni.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="TabellaOrario.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -177,12 +198,6 @@
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="stazione.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="tabellaFermate.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="tabellaItinerari.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="tableLayoutPanelAllCDB.h">
@@ -284,6 +299,36 @@
     <ClInclude Include="physicalTrain.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="EditorMapTreni.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="TrainGraph.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorTabellaOrario.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="FormDeleteElement.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="ItineraryBox.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="mapTrenoFisicoLogico.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="TrenoFisicoLogico.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="lrbg.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="TabellaStazioni.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="TabellaOrario.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
@@ -301,6 +346,15 @@
     <EmbeddedResource Include="TrainInfo3.resx">
       <Filter>File di risorse</Filter>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditorMapTreni.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditorTabellaOrario.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainGraph.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -316,6 +370,21 @@
       <Filter>File di risorse</Filter>
     </_EmbedManagedResourceFile>
     <_EmbedManagedResourceFile Include="..\FileConfigurazione\CDB.csv">
+      <Filter>File di risorse</Filter>
+    </_EmbedManagedResourceFile>
+    <_EmbedManagedResourceFile Include="..\FileConfigurazione\TabellaOrario.xml">
+      <Filter>File di risorse</Filter>
+    </_EmbedManagedResourceFile>
+    <_EmbedManagedResourceFile Include="..\FileConfigurazione\TabellaOrario.xsd">
+      <Filter>File di risorse</Filter>
+    </_EmbedManagedResourceFile>
+    <_EmbedManagedResourceFile Include="..\FileConfigurazione\ConfigurazioneFermate.xsd">
+      <Filter>File di risorse</Filter>
+    </_EmbedManagedResourceFile>
+    <_EmbedManagedResourceFile Include="..\FileConfigurazione\ConfigurazioneItinerari.xsd">
+      <Filter>File di risorse</Filter>
+    </_EmbedManagedResourceFile>
+    <_EmbedManagedResourceFile Include="..\FileConfigurazione\ConfigurazioneFermate.xml">
       <Filter>File di risorse</Filter>
     </_EmbedManagedResourceFile>
   </ItemGroup>

@@ -1,20 +1,22 @@
 #pragma once
 #using <System.dll>
+#include "lrbg.h"
 using namespace System;
 using namespace System::Collections::Generic;
-
-ref class binario
+/*utilizzo questa classe per rappresentare le informazioni delle stazioni parsate dal file xml ConfigurazioneFermate.xml*/
+//questa classe rappresenta le informazioni delle stazioni che sono solo fermate || forse andrebbe chiamata stazionifermate?!!
+public ref class binario
 {
 	String ^namebin;
 	int bin;
 	String ^direzione;
-	int nid_lrgb;
+	lrbg ^info_lrgb;
 	int d_stop;
 	bool porteBanchina;
 	int latoBanchina;
 	int nextCDB;
 	int prevCDB;
-	String  ^CDB;
+	int  CDB;
 public:
 	binario(void);
 	void setNameBin(String ^i){namebin = i;};
@@ -23,8 +25,8 @@ public:
 	int getBin(){return bin;};
 	void setDirezione(String ^d){direzione = d;};
 	String^ getDirezione(){return direzione;};
-	void setNid_lrgb(int n){nid_lrgb = n;};
-	int getNid_lrgb(){return nid_lrgb;};
+	void set_info_lrgb(lrbg ^n){info_lrgb = n;};
+	lrbg ^get_info_lrgb(){return info_lrgb;};
 	void setD_stop(int d){d_stop = d;};
 	int getD_stop(){return d_stop;};
 	void setPorteBanchina(bool p){porteBanchina = p;};
@@ -35,8 +37,8 @@ public:
 	int getNextCDB(){return nextCDB;};
 	void setPrevCDB(int p){prevCDB = p;};
 	int getPrevCDB(){return prevCDB;};
-	void setCDB(String ^c){CDB = c;};
-	String ^getCDB(){return CDB;};
+	void setCDB(int c){CDB = c;};
+	int getCDB(){return CDB;};
 	
 	virtual System::String^ ToString() override;
 

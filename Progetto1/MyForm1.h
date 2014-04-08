@@ -1,6 +1,6 @@
 #pragma once
 #include "tableLayoutPanelSingleItin.h"
-#include "tabellaItinerari.h"
+#include "TabellaStazioni.h"
 #include "messaggi\\StateItinerario.h"
 #include "messaggi\\Messaggi.h"
 
@@ -21,15 +21,15 @@ using namespace System::Net::Sockets;
 	/// </summary>
 	public ref class MyForm1 : public System::Windows::Forms::Form
 	{
-		tabellaItinerari ^tabItinerari;
+		TabellaStazioni ^tabItinerari;
 	public:
 
 		MyForm1(void)
 		{
 			InitializeComponent();
 
-			tabItinerari = gcnew tabellaItinerari();
-			tabItinerari->leggifileconfigurazioneItinerari("..\\FileConfigurazione\\ConfigurazioneItinerari.xml");
+			tabItinerari = gcnew TabellaStazioni();
+			//tabItinerari->leggifileconfigurazioneItinerari("..\\FileConfigurazione\\ConfigurazioneItinerari.xml");
 			genera();
 
 			//
@@ -38,7 +38,7 @@ using namespace System::Net::Sockets;
 		}
 		void genera();
 	private: bool SendMessStatoIXL(List< StateItinerario^> ^listI, List<StateCDB^> ^listCItin);
-			 List<StateCDB^> ^listCdBItin(int idstazione,int iditineraio);
+			 List<int> ^listCdBItin(int idstazione,int iditineraio);
 			 void setCdBItin(List<StateCDB^> ^listCdB, int stato);
 
 	protected:
@@ -128,28 +128,28 @@ using namespace System::Net::Sockets;
 						 }
 						 if(i>0){
 							 Button ^s  = (Button ^ )ssx;
-						 StateItinerario^ itin = gcnew StateItinerario();
+					//	 StateItinerario^ itin = gcnew StateItinerario();
 						 int iditinerario = int::Parse(s->Name);
 
-						 List<StateCDB^> ^listC = listCdBItin(offset,iditinerario);
+						 List<StateCDB^> ^listC = gcnew  List<StateCDB^>();//listCdBItin(offset,iditinerario);
 
 
-						 itin->setNID_ITIN(iditinerario+offset);
+					//	 itin->setNID_ITIN(iditinerario+offset);
 						 if(s->BackColor== System::Drawing::Color::Red){
-							 itin->setQ_STATOITIN(1);
+					//		 itin->setQ_STATOITIN(QStateItineraio::itinerarioStatoInAtto);
 							 setCdBItin(listC,2);
 							  listCItin->AddRange(listC);
 						 }else{
 
-							 itin->setQ_STATOITIN(0);
+					//		 itin->setQ_STATOITIN(QStateItineraio::itinerarioStatoNonInAtto);
 							 if(s->BackColor== System::Drawing::Color::Green){
 							 setCdBItin(listC,0);
 							 listCItin->AddRange(listC);
 							 }
 						 }
 						
-						 listI->Add(itin);
-						 Console::WriteLine(itin);
+					//	 listI->Add(itin);
+					//	 Console::WriteLine(itin);
 						 }
 
 						 i++;

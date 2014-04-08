@@ -1,36 +1,27 @@
 #include "pacchettoMissionData.h"
 #include "utility.h"
-
 #include "Mission.h"
 
 
 pacchettoMissionData::pacchettoMissionData()
 {
-
-	NID_PACKET = 0;
-	L_PACKET = 0;
-	Q_SCALE = 0;
-
-	
-	N_ITER1 = 0;
-	mS1_vect = gcnew List<ProfiloVelocita^>();
-	
-	mS2_vect = gcnew List<Mission^>();
+	setNID_PACKET(PacchettoID::MissionData);
+	setL_PACKET( 0);
+	setQ_SCALE(QSCALEMissionData::M);
+	setN_ITER1(0);
+	setN_ITER2(0);
+	setPV(gcnew List<ProfiloVelocita^>());
+	setMission(gcnew List<Mission^>());
 }
 
-// funzione che sette N_ITER1
 void pacchettoMissionData::setN_ITER1(int N)
 {
 	N_ITER1 = N;
-
 }
 
-// funzione che sette N_ITER2
 void pacchettoMissionData::setN_ITER2(int N)
 {
 	N_ITER2 = N;
-
-
 }
 
 void pacchettoMissionData::serialize(array<Byte>^buffer, int offset)
@@ -149,12 +140,6 @@ void pacchettoMissionData::deserialize(array<Byte>^buffer, int offset)
 	}
 }
 
-
-
-
-// funzione che restituisce la dimensione (ideale, non quella dovuta agli allineamenti 
-// fatti dal compilatore) in Byte del messaggio tenendo anche in conto l'eventuale padding
-// questa funzione sarà chiamata da chi vorrà serializzare il messaggio, per poter allocare il buffer
 int pacchettoMissionData::getSize()
 {
 	// intero che rappresenta la dimensione in bit
@@ -164,39 +149,34 @@ int pacchettoMissionData::getSize()
 	size += 122+15;
 	// 22 bit per ogni N_ITER
 	size += 22 * N_ITER1;
-	// 22 bit per ogni N_ITER
-	size += (67+15) * N_ITER2;
+	// 82 bit per ogni N_ITER
+	size += 82 * N_ITER2;
 	// ritorno il numero di bit occupato dalla struttura dati
 	return size;
 }
 
-System::String ^ pacchettoMissionData::ToString(){
-
-
+System::String ^ pacchettoMissionData::ToString()
+{
 	System::String ^out;
 
-	out = out+"NID_PACKET: "+NID_PACKET+";";
-	out = out+"L_PACKET: "+L_PACKET+";";
-	out = out+"Q_SCALE: "+Q_SCALE+";";
-	out = out+mS1_vect[0]->ToString();
-	out = out+"N_ITER1: "+N_ITER1+";";
-	
-		for( int i=1;i<mS1_vect->Count;i++)
-		{
-			out = out+mS1_vect[i]->ToString();
+	out = out+"NID_PACKET: "+get_NID_PACKET()+";";
+	out = out+"L_PACKET: "+getL_PACKET()+";";
+	out = out+"Q_SCALE: "+getQ_SCALE()+";";
+	out = out+getPV()[0]->ToString();
+	out = out+"N_ITER1: "+getN_ITER1()+";";
 
+	for( int i=1;i<getPV()->Count;i++)
+	{
+		out = out+getPV()[i]->ToString();
+	}
 
-		}
-	
-	out = out+ mS2_vect[0]->ToString();
+	out = out+ getlistMission()[0]->ToString();
+	out = out+"N_ITER2: "+getN_ITER2()+";";
 
-	out = out+"N_ITER2: "+N_ITER2+";";
+	for( int i=1;i<getlistMission()->Count;i++)
+	{
+		out = out+ getlistMission()[i]->ToString();
+	}
 	
-		for( int i=1;i<mS2_vect->Count;i++)
-		{
-			out = out+ mS2_vect[i]->ToString();
-		}
-	
-
 	return out;
 };

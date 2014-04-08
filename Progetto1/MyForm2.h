@@ -225,13 +225,13 @@ namespace Progetto1 {
 					 int idCDB = int::Parse(s->Name);
 					 StateCDB ^sCDB;
 					 if(s->BackColor== System::Drawing::Color::Red){
-						 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbOccupato,0);
+						 sCDB= gcnew StateCDB(idCDB,QStateCDB::cdbOccupato,QStateDeviatoio::deviatoioNonPresente);
 					 }
 					 if(s->BackColor== System::Drawing::Color::Gray){
-						 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbLibero,0);
+						 sCDB= gcnew StateCDB(idCDB,QStateCDB::cdbLibero,QStateDeviatoio::deviatoioNonPresente);
 					 }
 					 if(s->BackColor== System::Drawing::Color::White){
-						 sCDB= gcnew  StateCDB(idCDB,typeStateCDB::cdbImpegnato,0);
+						 sCDB= gcnew  StateCDB(idCDB,QStateCDB::cdbImpegnato,QStateDeviatoio::deviatoioNonPresente);
 					 }
 					 lCDB->Add(sCDB);
 					 Console::WriteLine(sCDB);
@@ -260,16 +260,16 @@ namespace Progetto1 {
 								 array<String^> ^arrstring = str->Split(';');
 								 int idtreno = int::Parse(arrstring[0]);
 								 int idftreno = int::Parse(arrstring[1]);
-								 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbOccupato,0,idtreno,idftreno);
+								 sCDB= gcnew StateCDB(idCDB,QStateCDB::cdbOccupato,QStateDeviatoio::deviatoioNonPresente,idtreno,idftreno);
 								 lCDB->Add(sCDB);
 								 Console::WriteLine(sCDB);
 							 }
 							 if(s->BackColor== System::Drawing::Color::Green){
-								 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbLibero,0);
+								 sCDB= gcnew StateCDB(idCDB,QStateCDB::cdbLibero,QStateDeviatoio::deviatoioNonPresente);
 								 lCDB->Add(sCDB);
 							 }
 							 if(s->BackColor== System::Drawing::Color::White){
-								 sCDB= gcnew  StateCDB(idCDB,typeStateCDB::cdbImpegnato,0);
+								 sCDB= gcnew  StateCDB(idCDB,QStateCDB::cdbImpegnato,QStateDeviatoio::deviatoioNonPresente);
 								 lCDB->Add(sCDB);
 								 Console::WriteLine(sCDB);
 							 }
@@ -313,16 +313,16 @@ namespace Progetto1 {
 								 array<String^> ^arrstring = str->Split(';');
 								 int idtreno = int::Parse(arrstring[0]);
 								 int idftreno = int::Parse(arrstring[1]);
-								 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbOccupato,0,idtreno,idftreno);
+								 sCDB= gcnew StateCDB(idCDB,QStateCDB::cdbOccupato,QStateDeviatoio::deviatoioNonPresente,idtreno,idftreno);
 								 lCDB->Add(sCDB);
 								 Console::WriteLine(sCDB);
 							 }
 							 if(s->BackColor== System::Drawing::Color::Green){
-								 sCDB= gcnew StateCDB(idCDB,typeStateCDB::cdbLibero,0);
+								 sCDB= gcnew StateCDB(idCDB,QStateCDB::cdbLibero,QStateDeviatoio::deviatoioNonPresente);
 								 lCDB->Add(sCDB);
 							 }
 							 if(s->BackColor== System::Drawing::Color::White){
-								 sCDB= gcnew  StateCDB(idCDB,typeStateCDB::cdbImpegnato,0);
+								 sCDB= gcnew  StateCDB(idCDB,QStateCDB::cdbImpegnato,QStateDeviatoio::deviatoioNonPresente);
 								 lCDB->Add(sCDB);
 								 Console::WriteLine(sCDB);
 							 }

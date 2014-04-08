@@ -128,7 +128,7 @@ void tableLayoutPanelSingleItin::addbuttonUscita(String ^namebutton, int id){
 
 void tableLayoutPanelSingleItin::paint(stazione ^station){
 
-Dictionary<int,Itinerario^ >::ValueCollection ^valuecollitini = station->getItinerariid()->Values;
+/*Dictionary<int,Itinerario^ >::ValueCollection ^valuecollitini = station->getItinerariid()->Values;
 		for each (Itinerario^ var in valuecollitini)
 		{
 			if(var->getDStop()>0){
@@ -139,5 +139,5 @@ Dictionary<int,Itinerario^ >::ValueCollection ^valuecollitini = station->getItin
 
 			}
 		}
-
+		*/
 }

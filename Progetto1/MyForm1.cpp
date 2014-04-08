@@ -21,7 +21,7 @@ void Progetto1::MyForm1::genera(){
 
 bool Progetto1::MyForm1::SendMessStatoIXL(List< StateItinerario^> ^listI, List<StateCDB^> ^listCItin){
 	try{
-		Messaggi ^MessStatoIXL = gcnew Messaggi();
+	/*	Messaggi ^MessStatoIXL = gcnew Messaggi();
 
 
 		MessStatoIXL->setNID_MESSAGE(MessIXL::StatoLineaIXL);
@@ -60,7 +60,7 @@ bool Progetto1::MyForm1::SendMessStatoIXL(List< StateItinerario^> ^listI, List<S
 
 		s->SendTo( sendBytes, ep);
 
-
+*/
 		return true;
 
 	}catch ( Exception^ eException ) 
@@ -71,7 +71,7 @@ bool Progetto1::MyForm1::SendMessStatoIXL(List< StateItinerario^> ^listI, List<S
 	}
 }
 
-List<StateCDB^> ^Progetto1::MyForm1::listCdBItin(int idstazione,int iditineraio){
+List<int> ^Progetto1::MyForm1::listCdBItin(int idstazione,int iditineraio){
 	if(tabItinerari->getMap()->ContainsKey(idstazione)){
 		if(tabItinerari->getMap()[idstazione]->getItinerariid()->ContainsKey(iditineraio)){
 			Itinerario ^itin = tabItinerari->getMap()[idstazione]->getItinerariid()[iditineraio];

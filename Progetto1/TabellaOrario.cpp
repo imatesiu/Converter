@@ -1,14 +1,15 @@
 #include "TabellaOrario.h"
 #using <System.Xml.dll>
-#include <iostream>
 
-#include "..\\logger\\Logger.h"
-#include "..\\messaggi\\Mission.h"
-using namespace std;
+
+
+#include "messaggi\\Mission.h"
 using namespace System;
 using namespace System::Globalization;
 using namespace System::Xml;
 using namespace System::Xml::Schema;
+
+//Questa classe viene usata per leggere e gestire la tabella orario
 
 #define TRACE
 #define VALIDATEXML
@@ -16,14 +17,17 @@ using namespace System::Xml::Schema;
 TabellaOrario::TabellaOrario(void)
 {
 	tabella = gcnew Dictionary<int, List<Fermata^>^>;
-	schemaxsd="..\\FileConfigurazione\\TabellaOrario.xsd";
+	schemaxsd="TabellaOrario.xsd";
+	leggiTabellaOrario();
+	tabItinerari  = gcnew TabellaStazioni();
 }
 
-TabellaOrario::TabellaOrario(tabellaItinerari ^T)
+TabellaOrario::TabellaOrario(TabellaStazioni ^T)
 {
 	tabella = gcnew Dictionary<int, List<Fermata^>^>;
-	schemaxsd="..\\FileConfigurazione\\TabellaOrario.xsd";
+	schemaxsd="TabellaOrario.xsd";
 	tabItinerari=T;
+	leggiTabellaOrario();
 }
 
 
@@ -58,7 +62,7 @@ int TabellaOrario::getFirstTRN()
 		  }*/
 
 // questa funzione legge il file di configurazione contenente la descrizione della tabella orario
-void TabellaOrario::leggiTabellaOrario(String ^nomeFile)
+void TabellaOrario::leggiTabellaOrario()
 {
 	try{
 		// oggetti DateTime di supporto
@@ -67,21 +71,22 @@ void TabellaOrario::leggiTabellaOrario(String ^nomeFile)
 		TimeSpan sinceMidnight;
 
 #ifdef VALIDATEXML
+		System::IO::Stream^ readStreamschemaxsd = System::Reflection::Assembly::GetExecutingAssembly()->GetManifestResourceStream(schemaxsd);
 		// Create the XmlSchemaSet class.
 		XmlSchemaSet^ sc = gcnew XmlSchemaSet;
 
 		// Add the schema to the collection.
-		sc->Add( "urn:tabellaorario-schema", schemaxsd );
+		sc->Add( "urn:tabellaorario-schema",  gcnew XmlTextReader (readStreamschemaxsd) );
 		XmlReaderSettings^ settings = gcnew XmlReaderSettings;
 		settings->ValidationType = System::Xml::ValidationType::Schema;
 		settings->Schemas = sc;
 		/*ValidationEventHandler ^ed = gcnew ValidationEventHandler( ValidationCallBack );
 		settings->ValidationEventHandler +=ed;*/
 
-
+		System::IO::Stream^ readStreamXML = System::Reflection::Assembly::GetExecutingAssembly()->GetManifestResourceStream("TabellaOrario.xml");
 
 		//System::String^ nome = gcnew System::String(nomeFile.c_str());
-		System::Xml::XmlReader ^reader = System::Xml::XmlReader::Create(nomeFile, settings);
+		System::Xml::XmlReader ^reader = System::Xml::XmlReader::Create(readStreamXML, settings);
 
 		//	XmlDocument ^document = gcnew XmlDocument();
 		//document->Load(readers);
@@ -159,15 +164,15 @@ void TabellaOrario::leggiTabellaOrario(String ^nomeFile)
 				System::String ^SystemStringLatoProgrammato = inner2->ReadString();	
 				// converto da System::String a std::string
 				//string stringLatoAperturaPorte = convertiString2string(SystemStringLatoProgrammato);
-				int latoParturaPorte;
+				FermataType latoParturaPorte;
 				if(SystemStringLatoProgrammato == "dx")
-					latoParturaPorte = aperturaTrenoDx;
+					latoParturaPorte = FermataType::aperturaTrenoDx;
 				else if(SystemStringLatoProgrammato == "sx")
-					latoParturaPorte = aperturaTrenoSx;
+					latoParturaPorte = FermataType::aperturaTrenoSx;
 				else if(SystemStringLatoProgrammato == "sd")
-					latoParturaPorte = aperturaTrenoDxSx;
+					latoParturaPorte = FermataType::aperturaTrenoDxSx;
 				else
-					latoParturaPorte = noApertura;
+					latoParturaPorte = FermataType::noApertura;
 				// configuro il lato apertura porte programmato programmato
 				stop->setLatoAperturaPorte(latoParturaPorte);
 
@@ -206,29 +211,56 @@ void TabellaOrario::leggiTabellaOrario(String ^nomeFile)
 		reader->Close();
 	}catch(Exception ^e){
 
-#ifdef TRACE
-		Logger::Exception(e,"Tabella Orario");  
-#endif // TRACE
+ 
+
 		Console::WriteLine( L"Validation Error: {0}", e->Message );
 	}	
 }
 
 // funzione che prende in ingresso un TRN ed un messaggio di tipo missionPlan, e riempie i campi del messaggio con i dati relativi
 // alla missione associata al TRN in questione
-void TabellaOrario::setMissionPlanMessage(int TRN, pacchettoMissionPlan ^pkt)
+void TabellaOrario::setMissionPlanMessage(int TRN, pacchettoMissionData ^pkt, List<ProfiloVelocita^>^pvel)
 {
 	// ottengo un riferimento alle fermate del treno TRN
 	List<Fermata^> ^stops = tabella[TRN];
+	createMissionPlanMsg(TRN,pkt,pvel,stops);
+}
+void TabellaOrario::createMissionPlanMsg(int TRN, pacchettoMissionData ^pkt, List<ProfiloVelocita^>^pvel, List<Fermata^> ^stops){
+
 	// se il teno esiste
 	if(stops!=nullptr)
 	{
-		//Todo: V_mission D_mission ancora da trattare
-		pkt->setN_ITER1(0);
+		bool latolinea=false; //indica come si percorre la linea: se false da o per Monterosa/VicoloCorto true gli altri casi
+		Fermata ^fakeVicoloCorto = gcnew Fermata(10000);
+		Fermata ^fakeVialeMonterosa = gcnew Fermata(11000);
+		if(!(stops->Contains(fakeVicoloCorto) | stops->Contains(fakeVialeMonterosa)  )){
+			latolinea = true;
+		}
+		//indica la direzione in cui va il treno true dx da accademia -> vittoria, false viceversa
+		bool direzione = tabItinerari->get_Direzione_itinerario(stops[0]->getIdStazione(),stops[0]->getIditinerarioUscita());
+		if((stops[0]->getIditinerarioUscita()==0) &( stops->Count>2)){
+			if(stops[2]->getIditinerarioUscita()>0){
+				direzione = tabItinerari->get_Direzione_itinerario(stops[2]->getIdStazione(),stops[2]->getBinarioProgrammato());
+			}
+		}
+
+		//Todo: V_mission D_mission tratte
+		if(pvel!=nullptr){
+			pkt->setPV(pvel);
+			pkt->setN_ITER1(pvel->Count-1);
+		}else{
+			pkt->setPV(gcnew ProfiloVelocita(10700,70));
+			pkt->setN_ITER1(0);
+		}
 		// -1 perchè la prima fermata non viene considerata negli N_ITER
+
 		pkt->setN_ITER2((stops->Count) - 1);
-		int i = 0;
+		pkt->setQ_SCALE(QSCALEMissionData::M);
+		int i=0;
+		int prevprogkm = 0;
 		for each (Fermata ^stop in stops)
 		{
+
 			Mission ^mission= gcnew Mission();
 			mission->setQ_DOORS(stop->getLatoAperturaPorte());
 
@@ -239,24 +271,75 @@ void TabellaOrario::setMissionPlanMessage(int TRN, pacchettoMissionPlan ^pkt)
 
 			if(tabItinerari!=nullptr ){
 				if(stop->getIditinerarioEntrata()!=0){
-					List<int> ^infobalise = tabItinerari->get_infobalise(stop->getIdStazione(),stop->getIditinerarioEntrata());
+					lrbg ^infobalise = tabItinerari->get_infobalise(stop->getIdStazione(),stop->getIditinerarioEntrata());
 					if(infobalise!=nullptr){
 
-						mission->setNID_LRGB(infobalise[0]);
-						mission->setD_STOP(infobalise[1]);
+						mission->setNID_LRGB(infobalise->nid_lrgb);
+						mission->setD_STOP(infobalise->d_stop);
+						int pkmlrbg = 0;
+						if(latolinea){
+							pkmlrbg =	infobalise->get_progressivakm(13000);
+						}else{
+							pkmlrbg =	infobalise->get_progressivakm(10000);
+						}
+						int d_lrgb = Math::Abs(pkmlrbg - prevprogkm);
+						if(direzione){
+							prevprogkm = pkmlrbg +  infobalise->d_stop;
+						}else{
+							prevprogkm = pkmlrbg -  infobalise->d_stop;
+						}
+						mission->setD_LRGB(d_lrgb);
 					}
+				}
+				if(i==0){
+					lrbg ^infobalise = tabItinerari->get_infobalise(stop->getIdStazione(),stop->getIditinerarioUscita());
+					if(infobalise!=nullptr){
+
+						mission->setNID_LRGB(infobalise->nid_lrgb);
+						mission->setD_STOP(infobalise->d_stop);
+						mission->setD_LRGB(10);
+						int pkmlrbg = 0;
+						if(latolinea){
+							pkmlrbg = infobalise->get_progressivakm(13000) ;
+						}else{
+							pkmlrbg = infobalise->get_progressivakm(10000) ;
+						}
+
+						if(direzione){
+							prevprogkm = pkmlrbg +  infobalise->d_stop;
+						}else{
+							prevprogkm = pkmlrbg -  infobalise->d_stop;
+						}
+
+					}
+				}
+				if((stop->getIditinerarioEntrata()==0) & (stop->getIditinerarioUscita()==0)){
+					lrbg ^infobalise  = tabItinerari->get_infobalise_fromBinario(stop->getIdStazione(),stop->getBinarioProgrammato(),direzione);
+					mission->setNID_LRGB(infobalise->nid_lrgb);
+					mission->setD_STOP(infobalise->d_stop);
+					int pkmlrbg = 0;
+					if(latolinea){
+						pkmlrbg =	infobalise->get_progressivakm(13000);
+					}else{
+						pkmlrbg =	infobalise->get_progressivakm(10000);
+					}
+					int d_lrgb = Math::Abs(pkmlrbg - prevprogkm);
+					if(direzione){
+						prevprogkm = pkmlrbg +  infobalise->d_stop;
+					}else{
+						prevprogkm = pkmlrbg -  infobalise->d_stop;
+					}
+					mission->setD_LRGB(d_lrgb);
 				}
 
 			}
-			if(i==0){
-				pkt->setfirstMission(mission);
-			}else{
-				pkt->setlistMission(mission);
-			}
 
-			++i;
+
+			pkt->setMission(mission);
+			i++;
 		}
 	}
+
 }
 
 
@@ -275,12 +358,93 @@ System::String^ TabellaOrario::ToString(){
 	return out;
 }
 
-List<Fermata^> ^TabellaOrario::getItinerariFor(int TRN){
-	
-	if(tabella->ContainsKey(TRN)){
-		return tabella[TRN];
-		
+List<Fermata^> ^TabellaOrario::getFermateFor(int TRN){
 
+	if(tabella->ContainsKey(TRN)){
+
+		//return tabella[TRN];
+		List<Fermata^> ^result = gcnew List<Fermata^>();
+		for each (Fermata ^ferm in tabella[TRN])
+		{
+			if(ferm->getIdStazione()>0){
+				result->Add(ferm);
+			}
+		}
+		return result;
 	}
 	return nullptr;
+}
+
+List<Fermata^> ^TabellaOrario::getItinerariFor(int TRN){
+
+	if(tabella->ContainsKey(TRN)){
+
+		//return tabella[TRN];
+		List<Fermata^> ^result = gcnew List<Fermata^>();
+		for each (Fermata ^ferm in tabella[TRN])
+		{
+			if(ferm->getIdStazione()>1000){
+				result->Add(ferm);
+			}
+		}
+		return result;
+	}
+	return nullptr;
+}
+
+
+void TabellaOrario::ScriviTabellaOrario(System::IO::Stream ^stream){
+	XmlWriterSettings ^settings = gcnew XmlWriterSettings();
+	settings->Indent = true;
+	XmlWriter ^writer = XmlWriter::Create(stream,settings);
+
+	writer->WriteStartDocument();
+	writer->WriteStartElement("orario");
+	for each( KeyValuePair<int , List<Fermata^>^> kvp in tabella )
+	{
+		writer->WriteStartElement("treno");
+		writer->WriteAttributeString("id",kvp.Key.ToString());
+
+
+
+		for each (Fermata ^dvar in kvp.Value)
+		{
+			writer->WriteStartElement("stazione");
+			writer->WriteAttributeString("id",dvar->getIdStazione().ToString());
+			writer->WriteAttributeString("name",dvar->getnameStazione());
+
+			writer->WriteElementString("arrivo", dvar->getOrarioArrivo().ToString());
+			writer->WriteElementString("partenza", dvar->getOrarioPartenza().ToString());
+			writer->WriteElementString("binarioprogrammato", dvar->getBinarioProgrammato().ToString());
+			String ^latoParturaPorte ="";
+			if(dvar->getLatoAperturaPorte() ==FermataType::aperturaTrenoDx )
+				latoParturaPorte = "dx";
+			else if(dvar->getLatoAperturaPorte() ==FermataType::aperturaTrenoSx)
+				latoParturaPorte =  "sx";
+			else if(dvar->getLatoAperturaPorte() ==FermataType::aperturaTrenoDxSx )
+				latoParturaPorte ="sd" ;
+			else
+				latoParturaPorte = "";//FermataType::noApertura;
+
+			writer->WriteElementString("latoaperturaporteprogrammato", latoParturaPorte);
+			if(dvar->getIditinerarioEntrata()>0){
+				writer->WriteStartElement("itinerarioEntrata");
+				writer->WriteAttributeString("id", dvar->getIditinerarioEntrata().ToString());
+				writer->WriteString(dvar->getnameitinerarioEntrata());
+				writer->WriteEndElement();
+			}
+			if(dvar->getIditinerarioUscita()>0){
+				writer->WriteStartElement("itinerarioUscita");
+				writer->WriteAttributeString("id", dvar->getIditinerarioUscita().ToString());
+				writer->WriteString(dvar->getnameitinerarioUscita());
+				writer->WriteEndElement();
+			}
+			writer->WriteEndElement();
+
+		}
+		writer->WriteEndElement();
+	}
+	writer->WriteEndElement();
+	writer->WriteEndDocument();
+	writer->Close();
 }

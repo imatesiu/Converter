@@ -1,17 +1,16 @@
 #pragma once
-
+#include "FermataType.h"
 
 using namespace System;
 
-enum  FermataType{noApertura = 0,aperturaTrenoDx = 1,aperturaTrenoSx = 2,aperturaTrenoDxSx = 3,aperturaTrenoBanchinaDx = 4,aperturaTrenoBanchinaSx = 5,aperturaTrenoBanchinaDxSx = 6 };
 
 
-/*
+/*Utilizzo questa classe per serializzare le informazioni sulle fermate presenti nella tabella orario
 Questa classe è utilizzata dalla classe TrenoFermate per gestire le fermate di un singolo treno.
 Un oggetto di tipo fermata rappresenta una fermata di un treno
 */
-// Commento inutile
-ref class Fermata
+
+public ref class Fermata  : public IEquatable<Fermata^>
 {
 	int idStazione;
 	String ^nameStazione;
@@ -19,8 +18,7 @@ ref class Fermata
 	double orarioPartenza;
 	double tempoMinimoAperturaPorte;
 	int binarioProgrammato;
-	int latoAperturaPorte;
-
+	FermataType latoAperturaPorte;
 	int iditinerarioentrata;
 	String ^nameitinerarioentrata;
 	int iditinerariouscita;
@@ -29,6 +27,36 @@ ref class Fermata
 	//ostream& operator<<(ostream &out, const Fermata &stop);
 public:
 	Fermata(void);
+	Fermata(int i, String ^n,double oa, double op,double tmpa,int bp, FermataType lap,int idie,String ^nie,int idiu,String ^niu){
+		idStazione=i;
+		nameStazione=n;
+		orarioArrivo=oa;
+		orarioPartenza=op;
+		tempoMinimoAperturaPorte=tmpa;
+		binarioProgrammato=bp;
+		latoAperturaPorte=lap;
+
+		iditinerarioentrata=idie;
+		nameitinerarioentrata=nie;
+		iditinerariouscita=idiu;
+		nameitinerariouscita=niu;
+
+	}
+	Fermata(int i){
+
+		idStazione=i;
+		nameStazione = "";
+		orarioArrivo = 0;
+		orarioPartenza = 0;
+		tempoMinimoAperturaPorte = 0;
+		binarioProgrammato = 0;
+		latoAperturaPorte = FermataType::noApertura;
+		iditinerarioentrata=0;
+		nameitinerarioentrata="";
+		iditinerariouscita=0;
+		nameitinerariouscita="";
+
+	}
 	// Funzioni per la manipolazione (set e get) dell'id della stazione
 	void setIdStazione(int id){idStazione = id;};
 	int getIdStazione(){return idStazione;};
@@ -47,8 +75,8 @@ public:
 	void setBinarioProgrammato(int binario){binarioProgrammato = binario;};
 	int getBinarioProgrammato(){return binarioProgrammato;};
 	// Funzioni per la manipolazione del tempo di apertura delle porte
-	void setLatoAperturaPorte(int lato){latoAperturaPorte = lato;};
-	int getLatoAperturaPorte(){return latoAperturaPorte;};
+	void setLatoAperturaPorte(FermataType lato){latoAperturaPorte = lato;};
+	FermataType getLatoAperturaPorte(){return latoAperturaPorte;};
 
 	bool isPassante();
 
@@ -62,7 +90,14 @@ public:
 	void setnameitinerarioUscita(String ^name){nameitinerariouscita = name;};
 	String^ getnameitinerarioUscita(){return nameitinerariouscita;};
 
+	void setOrarioArrivo(DateTime arr);
+	void setOrarioPartenza(DateTime orario);
+
+	Fermata ^Clone(){
+		return gcnew Fermata(idStazione,nameStazione,orarioArrivo,orarioPartenza,tempoMinimoAperturaPorte,binarioProgrammato,latoAperturaPorte,iditinerarioentrata,nameitinerarioentrata,iditinerariouscita,nameitinerariouscita);
+	}
 
 	virtual System::String^ ToString() override;
+	virtual bool Equals(Fermata^ otherKey);
 };
 

@@ -2,26 +2,26 @@
 
 bool Progetto1::MyForm2::SendMessStatoCDBIXL(List< StateCDB^> ^lCDB){
 	try{
-		Messaggi ^MessStatoCDBIXL = gcnew Messaggi();
+		Messaggi ^MessStatoCDBIXL = gcnew Messaggi(MessageID::StatoLineaIXL);
 
 
-		MessStatoCDBIXL->setNID_MESSAGE(MessIXL::StatoLineaIXL);
-		MessStatoCDBIXL->get_pacchettoStatoItinerario()->setNID_PACKET(101);
+		
+		/*	MessStatoCDBIXL->get_pacchettoStatoItinerario()->setNID_PACKET(101);
 		MessStatoCDBIXL->get_pacchettoStatoItinerario()->setItinerario(gcnew StateItinerario());
 
 		MessStatoCDBIXL->get_pacchettoStatoItinerario()->setN_ITER(0);
 
-		MessStatoCDBIXL->get_pacchettoStatoSegnali()->setNID_PACKET(101);
+		MessStatoCDBIXL->get_pacchettoStatoSegnali()->setNID_PACKET(101);*/
 		MessStatoCDBIXL->get_pacchettoStatoSegnali()->setstatoSegnale(gcnew StateSegnale(12,2));
 
-		MessStatoCDBIXL->get_pacchettoStatoBlocco()->setNID_PACKET(101);
+	//	MessStatoCDBIXL->get_pacchettoStatoBlocco()->setNID_PACKET(101);
 		MessStatoCDBIXL->get_pacchettoStatoBlocco()->setStatoBlocco(gcnew StateBlocco());
 
 
 
 
 
-		MessStatoCDBIXL->get_pacchettoStatoLineaIXL()->setNID_PACKET(101);
+	//	MessStatoCDBIXL->get_pacchettoStatoLineaIXL()->setNID_PACKET(101);
 		MessStatoCDBIXL->get_pacchettoStatoLineaIXL()->setN_ITER(lCDB->Count-1);
 		MessStatoCDBIXL->get_pacchettoStatoLineaIXL()->setCDB(lCDB);
 
@@ -72,11 +72,10 @@ void Progetto1::MyForm2::serializzeNetWork(List< StateCDB^> ^lCDB) {
 
 bool Progetto1::MyForm2::SendMessStatoCDBATC(List< StateCDB^> ^lCDB){
 	try{
-		Messaggi ^MessStatoCDBATC = gcnew Messaggi();
+		Messaggi ^MessStatoCDBATC = gcnew Messaggi(MessageID::StatoLineaATC);
 
 
-		MessStatoCDBATC->setNID_MESSAGE(MessATC::StatoLineaATC);
-		MessStatoCDBATC->get_pacchettoPositionDataATC()->setNID_PACKET(0);
+		
 
 
 		MessStatoCDBATC->get_pacchettoPositionDataATC()->setCDB(lCDB);

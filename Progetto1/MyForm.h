@@ -334,13 +334,13 @@ namespace Progetto1 {
 						 array<String^> ^arraystr=text->Split(';');
 						 Messaggi ^pkt1 = gcnew Messaggi();
 						 pkt1->setNID_MESSAGE(Int32::Parse(arraystr[0]));
-						 pkt1->setL_MESSAGE(Int32::Parse(arraystr[1]));
-						 pkt1->setT_TIME(Int32::Parse(arraystr[2]));
+						// pkt1->setL_MESSAGE(Int32::Parse(arraystr[1]));
+						// pkt1->setT_TIME(Int32::Parse(arraystr[2]));
 
 
 						 if(selectedIndex==2 ){
 							 //crea Unconditional Command
-							 pkt1->get_pacchettoCommandData()->setNID_PACKET(Int32::Parse(arraystr[3]));
+							// pkt1->get_pacchettoCommandData()->setNID_PACKET(Int32::Parse(arraystr[3]));
 							 pkt1->get_pacchettoCommandData()->setL_PACKET(Int32::Parse(arraystr[4]));
 							 pkt1->get_pacchettoCommandData()->setQ_COMMAND_TYPE(Int32::Parse(arraystr[5]));
 							 if( pkt1->get_pacchettoCommandData()->getQ_COMMAND_TYPE()==5)
@@ -354,7 +354,7 @@ namespace Progetto1 {
 						 if(selectedIndex==0 ){
 							 //Crea presentazione
 							 pkt1->setNID_ENGINE(Int32::Parse(arraystr[3]));
-							 pkt1->get_pacchettoPresentazione()->setNID_PACKET(Int32::Parse(arraystr[4]));
+							// pkt1->get_pacchettoPresentazione()->setNID_PACKET(Int32::Parse(arraystr[4]));
 							 pkt1->get_pacchettoPresentazione()->setL_PACKET(Int32::Parse(arraystr[5]));
 
 							 pkt1->get_pacchettoPresentazione()->setM_PORT(Int32::Parse(arraystr[6]));
@@ -364,7 +364,7 @@ namespace Progetto1 {
 						 if(selectedIndex==1 ){
 							 //Crea ACK
 							 pkt1->setNID_ENGINE(Int32::Parse(arraystr[3]));
-							 pkt1->get_pacchettoAcknowledgement()->setNID_PACKET(Int32::Parse(arraystr[4]));
+							// pkt1->get_pacchettoAcknowledgement()->setNID_PACKET(Int32::Parse(arraystr[4]));
 							 pkt1->get_pacchettoAcknowledgement()->setL_PACKET(Int32::Parse(arraystr[5]));
 							 pkt1->get_pacchettoAcknowledgement()->setT_TRAIN(Int32::Parse(arraystr[6]));
 							 pkt1->get_pacchettoAcknowledgement()->setQ_MISSION_RESPONSE(Int32::Parse(arraystr[7]));
@@ -373,17 +373,17 @@ namespace Progetto1 {
 
 						 if(selectedIndex==3 ){
 							 //Crea Comando Itinerari
-							 pkt1->get_pacchettoComandoItinerari()->setNID_PACKET(Int32::Parse(arraystr[3]));
+							// pkt1->get_pacchettoComandoItinerari()->setNID_PACKET(Int32::Parse(arraystr[3]));
 							 pkt1->get_pacchettoComandoItinerari()->setL_PACKET(Int32::Parse(arraystr[4]));
 							 pkt1->get_pacchettoComandoItinerari()->setNID_ITIN(Int32::Parse(arraystr[5]));
 							 pkt1->get_pacchettoComandoItinerari()->setQ_CMDITIN(Int32::Parse(arraystr[6]));
-							 pkt1->get_pacchettoEnd()->setNID_PACKET(255);
+						//	 pkt1->get_pacchettoEnd()->setNID_PACKET(255);
 
 
 						 }
 						 if(selectedIndex==4 ){
 							 //Stato Linea IXL
-							 pkt1->get_pacchettoStatoLineaIXL()->setNID_PACKET(Int32::Parse(arraystr[3]));
+							// pkt1->get_pacchettoStatoLineaIXL()->setNID_PACKET(Int32::Parse(arraystr[3]));
 							 pkt1->get_pacchettoStatoLineaIXL()->setL_PACKET(Int32::Parse(arraystr[4]));
 							 StateCDB ^sCDB = gcnew StateCDB(Int32::Parse(arraystr[5]),Int32::Parse(arraystr[6]),Int32::Parse(arraystr[7]));
 							 pkt1->get_pacchettoStatoLineaIXL()->setCDB(sCDB);
@@ -394,10 +394,10 @@ namespace Progetto1 {
 								 pkt1->get_pacchettoStatoLineaIXL()->setCDB(sCDB);
 								 z++;
 							 }
-							 i=i+10;
-							 pkt1->get_pacchettoStatoItinerario()->setNID_PACKET(Int32::Parse(arraystr[i]));
+						/*	 i=i+10;
+						//	 pkt1->get_pacchettoStatoItinerario()->setNID_PACKET(Int32::Parse(arraystr[i]));
 							 i++;
-							 pkt1->get_pacchettoStatoItinerario()->setL_PACKET(Int32::Parse(arraystr[i]));
+						//	 pkt1->get_pacchettoStatoItinerario()->setL_PACKET(Int32::Parse(arraystr[i]));
 							 i++;
 							 StateItinerario  ^ itin = gcnew StateItinerario();
 
@@ -417,8 +417,8 @@ namespace Progetto1 {
 								 pkt1->get_pacchettoStatoItinerario()->setItinerario(itin);
 							 }
 
-
-							 pkt1->get_pacchettoStatoSegnali()->setNID_PACKET(Int32::Parse(arraystr[i]));
+							 */
+						//	 pkt1->get_pacchettoStatoSegnali()->setNID_PACKET(Int32::Parse(arraystr[i]));
 							 i++;
 							 pkt1->get_pacchettoStatoSegnali()->setL_PACKET(Int32::Parse(arraystr[i]));
 							 i++;
@@ -439,17 +439,17 @@ namespace Progetto1 {
 								 pkt1->get_pacchettoStatoSegnali()->setstatoSegnale(sSegnal);
 							 }
 
-							 pkt1->get_pacchettoEnd()->setNID_PACKET(255);
+							
 
 						 }
 						 if(selectedIndex==5){
 							 //Stato Linea ATC
-							 pkt1->get_pacchettoPositionDataATC()->setNID_PACKET(Int32::Parse(arraystr[3]));
+							
 							 pkt1->get_pacchettoPositionDataATC()->setL_PACKET(Int32::Parse(arraystr[4]));
 								int nid_op= Int32::Parse(arraystr[5]);
 								int nid_eg=Int32::Parse(arraystr[6]);
 								int nid_cdb=Int32::Parse(arraystr[7]);
-								StateCDB ^sCDB = gcnew StateCDB(nid_cdb,typeStateCDB::cdbOccupato,typeStateDeviatoio::deviatoioNonPresente,nid_op,nid_eg);
+								StateCDB ^sCDB = gcnew StateCDB(nid_cdb,QStateCDB::cdbOccupato,QStateDeviatoio::deviatoioNonPresente,nid_op,nid_eg);
 							 pkt1->get_pacchettoPositionDataATC()->setCDB(sCDB);
 
 							 pkt1->get_pacchettoPositionDataATC()->setN_ITER(Int32::Parse(arraystr[8]));
@@ -458,7 +458,7 @@ namespace Progetto1 {
 								  nid_op= Int32::Parse(arraystr[9+z]);
 								  nid_eg=Int32::Parse(arraystr[10+z]);
 								 nid_cdb=Int32::Parse(arraystr[11+z]);
-								StateCDB ^sCDB = gcnew StateCDB(nid_cdb,typeStateCDB::cdbOccupato,typeStateDeviatoio::deviatoioNonPresente,nid_op,nid_eg);
+								StateCDB ^sCDB = gcnew StateCDB(nid_cdb,QStateCDB::cdbOccupato,QStateDeviatoio::deviatoioNonPresente,nid_op,nid_eg);
 								 pkt1->get_pacchettoPositionDataATC()->setCDB(sCDB);
 								 i++;
 							 }
@@ -466,11 +466,11 @@ namespace Progetto1 {
 						 }
 						 if(selectedIndex==6 ){
 							 //Comando direzione blocco
-							 pkt1->get_pacchettoComandoBlocco()->setNID_PACKET(Int32::Parse(arraystr[3]));
+							// pkt1->get_pacchettoComandoBlocco()->setNID_PACKET(Int32::Parse(arraystr[3]));
 							 pkt1->get_pacchettoComandoBlocco()->setL_PACKET(Int32::Parse(arraystr[4]));
 							 pkt1->get_pacchettoComandoBlocco()->setNID_BLOCCO(Int32::Parse(arraystr[5]));
 							 pkt1->get_pacchettoComandoBlocco()->setQ_CMDBLOCCO(Int32::Parse(arraystr[6]));
-							 pkt1->get_pacchettoEnd()->setNID_PACKET(255);
+						//	 pkt1->get_pacchettoEnd()->setNID_PACKET(255);
 
 						 }
 						 array<Byte>^bytez = pkt1->serialize();

@@ -44,6 +44,8 @@ namespace Progetto1 {
 	private: System::Windows::Forms::TableLayoutPanel^  tableLayoutPanel1;
 	private: System::Windows::Forms::ComboBox^  comboBox1;
 	private: System::Windows::Forms::DateTimePicker^  dateTimePicker1;
+	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
+	private: System::Windows::Forms::DataVisualization::Charting::Chart^  chart1;
 	protected: 
 
 	private:
@@ -59,6 +61,11 @@ namespace Progetto1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^  legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(TrainInfo3::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -69,6 +76,9 @@ namespace Progetto1 {
 			this->tableLayoutPanel1 = (gcnew System::Windows::Forms::TableLayoutPanel());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
+			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
+			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->chart1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -118,7 +128,7 @@ namespace Progetto1 {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(410, 381);
+			this->button1->Location = System::Drawing::Point(42, 344);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 5;
@@ -169,11 +179,42 @@ namespace Progetto1 {
 			this->dateTimePicker1->TabIndex = 9;
 			this->dateTimePicker1->Value = System::DateTime(2013, 12, 2, 0, 0, 0, 0);
 			// 
+			// chart1
+			// 
+			chartArea1->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->chart1->Legends->Add(legend1);
+			this->chart1->Location = System::Drawing::Point(351, 196);
+			this->chart1->Name = L"chart1";
+			this->chart1->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::Bright;
+			series1->BorderDashStyle = System::Windows::Forms::DataVisualization::Charting::ChartDashStyle::NotSet;
+			series1->BorderWidth = 15;
+			series1->ChartArea = L"ChartArea1";
+			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series1->CustomProperties = L"IsXAxisQuantitative=False";
+			series1->IsXValueIndexed = true;
+			series1->Legend = L"Legend1";
+			series1->MarkerSize = 15;
+			series1->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Star10;
+			series1->Name = L"Series1";
+			series1->YValuesPerPoint = 6;
+			series2->ChartArea = L"ChartArea1";
+			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series2->Legend = L"Legend1";
+			series2->Name = L"Series2";
+			this->chart1->Series->Add(series1);
+			this->chart1->Series->Add(series2);
+			this->chart1->Size = System::Drawing::Size(428, 282);
+			this->chart1->TabIndex = 10;
+			this->chart1->Text = L"chart1";
+			// 
 			// TrainInfo3
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(511, 416);
+			this->ClientSize = System::Drawing::Size(851, 588);
+			this->Controls->Add(this->chart1);
 			this->Controls->Add(this->dateTimePicker1);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->tableLayoutPanel1);
@@ -184,8 +225,10 @@ namespace Progetto1 {
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^  >(resources->GetObject(L"$this.Icon")));
 			this->Name = L"TrainInfo3";
 			this->Text = L"TrainInfo3";
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->chart1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -194,6 +237,11 @@ namespace Progetto1 {
 	private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 			 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+			 saveFileDialog1->Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+      saveFileDialog1->FilterIndex = 2;
+      saveFileDialog1->RestoreDirectory = true;
+	 saveFileDialog1->ShowDialog();
+
 		 }
 private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) {
 		 }

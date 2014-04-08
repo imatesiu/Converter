@@ -57,6 +57,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies />
+      <Profile>true</Profile>
     </Link>
     <PostBuildEvent>
       <Command>copy app.config "$(TargetPath).config"</Command>
@@ -80,12 +81,18 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="binario.cpp" />
+    <ClCompile Include="EditorMapTreni.cpp" />
+    <ClCompile Include="EditorTabellaOrario.cpp" />
     <ClCompile Include="Fermata.cpp" />
+    <ClCompile Include="ItineraryBox.cpp" />
     <ClCompile Include="KeyListTrain.cpp" />
+    <ClCompile Include="lrbg.cpp" />
+    <ClCompile Include="mapTrenoFisicoLogico.cpp" />
     <ClCompile Include="messaggi\Fault.cpp" />
     <ClCompile Include="Form1.cpp" />
     <ClCompile Include="Itinerario.cpp" />
@@ -119,19 +126,35 @@
     <ClCompile Include="physicalTrain.cpp" />
     <ClCompile Include="SingleTrainInfoForm.cpp" />
     <ClCompile Include="stazione.cpp" />
-    <ClCompile Include="tabellaFermate.cpp" />
-    <ClCompile Include="tabellaItinerari.cpp" />
+    <ClCompile Include="TabellaOrario.cpp" />
+    <ClCompile Include="TabellaStazioni.cpp" />
     <ClCompile Include="tableLayoutPanelAllCDB.cpp" />
     <ClCompile Include="tableLayoutPanelSingleItin.cpp" />
     <ClCompile Include="tomWriterTraceListener.cpp" />
     <ClCompile Include="messaggi\utility.cpp" />
     <ClCompile Include="Train.cpp" />
+    <ClCompile Include="TrainGraph.cpp" />
     <ClCompile Include="TrainInfo3.cpp" />
+    <ClCompile Include="TrenoFisicoLogico.cpp" />
     <ClCompile Include="wdogcontrol.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="binario.h" />
+    <ClInclude Include="ConfigurazioneFermate.h">
+      <DependentUpon>..\FileConfigurazione\ConfigurazioneFermate.xsd</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="ConfigurazioneItinerari.h">
+      <DependentUpon>..\FileConfigurazione\ConfigurazioneItinerari.xsd</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="EditorMapTreni.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EditorTabellaOrario.h" />
+    <ClInclude Include="FormDeleteElement.h" />
+    <ClInclude Include="ItineraryBox.h" />
     <ClInclude Include="KeyListTrain.h" />
+    <ClInclude Include="lrbg.h" />
+    <ClInclude Include="mapTrenoFisicoLogico.h" />
     <ClInclude Include="messaggi\Fault.h" />
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
@@ -173,19 +196,29 @@
     <ClInclude Include="resource2.h" />
     <ClInclude Include="SingleTrainInfoForm.h" />
     <ClInclude Include="stazione.h" />
-    <ClInclude Include="tabellaFermate.h" />
-    <ClInclude Include="tabellaItinerari.h" />
+    <ClInclude Include="TabellaOrario.h">
+      <DependentUpon>..\FileConfigurazione\TabellaOrario.xsd</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="TabellaStazioni.h" />
     <ClInclude Include="tableLayoutPanelAllCDB.h" />
     <ClInclude Include="tableLayoutPanelSingleItin.h" />
     <ClInclude Include="tomWriterTraceListener.h" />
     <ClInclude Include="messaggi\utility.h" />
     <ClInclude Include="Train.h" />
+    <ClInclude Include="TrainGraph.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="TrainInfo3.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="TrenoFisicoLogico.h" />
     <ClInclude Include="wdogcontrol.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="EditorMapTreni.resx">
+      <DependentUpon>EditorMapTreni.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditorTabellaOrario.resx" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.h</DependentUpon>
     </EmbeddedResource>
@@ -197,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm2.resx">
       <DependentUpon>MyForm2.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainGraph.resx">
+      <DependentUpon>TrainGraph.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TrainInfo3.resx">
       <DependentUpon>TrainInfo3.h</DependentUpon>
@@ -218,6 +254,17 @@
   <ItemGroup>
     <Image Include="app.ico" />
     <Image Include="icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <_EmbedManagedResourceFile Include="..\FileConfigurazione\ConfigurazioneFermate.xml" />
+    <_EmbedManagedResourceFile Include="..\FileConfigurazione\TabellaOrario.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <_EmbedManagedResourceFile Include="..\FileConfigurazione\ConfigurazioneFermate.xsd" />
+    <_EmbedManagedResourceFile Include="..\FileConfigurazione\TabellaOrario.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <_EmbedManagedResourceFile Include="..\FileConfigurazione\ConfigurazioneItinerari.xsd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
