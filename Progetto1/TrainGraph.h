@@ -33,6 +33,7 @@ namespace Progetto1 {
 			series1->BorderWidth = 3;
 			series1->MarkerSize = 15;
 			series1->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Star10;
+			series1->ToolTip = "#VALX{T} : #AXISLABEL";
 			//series1->Points[0]->AxisLabel = "9-10";
 		//	series1->XValueType = System::Windows::Forms::DataVisualization::Charting::ChartValueType::String;
 			
@@ -88,13 +89,15 @@ namespace Progetto1 {
 			}
 		}
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^  chart1;
+	private: System::Windows::Forms::ToolTip^  toolTip1;
+	private: System::ComponentModel::IContainer^  components;
 	protected: 
 
 	private:
 		/// <summary>
 		/// Variabile di progettazione necessaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -103,9 +106,11 @@ namespace Progetto1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^  legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			this->toolTip1 = (gcnew System::Windows::Forms::ToolTip(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->chart1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -131,6 +136,7 @@ namespace Progetto1 {
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
 			this->chart1->Customize += gcnew System::EventHandler(this, &TrainGraph::chart1_Customize);
+			this->chart1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &TrainGraph::chart1_MouseMove);
 			// 
 			// TrainGraph
 			// 
@@ -174,6 +180,14 @@ private: System::Void chart1_Customize(System::Object^  sender, System::EventArg
         }    
 		
 		
+
+		 }
+private: System::Void chart1_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+
+		/*	 double cursorX = this->chart1->ChartAreas["ChartArea1"]->AxisX->PixelPositionToValue(e->Location.X);
+			 DateTime td = setOrario(cursorX);
+			  int cursorY = Convert::ToInt32(this->chart1->ChartAreas["ChartArea1"]->AxisY->PixelPositionToValue(e->Location.Y));
+			  toolTip1->SetToolTip(chart1,td+" "+cursorY);*/
 
 		 }
 };

@@ -64,7 +64,8 @@ namespace Progetto1 {
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^  legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^  series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::DataPoint^  dataPoint1 = (gcnew System::Windows::Forms::DataVisualization::Charting::DataPoint(2, 
+				L"2,0,0,0,0,0"));
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(TrainInfo3::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -198,13 +199,10 @@ namespace Progetto1 {
 			series1->MarkerSize = 15;
 			series1->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Star10;
 			series1->Name = L"Series1";
+			series1->Points->Add(dataPoint1);
+			series1->ToolTip = L"#VALX{D}";
 			series1->YValuesPerPoint = 6;
-			series2->ChartArea = L"ChartArea1";
-			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series2->Legend = L"Legend1";
-			series2->Name = L"Series2";
 			this->chart1->Series->Add(series1);
-			this->chart1->Series->Add(series2);
 			this->chart1->Size = System::Drawing::Size(428, 282);
 			this->chart1->TabIndex = 10;
 			this->chart1->Text = L"chart1";
