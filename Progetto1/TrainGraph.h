@@ -88,15 +88,13 @@ namespace Progetto1 {
 			}
 		}
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^  chart1;
-	private: System::Windows::Forms::ToolTip^  toolTip1;
-	private: System::ComponentModel::IContainer^  components;
 	protected: 
 
 	private:
 		/// <summary>
 		/// Variabile di progettazione necessaria.
 		/// </summary>
-
+		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -105,11 +103,9 @@ namespace Progetto1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = (gcnew System::ComponentModel::Container());
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^  legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
-			this->toolTip1 = (gcnew System::Windows::Forms::ToolTip(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->chart1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -135,7 +131,6 @@ namespace Progetto1 {
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
 			this->chart1->Customize += gcnew System::EventHandler(this, &TrainGraph::chart1_Customize);
-			this->chart1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &TrainGraph::chart1_MouseMove);
 			// 
 			// TrainGraph
 			// 
@@ -165,7 +160,7 @@ private: System::Void chart1_Customize(System::Object^  sender, System::EventArg
 
 		 	//array<String^> ^stazi = gcnew array<String^>(12){"Parco della Vittoria","Viale dei Giardini","Via Roma","Via Marco Polo","Piazza Dante","Viale Monterosa","Vicolo Corto","Vicolo Stretto","Via Accademia","Piazza Università","Via Verdi"};
 			array<String^> ^stazi = gcnew array<String^>(12){"","Via Accademia","Piazza Università","Via Verdi","Vicolo Corto","Vicolo Stretto","Viale Monterosa","Piazza Dante","Via Marco Polo","Via Roma","Viale dei Giardini","Parco della Vittoria"};
-			int count = 0;
+			int count = 1;
 			System::Windows::Forms::DataVisualization::Charting::ChartArea ^ch=	this->chart1->ChartAreas["ChartArea1"];
 			for each(System::Windows::Forms::DataVisualization::Charting::CustomLabel ^lbl in ch->AxisY->CustomLabels)
         {
@@ -180,11 +175,6 @@ private: System::Void chart1_Customize(System::Object^  sender, System::EventArg
 		
 		
 
-		 }
-private: System::Void chart1_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
-			 int cursorX = Convert::ToInt32(this->chart1->ChartAreas["ChartArea1"]->AxisX->PixelPositionToValue(e->Location.X));
-			 int cursorY = Convert::ToInt32(this->chart1->ChartAreas["ChartArea1"]->AxisY->PixelPositionToValue(e->Location.Y));
-			 toolTip1->SetToolTip(chart1,cursorY.ToString()+" "+cursorX.ToString());
 		 }
 };
 }
