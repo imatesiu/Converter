@@ -64,7 +64,9 @@ namespace Progetto1 {
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^  legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^  series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::DataPoint^  dataPoint1 = (gcnew System::Windows::Forms::DataVisualization::Charting::DataPoint(2, 
+			System::Windows::Forms::DataVisualization::Charting::DataPoint^  dataPoint1 = (gcnew System::Windows::Forms::DataVisualization::Charting::DataPoint(2.8, 
+				L"2,5,0,0,0,0"));
+			System::Windows::Forms::DataVisualization::Charting::DataPoint^  dataPoint2 = (gcnew System::Windows::Forms::DataVisualization::Charting::DataPoint(3, 
 				L"2,0,0,0,0,0"));
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(TrainInfo3::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -192,7 +194,7 @@ namespace Progetto1 {
 			series1->BorderDashStyle = System::Windows::Forms::DataVisualization::Charting::ChartDashStyle::NotSet;
 			series1->BorderWidth = 15;
 			series1->ChartArea = L"ChartArea1";
-			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Kagi;
 			series1->CustomProperties = L"IsXAxisQuantitative=False";
 			series1->IsXValueIndexed = true;
 			series1->Legend = L"Legend1";
@@ -200,6 +202,7 @@ namespace Progetto1 {
 			series1->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Star10;
 			series1->Name = L"Series1";
 			series1->Points->Add(dataPoint1);
+			series1->Points->Add(dataPoint2);
 			series1->ToolTip = L"#VALX{D}";
 			series1->YValuesPerPoint = 6;
 			this->chart1->Series->Add(series1);

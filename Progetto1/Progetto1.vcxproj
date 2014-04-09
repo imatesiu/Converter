@@ -88,6 +88,7 @@
     <ClCompile Include="binario.cpp" />
     <ClCompile Include="EditorMapTreni.cpp" />
     <ClCompile Include="EditorTabellaOrario.cpp" />
+    <ClCompile Include="EventQueue.cpp" />
     <ClCompile Include="Fermata.cpp" />
     <ClCompile Include="ItineraryBox.cpp" />
     <ClCompile Include="KeyListTrain.cpp" />
@@ -150,7 +151,10 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="EditorTabellaOrario.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="EventQueue.h" />
     <ClInclude Include="FormDeleteElement.h" />
+    <ClInclude Include="IEvent.h" />
     <ClInclude Include="ItineraryBox.h" />
     <ClInclude Include="KeyListTrain.h" />
     <ClInclude Include="lrbg.h" />
